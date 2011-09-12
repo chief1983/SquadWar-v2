@@ -1,0 +1,8 @@
+Squadwar V2
+Author: Cliff Gordon
+
+This is the Squadwar code dump, ported from Coldfusion to PHP.  There is a
+database creation script in the admin folder, and a script to generate the
+Sector inserts from an input file, so each league could have a simply
+generated map.  Just be sure to open the conf/ folder and copy and fill out
+the mysql.conf and config.php files.
