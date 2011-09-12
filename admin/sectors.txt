@@ -1,0 +1,68 @@
+Achird,1	Altair,Tarazed
+Graffias,1	Tarazed,Regulus
+Alcyone,1	Regulus,Hamal
+Alphard,1	Hamal,Gorgonea Quarta
+Altair,0	Achird,Tarazed, Kocab,Muliphen
+Tarazed,0	Achird, Graffias,Mintaka,Altair
+Regulus,0	Graffias,Alcyone,Skat,Mintaka
+Hamal,0	Alcyone,Alphard,Zawjah,Skat
+Muliphen,1	Altair,Kaus Borealis
+Kocab,0	Altair,Mintaka,Algenib,Kaus Borealis
+Mintaka,0	Tarazed,Regulus,Alphekka,Algenib,Kocab
+Alphekka,0	Mintaka,Skat,Capella,Adhil,Zaniah
+Skat,0	Regulus,Hamal,Betelgeuse,Alphekka
+Zawjah,0	Hamal,Gorgonea Quarta,Betelgeuse
+Gorgonea Quarta,0	Alphard,Heze,Alnilam,Zawjah
+Heze,1	Gorgonea Quarta,Talitha
+Kaus Borealis,0	Muliphen,Kocab,Alchiba,Alkaid
+Algenib,0	Kocab,Mintaka,Zuben Elschemali,Spica,Alchiba
+Zaniah,0	Alphekka,Adhil,Kajam,Zuben Elschemali
+Adhil,0	Zaniah,Alphekka,Sirius,Tania Australis,Kajam
+Sirius,0	Adhil,Capella,Wezn,Adara,Tania Australis
+Capella,0	Alphekka,Betelgeuse,Deneb,Wezn,Sirius
+Betelgeuse,0	Skat,Zawjah,Alnilam,Alsafi,Capella
+Alnilam,0	Betelgeuse,Gorgonea Quarta,Talitha
+Talitha,0	Alnilam,Heze,Subra,Alsafi
+Alsafi,0	Betelgeuse,Talitha,Mesarthim,Deneb
+Subra,1	Talitha,Mesarthim
+Alkaid,1	Kaus Borealis,Gienah Cygni
+Alchiba,0	Kaus Borealis,Gienah Cygni,Spica,Algenib
+Zuben Elschemali,0	Spica,Algenib,Zaniah,Kajam,Enif
+Kajam,0	Rotanev,Enif,Zuben Elschemali,Zaniah
+Tania Australis,0	Sirius,Scheat,Adhil,Rotanev
+Adara,0	Tania Australis,Sirius,Scheat,Wezn
+Wezn,0	Adara,Sirius,Capella,Deneb,Naos
+Deneb,0	Alsafi,Alya,Naos,Wezn,Capella
+Gienah Cygni,0	Alathfar,Alfecca Meridiana,Alchiba,Alkaid
+Spica,0	Alathfar,Alchiba,Zuben Elschemali,Algenib,Tegmen
+Alfecca Meridiana,1	Gienah Cygni,Diadem
+Alathfar,0	Tegmen,Diadem,Gienah Cygni,Spica
+Tegmen,0	Enif,Spica,Alathfar,Minkar,Marfik
+Enif,0	Phaet,Zuben Elschemali,Tegmen,Kajam
+Rotanev,0	Fum al Samakah,Tania Australis,Phaet,Kajam
+Scheat,0	Naos,Fum al Samakah,Tania Australis,Adara
+Naos,0	Alya,Deneb,Scheat,Cursa,Wezn
+Alya,0	Mesarthim,Naos,Deneb
+Mesarthim,0	Deneb Algedi,Alya,Alsafi,Subra
+Deneb Algedi,1	Al Kalb al Rai,Mesarthim
+Diadem,0	Minkar,Mirach,Alfecca Meridiana,Alathfar
+Minkar,0	Diadem,Tegmen,Pleione
+Mirach,1	Diadem,Pleione
+Pleione,0	Merak,Minkar,Mirach,Marfik
+Marfik,0	Alsuhail,Merak,Pleione,Tegmen
+Phaet,0	Muscidia,Marfik,Enif,Rotanev
+Fum al Samakah,0	Procyon,Vindemiatrix,Rotanev,Scheat
+Cursa,0	Zuben Elakribi,Fum al Samakah,Al Kalb al Rai,Naos
+Al Kalb al Rai,0	Rasalhague,Cursa,Alya,Deneb Algedi
+Merak,1	Alsuhail,Pleione
+Alsuhail,0	Muscidia,Megrez,Marfik,Merak
+Muscidia,0	Menkalinan,Alsuhail,Phaet
+Megrez,1	Menkalinan,Alsuhail
+Menkalinan,0	Shedir,Vindemiatrix,Muscidia,Megrez
+Vindemiatrix,0	Menkalinan,Alkurhah,Fum al Samakah
+Shedir,1	Alkurhah,Menkalinan
+Procyon,0	Alkurhah,Zuben Elakribi,Fum al Samakah
+Alkurhah,0	Fomalhaut,Procyon,Shedir,Vindemiatrix
+Zuben Elakribi,0	Rasalhague,Fomalhaut,Cursa,Procyon
+Fomalhaut,1	Zuben Elakribi,Alkurhah
+Rasalhague,1	Al Kalb al Rai,Zuben Elakribi

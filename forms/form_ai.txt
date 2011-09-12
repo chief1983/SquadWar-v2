@@ -1,0 +1,2 @@
+<option value="allowed">allowed</option>
+<option value="none">none</option>

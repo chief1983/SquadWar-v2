@@ -1,0 +1,8 @@
+<?php
+// This is the server relative path to the resources, used for including images, etc.  Leaving it empty works in many cases.
+define('RELATIVEPATH','');
+// These are a salt for the login system.  Changing this on the server makes it very difficult to hijack accounts via the cookie-based auth system.
+define('HASH_SALT_PRE','');
+define('HASH_SALT_POST','');
+define('SITE_CODE','FS2');
+?>
