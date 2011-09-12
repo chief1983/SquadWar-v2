@@ -1,4 +1,4 @@
-<?
+<?php
 function __autoload($class_name)
 {
 	include_once str_replace('_', '/', $class_name) . '.php';
