@@ -21,12 +21,6 @@ class db_query
 		$this->con = $con;
 		$this->sql = $sql;
 
-		// Log all queries to ZBUG in a SQL Bucket
-		$current = zbug::bucket();
-		zbug::bucket("SQL");
-		zbug::log($sql, "<Br>".nl2br($sql)."<br>");
-		zbug::bucket($current);
-
 
 		$this->query_result = $this->con->query($sql);
 
