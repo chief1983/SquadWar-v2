@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 	the following acquire a query object and perform actions on it
 	with debug mode set, query objects aren't lost, but put on the stack

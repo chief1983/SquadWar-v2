@@ -1,4 +1,4 @@
-<?
+<?php
 // the idea is to encapsulate every query performed on the database object
 class db_query
 {
