@@ -40,14 +40,6 @@ include(BASE_PATH.'doc_mid.php');
 		</div>
 	<?php endif; ?>
 <?php else: ?>
-<?php /*	<cfquery datasource="SquadWar" name="get_squads">
-		SELECT SWSquads.SquadName, SWSquads.SquadMembers
-		   ,SWSquad_Info.SquadID ,SWSquad_Info.Squad_Leader_ID ,SWSquad_Info.Squad_Leader_ICQ 
-				   ,SWSquad_Info.Squad_IRC ,SWSquad_Info.Squad_Web_Link ,SWSquad_Info.Squad_Email ,SWSquad_Info.Squad_Time_Zone, SWSquad_Info.Squad_Statement
-		FROM SWSquads, SWSquad_Info
-		WHERE (SWSquads.SquadID = SWSquad_Info.SquadID)
-	</cfquery>
-*/ ?>
 
 	<div class="Copy">
 	<p>We are currently taking registrations for SquadWar Squads.  Please fill out the form below.  You need a valid email address and a <a href="http://www.pxo.net">PXO</a> account.  You will be contacted as soon as your Squad name has been approved for use in SquadWar.</p>
@@ -56,7 +48,7 @@ include(BASE_PATH.'doc_mid.php');
 	<p>
 	Your "admin" password should only be known by your squad leader and trusted members of the squad.  Your "join" password is the password you will give out to others when you want them to join your squad.</p>
 	<p>
-	If you have problems with this form, please write email to <a href="mailto:squadwar@pxo.net">squadwar@pxo.net</a>.</p>
+	If you have problems with this form, please write email to <a href="mailto:<?php echo SUPPORT_EMAIL; ?>"><?php echo SUPPORT_EMAIL; ?></a>.</p>
 		
 				<form action="_signup.php" method="post" name="login" class="validate">
 					<table>
@@ -128,17 +120,6 @@ include(BASE_PATH.'doc_mid.php');
 
 				</form>
 
-<?php /*
-	<p>
-	
-	<b>Currently Registered Squad Names:</b>
-		<ul>
-		<cfoutput query="get_squads">
-			<li>#SquadName#
-		</cfoutput>
-		</ul>				
-*/ ?>
-	
 	</div>
 <?php endif; ?>
 
