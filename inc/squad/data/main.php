@@ -34,6 +34,7 @@ class squad_data_main extends squad_data_base
 		$sql_where = $this->build_where_clause();
 		$sql_from = $this->build_from_clause();
 		$sql .= $sql_from . $sql_where;
+		$sql .= " group by s.SquadID ";
 		$sql .= $this->build_order_clause();
 		$sql .= $this->build_limit_clause();
 
