@@ -236,6 +236,17 @@ class base_database
 
 
 	/**
+		when we build the where clause, we also record which tables are needed.
+	**/
+	protected function build_from_clause()
+	{
+		$sql = " ";
+
+		return $sql;
+	}
+
+
+	/**
 		Build MySQL orderby clause
 	**/
 	protected function build_order_clause()
@@ -312,7 +323,19 @@ class base_database
 	}
 
 
-	public function search(base_recordsearch $record)
+	public function get($id)
+	{
+		$sql = "
+			select ".implode(', ', $this->all_fields)."
+			from ".$this->table." ".$this->abbr."
+			where ".reset($this->primary_fields)." = {$this->db->quote($id)}
+		";
+
+		return $this->exec_sql_return_record($sql, $this->detail_record);
+	}
+
+
+	protected function search(base_recordsearch $record)
 	{
 		$this->init_return($record);
 
@@ -322,7 +345,8 @@ class base_database
 		";
 
 		$sql_where = $this->build_where_clause();
-		$sql .= $sql_where;
+		$sql_from = $this->build_from_clause();
+		$sql .= $sql_from . $sql_where;
 		$sql .= $this->build_order_clause();
 		$sql .= $this->build_limit_clause();
 
@@ -333,7 +357,7 @@ class base_database
 		}
 
 		$pag = new base_pagination(
-			$this->search_get_recordcount($sql_where),
+			$this->search_db_get_recordcount($sql_from, $sql_where),
 			$this->incoming_record->get_page_size(),
 			$this->incoming_record->get_page_number()
 		);
@@ -344,7 +368,7 @@ class base_database
 		return $this->return;
 	}
 
-	public function get_count(base_recordsearch $record)
+	protected function get_count(base_recordsearch $record)
 	{
 		$this->init_return($record);
 
@@ -376,7 +400,7 @@ class base_database
 	/**
 		call the appropriate method based on whether we have an id.
 	**/
-	public function save_child(base_recorddetail $record)
+	protected function save_child(base_recorddetail $record)
 	{
 		$this->init_return($record);
 		$id = $record->get_id();
@@ -544,12 +568,14 @@ class base_database
 		return $this->exec_sql_return_status($sql);
 	}
 
-	protected function search_get_recordcount($sql_where)
+	//used by search method to find total records.
+	protected function search_db_get_recordcount($sql_from, $sql_where)
 	{
 		$sql = "
 			select count(*) as recordcount
-			from ".$this->table."
+			from ".$this->table." ".$this->abbr."
 		";
+		$sql .= $sql_from;
 		$sql .= $sql_where;
 
 		$results = $this->exec_sql_return_array($sql);
