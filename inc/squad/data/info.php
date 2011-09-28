@@ -40,7 +40,8 @@ class squad_data_info extends squad_data_base
 		";
 
 		$sql_where = $this->build_where_clause();
-		$sql .= $sql_where;
+		$sql_from = $this->build_from_clause();
+		$sql .= $sql_from . $sql_where;
 		$sql .= $this->build_order_clause();
 		$sql .= $this->build_limit_clause();
 
@@ -51,7 +52,7 @@ class squad_data_info extends squad_data_base
 		}
 
 		$pag = new base_pagination(
-			$this->search_get_recordcount($sql_where),
+			$this->search_db_get_recordcount($sql_from, $sql_where),
 			$this->incoming_record->get_page_size(),
 			$this->incoming_record->get_page_number()
 		);
@@ -60,26 +61,6 @@ class squad_data_info extends squad_data_base
 
 		$this->return->end();
 		return $this->return;
-	}
-
-	protected function search_get_recordcount($sql_where)
-	{
-		$sql = "
-			select count(*) as recordcount
-			from ".$this->table."
-		";
-		$sql .= $sql_where;
-
-		$results = $this->exec_sql_return_array($sql);
-
-		$recordcount = 0;
-
-		if( array_key_exists("0", $results)
-			&& array_key_exists("recordcount", $results[0])
-		)
-		{
-			return $results[0]['recordcount'];
-		}
 	}
 
 	/**
