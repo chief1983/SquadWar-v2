@@ -353,3 +353,42 @@ CREATE TABLE IF NOT EXISTS `SWSquad_Info` (
   `power_rating` float NOT NULL DEFAULT '0',
   PRIMARY KEY (`SquadID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `missions`
+--
+
+CREATE TABLE IF NOT EXISTS `missions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `filename` varchar(27) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `specifics` text NOT NULL,
+  `respawns` smallint(6) NOT NULL DEFAULT '0',
+  `players` smallint(6) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `missions`
+--
+
+INSERT INTO `missions` (`id`, `filename`, `name`, `description`, `specifics`, `respawns`, `players`) VALUES
+(1, 'MT-01', 'Aeolus Duel', 'Team vs. team mission in which two terran cruisers and their escorts tangle in a battle to the finish.', 'Each crusier is worth equal points.  The first team to destroy the enemy''s crusier receives a bonus.  The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(2, 'MT-02c', 'Mentu Duel', 'Team vs. team mission in which two vasudan cruisers and their escorts tangle in a battle to the finish.', 'Each crusier is worth equal points. The first team to destroy the enemy''s crusier receives a bonus. The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(3, 'MT-03c', 'Deimos Duel', 'Team vs. team mission in which two terran corvettes and their escorts tangle in a battle to the finish.', 'Each corvette is worth equal points. The first team to destroy the enemy''s corvette receives a bonus. The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(4, 'MT-05a', 'Close Quarters', 'Destroy the other team''s Shivan corvette before they destroy yours.', 'Each corvette is worth equal points. The first team to destroy the enemy''s corvettes receives a bonus. The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(5, 'MT-06', 'Nowhere to Run', 'Team vs. team mission -- no obstacles, no nebula, no excuses.', 'A race to the most kills in six minutes.  After six minutes, the team in the lead receives a bonus.  The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(6, 'MT-07', 'Ganymede Redux', 'Team vs. team furball in and around a Ganymede installation and vasudan destroyer.', 'A race to the most kills in six minutes.  After six minutes, the team in the lead receives a bonus.  The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(7, 'MT-10', 'Ganymede Showdown', 'Team vs. team mission around a Ganymede repair facility and Hades destroyer.', 'A race to the most kills in six minutes.  After six minutes, the team in the lead receives a bonus.  The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(8, 'MT-11', 'Aeolus Duel II', 'Two Aeolus Cruisers and their escorts tangle in a battle to the finish.', 'Cruisers are worth equal points, bonus given to team that gets Cruiser first. Also an AWAC for each side with a bonus for first AWAC killed. Both AWACS worth equal points. Added Stealth fighters and bombers, to compliment AWACS.', 10, 8),
+(9, 'MT-12a', 'Fighter Mayhem', 'Team vs. team mission -- fighters only, no obstacles, no nebula, no fighter suppression, no excuses.', 'A race to the most kills in six minutes. After six minutes, the team in the lead receives a bonus. The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(10, 'MT-13', 'Bomber Mayhem', 'Team vs. team mission -- all bombers, no fighters, no obstacles, no nebula, no excuses.', 'A race to the most kills in six minutes. After six minutes, the team in the lead receives a bonus. The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(11, 'MT-14', 'Aspect Lock', 'Team vs. team mission -- no obstacles, no nebula, no fire and forget, no excuses.', 'A race to the most kills in six minutes. After six minutes, the team in the lead receives a bonus. The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(12, 'MT-15', 'Primary Mayhem', 'Team vs. team mission --  fighters and primaries only, no obstacles, no nebula, no excuses.', 'A race to the most kills in six minutes. After six minutes, the team in the lead receives a bonus. The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(13, 'MAL-SDd', 'Sobek Duel', 'Team vs. team mission in which two vasudan corvettes and their escorts tangle in a battle to the finish.', 'Each corvette is worth equal points. The first team to destroy the enemy''s corvette receives a bonus. The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(14, 'Tep_MT-25', 'Fighter Mayhem II', 'Team vs. team mission -- Hide and seek around the debris of a destroyed shivan starbase in a dense asteroid field. All fighters, no bombers, no fighter suppression.', 'A race to the most kills in six minutes. After six minutes, the team in the lead receives a bonus. The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(15, 'Tep_MT-26', 'Bomber Mayhem II', 'Team vs. team mission -- Hide and seek around the debris of a destroyed shivan starbase in a dense asteroid field. All bombers, no fighters.', 'A race to the most kills in six minutes. After six minutes, the team in the lead receives a bonus. The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(16, 'Tep_MT-27', 'Aspect Lock II', 'Team vs. team mission -- Hide and seek around the debris of a destroyed shivan starbase in a dense asteroid field. No fire and forget.', 'A race to the most kills in six minutes. After six minutes, the team in the lead receives a bonus. The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(17, 'Tep_MT-28', 'Primary Mayhem II', 'Team vs. team mission -- Hide and seek around the debris of a destroyed shivan starbase in a dense asteroid field. Fighters and primaries only.', 'A race to the most kills in six minutes. After six minutes, the team in the lead receives a bonus. The value of the individual fighters is negligible compared to the bonus.', 10, 8),
+(18, 'TCADis_MT22', 'Battle of Fallen Timbers', 'Team vs. team in an encirclement of Ganymede construction docks. Seek and destroy the enemy ships while trying to navigate and stay alive.', 'A race to the most kills in six minutes. After six minutes, the team in the lead receives a bonus. The value of the individual fighters is negligible compared to the bonus.', 10, 8);
