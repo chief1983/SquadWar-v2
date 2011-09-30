@@ -9,7 +9,8 @@
 */
 class fsopilot_data_base extends base_database
 {
-	protected $table = 'squadwar.pilots';
+	protected $database = USER_DB;
+	protected $table = 'pilots';
 	protected $abbr = 'p';
 
 	/**

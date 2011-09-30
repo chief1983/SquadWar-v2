@@ -1,6 +1,6 @@
 <?php
 /**
-    this touches the main squad table, squadwar.SWSquads
+    this touches the main squad table, SWSquads
 
     it gets, searches, creates, squads.
 **/
@@ -16,7 +16,7 @@ class match_data_main extends match_data_base
 	{
 		$sql = "
 			select ".implode(', ', $this->all_fields)."
-			from ".$this->table." ".$this->abbr."
+			from `".$this->database."`.`".$this->table."` ".$this->abbr."
 			where ".reset($this->primary_fields)." = {$this->db->quote($id)}
 		";
 
@@ -27,7 +27,7 @@ class match_data_main extends match_data_base
 	{
 		$sql = "
 			select ".implode(', ', $this->all_fields)."
-			from ".$this->table." ".$this->abbr."
+			from `".$this->database."`.`".$this->table."` ".$this->abbr."
 			where SWCode = {$this->db->quote($SWCode)}
 		";
 
@@ -99,7 +99,7 @@ class match_data_main extends match_data_base
 		//check to see which tables are required.
 		if(in_array("info", $this->tables))
 		{
-			$sql .= ' inner join squadwar.SWMatches_Info mi on m.SWCode = mi.SWCode ';
+			$sql .= ' inner join `'.SQUADWAR_DB.'`.`SWMatches_Info` mi on m.SWCode = mi.SWCode ';
 		}
 
 		return $sql;

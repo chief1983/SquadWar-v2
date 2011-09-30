@@ -9,7 +9,8 @@
 */
 class mission_data_base extends base_database
 {
-	protected $table = 'squadwar.missions';
+	protected $database = SQUADWAR_DB;
+	protected $table = 'missions';
 	protected $abbr = 'm';
 
 	/**

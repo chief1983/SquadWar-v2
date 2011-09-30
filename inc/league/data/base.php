@@ -9,7 +9,8 @@
 */
 class league_data_base extends base_database
 {
-	protected $table = 'squadwar.SWLeagues';
+	protected $database = SQUADWAR_DB;
+	protected $table = 'SWLeagues';
 
 	/**
 		build snippet of where clause for League_IDs

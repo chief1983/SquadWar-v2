@@ -7,4 +7,6 @@ define('HASH_SALT_POST','');
 define('SITE_CODE','FS2');
 define('SUPPORT_EMAIL','fs2netd@gmail.com');
 define('ADMIN_NAME','FS2NetD Administration');
+define('SQUADWAR_DB','squadwar'); // Should be same as database in mysql.conf
+define('USER_DB','squadwar');
 ?>

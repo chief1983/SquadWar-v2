@@ -2,7 +2,7 @@
 
 class squad_data_sectorgraph extends squad_data_base
 {
-	protected $table = 'squadwar.SWSectors_Graph';
+	protected $table = 'SWSectors_Graph';
 	protected $all_fields = array('SWSectors_ID', 'path_1', 'path_2', 'path_3',
 		'path_4', 'path_5');
 	protected $primary_fields = array('SWSectors_ID');
@@ -17,7 +17,7 @@ class squad_data_sectorgraph extends squad_data_base
 	{
 		$sql = "
 			select ".implode(', ', $this->all_fields)."
-			from ".$this->table."
+			from `".$this->database."`.`".$this->table."`
 			where SWSectors_ID = {$this->db->quote($id)}
 		";
 

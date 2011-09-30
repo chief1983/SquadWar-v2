@@ -6,8 +6,9 @@
 **/
 class fsopilot_data_swpilot extends fsopilot_data_base
 {
+	protected $database = SQUADWAR_DB;
 	protected $tables = array();
-	protected $table = 'squadwar.SWPilots';
+	protected $table = 'SWPilots';
 	
 	public function get($id)
 	{
@@ -19,7 +20,7 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 				tz.value_hours as fetch_time_zone_hours,
 				tz.value_minutes as fetch_time_zone_minutes,
 				c.type as fetch_connection_type
-			from ".$this->table." sp
+			from `".$this->database."`.`".$this->table."` sp
 				inner join form_time_zones tz on tz.ID = sp.time_zone
 				inner join form_connection_type c on c.ID = sp.connection_type
 			where sp.PilotID = {$this->db->quote($id)}
@@ -64,7 +65,7 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 				tz.value_hours as fetch_time_zone_hours,
 				tz.value_minutes as fetch_time_zone_minutes,
 				c.type as fetch_connection_type
-			from ".$this->table." sp
+			from `".$this->database."`.`".$this->table."` sp
 				inner join form_time_zones tz on tz.ID = sp.time_zone
 				inner join form_connection_type c on c.ID = sp.connection_type
 		";
@@ -136,7 +137,7 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 	protected function create(fsopilot_record_swpilot_detail $record)
 	{
 		$sql = "
-			insert into ".$this->table."
+			insert into `".$this->database."`.`".$this->table."`
 			(
 				PilotID, user_id, ICQ, connection_type, time_zone,
 				Member_Since, show_email, email, Pilot_Name, Recruitme,
@@ -172,7 +173,7 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 	{
 
 		$sql = "
-			update ".$this->table."
+			update `".$this->database."`.`".$this->table."`
 			set
 				user_id = {$this->db->quote($record->get_user_id())},
 				ICQ = {$this->db->quote($record->get_ICQ())},
@@ -195,7 +196,7 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 	public function delete(fsopilot_record_swpilot_detail $record)
 	{
 		$sql = "
-			delete from ".$this->table."
+			delete from `".$this->database."`.`".$this->table."`
 			where PilotID = {$this->db->quote($record->get_id())}
 		";
 
@@ -209,7 +210,7 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 	{
 		$sql = "
 			select count(*) as recordcount
-			from ".$this->table." sp
+			from `".$this->database."`.`".$this->table."` sp
 		";
 		$sql .= $sql_from;
 		$sql .= $sql_where;

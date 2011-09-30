@@ -9,7 +9,8 @@
 */
 class squad_data_base extends base_database
 {
-	protected $table = 'squadwar.SWSquads';
+	protected $database = SQUADWAR_DB;
+	protected $table = 'SWSquads';
 
 	/**
 		build snippet of where clause for user_ids

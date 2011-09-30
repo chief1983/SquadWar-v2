@@ -1,6 +1,6 @@
 <?php
 /**
-    this touches the main squad table, squadwar.SWSquads
+    this touches the main squad table, SWSquads
 
     it gets, searches, creates, squads.
 **/
@@ -13,7 +13,7 @@ class squad_data_main extends squad_data_base
 		$sql = "
 			select s.SquadID, s.SquadName, s.SquadPassword, s.SquadMembers,
 				s.Active
-			from ".$this->table." s
+			from `".$this->database."`.`".$this->table."` s
 			where s.SquadID = {$this->db->quote($id)}
 		";
 
@@ -28,7 +28,7 @@ class squad_data_main extends squad_data_base
 		$sql = "
 			select s.SquadID, s.SquadName, s.SquadPassword, s.SquadMembers,
 				s.Active
-			from ".$this->table." s
+			from `".$this->database."`.`".$this->table."` s
 		";
 
 		$sql_where = $this->build_where_clause();
@@ -93,7 +93,7 @@ class squad_data_main extends squad_data_base
 	protected function create(squad_record_detail $record)
 	{
 		$sql = "
-			insert into ".$this->table."
+			insert into `".$this->database."`.`".$this->table."`
 			(
 				SquadName, SquadPassword, SquadMembers, Active
 			)
@@ -131,7 +131,7 @@ class squad_data_main extends squad_data_base
 	{
 
 		$sql = "
-			update ".$this->table."
+			update `".$this->database."`.`".$this->table."`
 			set
 				SquadName = {$this->db->quote($record->get_SquadName())},
 				SquadPassword = {$this->db->quote($record->get_SquadPassword())},
@@ -147,7 +147,7 @@ class squad_data_main extends squad_data_base
 	public function delete(squad_record_detail $record)
 	{
 		$sql = "
-			delete from ".$this->table."
+			delete from `".$this->database."`.`".$this->table."`
 			where SquadID = {$this->db->quote($record->get_id())}
 		";
 
@@ -168,7 +168,7 @@ class squad_data_main extends squad_data_base
     {
         $sql = "
             select SquadID
-            from ".$this->table."
+            from `".$this->database."`.`".$this->table."`
             where SquadID = {$this->db->quote($record->get_id())}
                 and SquadPassword = {$this->db->quote($record->get_SquadPassword())}
         ";
@@ -181,7 +181,7 @@ class squad_data_main extends squad_data_base
         else
         {
             $sql = "
-                update ".$this->table."
+                update `".$this->database."`.`".$this->table."`
                 set SquadPassword = {$this->db->quote($this->salt_hash_password($newpw))}
                 where SquadID = {$this->db->quote($record->get_id())}
             ";
@@ -205,7 +205,7 @@ class squad_data_main extends squad_data_base
 	{
 		$sql = "
 			select count(*) as recordcount
-			from ".$this->table." s
+			from `".$this->database."`.`".$this->table."` s
 		";
 		$sql .= $sql_from;
 		$sql .= $sql_where;
@@ -245,15 +245,15 @@ class squad_data_main extends squad_data_base
 		//check to see which tables are required.
 		if(in_array("league", $this->tables))
 		{
-			$sql .= ' inner join squadwar.SWSquads_Leagues sl on s.SquadID = sl.SWSquad_SquadID ';
+			$sql .= ' inner join `'.SQUADWAR_DB.'`.`SWSquads_Leagues` sl on s.SquadID = sl.SWSquad_SquadID ';
 		}
 		if(in_array("info", $this->tables))
 		{
-			$sql .= ' inner join squadwar.SWSquad_Info si on s.SquadID = si.SquadID ';
+			$sql .= ' inner join `'.SQUADWAR_DB.'`.`SWSquad_Info` si on s.SquadID = si.SquadID ';
 		}
 		if(in_array("sectors", $this->tables))
 		{
-			$sql .= ' inner join squadwar.SWSectors sec on s.SquadID = sec.SectorSquad ';
+			$sql .= ' inner join `'.SQUADWAR_DB.'`.`SWSectors` sec on s.SquadID = sec.SectorSquad ';
 		}
 
 		return $sql;

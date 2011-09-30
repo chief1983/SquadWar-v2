@@ -13,6 +13,7 @@ class base_database
 	protected $db;
 	protected $return;
 	protected $incoming_record;
+	protected $database = '';
 	protected $table = '';
 	protected $abbr = '';
 
@@ -327,7 +328,7 @@ class base_database
 	{
 		$sql = "
 			select ".implode(', ', $this->all_fields)."
-			from ".$this->table." ".$this->abbr."
+			from `".$this->database."`.`".$this->table."` ".$this->abbr."
 			where ".reset($this->primary_fields)." = {$this->db->quote($id)}
 		";
 
@@ -341,7 +342,7 @@ class base_database
 
 		$sql = "
 			select ".implode(', ', $this->all_fields)."
-			from ".$this->table." ".$this->abbr."
+			from `".$this->database."`.`".$this->table."` ".$this->abbr."
 		";
 
 		$sql_where = $this->build_where_clause();
@@ -448,7 +449,7 @@ class base_database
 			}
 		}
 		$sql = "
-			insert into ".$this->table."
+			insert into `".$this->database."`.`".$this->table."`
 			(".implode(', ', $use_fields).")
 			values
 			(
@@ -524,7 +525,7 @@ class base_database
 		}
 
 		$sql = "
-			update ".$this->table."
+			update `".$this->database."`.`".$this->table."`
 			set
 				".implode(', ', $assignments)."
 			where ".implode(' and ', $where)."
@@ -561,7 +562,7 @@ class base_database
 			return false;
 		}
 		$sql = "
-			delete from ".$this->table."
+			delete from `".$this->database."`.`".$this->table."`
 			where ".implode(' and ', $where)."
 		";
 
@@ -573,7 +574,7 @@ class base_database
 	{
 		$sql = "
 			select count(*) as recordcount
-			from ".$this->table." ".$this->abbr."
+			from `".$this->database."`.`".$this->table."` ".$this->abbr."
 		";
 		$sql .= $sql_from;
 		$sql .= $sql_where;

@@ -9,7 +9,8 @@
 */
 class user_data_base extends base_database
 {
-	protected $table = 'squadwar.users';
+	protected $database = USER_DB;
+	protected $table = 'users';
 	protected $abbr = 'u';
 
 	/**

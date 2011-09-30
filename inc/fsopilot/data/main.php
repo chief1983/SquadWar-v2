@@ -80,7 +80,7 @@ class fsopilot_data_main extends fsopilot_data_base
 		//check to see which tables are required.
 		if(in_array("SWPilots", $this->tables))
 		{
-			$sql .= ' inner join squadwar.SWPilots sp on p.id = sp.PilotID ';
+			$sql .= ' inner join `'.SQUADWAR_DB.'`.`SWPilots` sp on p.id = sp.PilotID ';
 		}
 
 		return $sql;

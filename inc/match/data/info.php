@@ -2,7 +2,7 @@
 
 class match_data_info extends match_data_base
 {
-	protected $table = 'squadwar.SWMatches_Info';
+	protected $table = 'SWMatches_Info';
 	protected $abbr = 'mi';
 	protected $all_fields = array('mi.MatchID','mi.SWCode','mi.match_time1',
 		'mi.match_time2','mi.proposed_final_time','mi.proposed_alternate_time',
@@ -19,7 +19,7 @@ class match_data_info extends match_data_base
 	{
 		$sql = "
 			select ".implode(', ', $this->all_fields)."
-			from ".$this->table." ".$this->abbr."
+			from `".$this->database."`.`".$this->table."` ".$this->abbr."
 			where ".reset($this->primary_fields)." = {$this->db->quote($id)}
 		";
 
@@ -30,7 +30,7 @@ class match_data_info extends match_data_base
 	{
 		$sql = "
 			select ".implode(', ', $this->all_fields)."
-			from ".$this->table."
+			from `".$this->database."`.`".$this->table."`
 			where SWCode = {$this->db->quote($SWCode)}
 		";
 

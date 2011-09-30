@@ -9,7 +9,8 @@
 */
 class news_data_base extends base_database
 {
-	protected $table = 'internetsql.news_main';
+	protected $database = 'internetsql';
+	protected $table = 'news_main';
 
 	/**
 		build snippet of where clause for Pilot_IDs

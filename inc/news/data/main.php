@@ -13,7 +13,7 @@ class news_data_main extends news_data_base
 		$sql = "
 			select n.newsID, n.date_posted, n.title, n.news_item, n.New,
 				n.SquadWar,	n.PXO
-			from ".$this->table." n
+			from `".$this->database."`.`".$this->table."` n
 			where n.newsID = {$this->db->quote($id)}
 		";
 
@@ -28,7 +28,7 @@ class news_data_main extends news_data_base
 		$sql = "
 			select n.newsID, n.date_posted, n.title, n.news_item, n.New,
 				n.SquadWar,	n.PXO
-			from ".$this->table." n
+			from `".$this->database."`.`".$this->table."` n
 		";
 
 		$sql_where = $this->build_where_clause();
@@ -92,7 +92,7 @@ class news_data_main extends news_data_base
 	protected function create(news_record_detail $record)
 	{
 		$sql = "
-			insert into ".$this->table."
+			insert into `".$this->database."`.`".$this->table."`
 			(
 				date_posted, title, news_item, New, SquadWar, PXO
 			)
@@ -120,7 +120,7 @@ class news_data_main extends news_data_base
 	{
 
 		$sql = "
-			update ".$this->table."
+			update `".$this->database."`.`".$this->table."`
 			set
 				title = {$this->db->quote($record->get_title())},
 				news_item = {$this->db->quote($record->get_news_item())},
@@ -137,7 +137,7 @@ class news_data_main extends news_data_base
 	public function delete(news_record_detail $record)
 	{
 		$sql = "
-			delete from ".$this->table."
+			delete from `".$this->database."`.`".$this->table."`
 			where newsID = {$this->db->quote($record->get_id())}
 		";
 
@@ -151,7 +151,7 @@ class news_data_main extends news_data_base
 	{
 		$sql = "
 			select count(*) as recordcount
-			from ".$this->table." n
+			from `".$this->database."`.`".$this->table."` n
 		";
 		$sql .= $sql_from;
 		$sql .= $sql_where;

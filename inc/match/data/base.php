@@ -9,7 +9,8 @@
 */
 class match_data_base extends base_database
 {
-	protected $table = 'squadwar.SWMatches';
+	protected $database = SQUADWAR_DB;
+	protected $table = 'SWMatches';
 	protected $abbr = 'm';
 
 	/**

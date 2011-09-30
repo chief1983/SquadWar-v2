@@ -2,7 +2,7 @@
 
 class squad_data_matchhistory extends squad_data_base
 {
-	protected $table = 'squadwar.match_history';
+	protected $table = 'match_history';
 	protected $all_fields = array('MatchID', 'SWCode', 'SWSquad1', 'SWSquad2',
 		'SWSector_ID', 'match_victor', 'match_loser', 'match_time',
 		'League_ID', 'special');
@@ -13,7 +13,7 @@ class squad_data_matchhistory extends squad_data_base
 	{
 		$sql = "
 			select ".implode(', ', $this->all_fields)."
-			from ".$this->table."
+			from `".$this->database."`.`".$this->table."`
 			where MatchID = {$this->db->quote($id)}
 		";
 

@@ -13,7 +13,7 @@ class league_data_main extends league_data_base
 		$sql = "
 			select l.League_ID, l.Title, l.Description, l.Active, l.Archived, 
 				l.Closed, l.challenged_max, l.map_location, l.map_graphics
-			from ".$this->table." l
+			from `".$this->database."`.`".$this->table."` l
 			where l.League_ID = {$this->db->quote($id)}
 		";
 
@@ -28,7 +28,7 @@ class league_data_main extends league_data_base
 		$sql = "
 			select l.League_ID, l.Title, l.Description, l.Active, l.Archived, 
 				l.Closed, l.challenged_max, l.map_location, l.map_graphics
-			from ".$this->table." l
+			from `".$this->database."`.`".$this->table."` l
 		";
 
 		$sql_where = $this->build_where_clause();
@@ -92,7 +92,7 @@ class league_data_main extends league_data_base
 	protected function create(league_record_detail $record)
 	{
 		$sql = "
-			insert into ".$this->table."
+			insert into `".$this->database."`.`".$this->table."`
 			(
 				Title, Description, Active, Archived, Closed, challenged_max,
 				map_location, map_graphics
@@ -123,7 +123,7 @@ class league_data_main extends league_data_base
 	{
 
 		$sql = "
-			update ".$this->table."
+			update `".$this->database."`.`".$this->table."`
 			set
 				Title = {$this->db->quote($record->get_Title())},
 				Description = {$this->db->quote($record->get_Description())},
@@ -143,7 +143,7 @@ class league_data_main extends league_data_base
 	public function delete(league_record_detail $record)
 	{
 		$sql = "
-			delete from ".$this->table."
+			delete from `".$this->database."`.`".$this->table."`
 			where League_ID = {$this->db->quote($record->get_id())}
 		";
 
@@ -157,7 +157,7 @@ class league_data_main extends league_data_base
 	{
 		$sql = "
 			select count(*) as recordcount
-			from ".$this->table." l
+			from `".$this->database."`.`".$this->table."` l
 		";
 		$sql .= $sql_from;
 		$sql .= $sql_where;
@@ -200,7 +200,7 @@ class league_data_main extends league_data_base
 		//check to see which tables are required.
 		if(in_array("SWSquads_Leagues", $this->tables))
 		{
-			$sql .= ' inner join squadwar.SWSquads_Leagues sl on l.League_ID = sl.Leagues ';
+			$sql .= ' inner join `'.SQUADWAR_DB.'`.`SWSquads_Leagues` sl on l.League_ID = sl.Leagues ';
 		}
 
 		return $sql;

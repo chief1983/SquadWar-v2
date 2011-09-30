@@ -2,7 +2,7 @@
 
 class squad_data_info extends squad_data_base
 {
-	protected $table = 'squadwar.SWSquad_Info';
+	protected $table = 'SWSquad_Info';
 
 	public function __construct()
 	{
@@ -18,7 +18,7 @@ class squad_data_info extends squad_data_base
 				Squad_Time_Zone, Squad_Web_Link, Squad_Statement, Abbrv,
 				ribbon_1, ribbon_2, ribbon_3, ribbon_4, ribbon_5, ribbon_6,
 				medal_1, medal_2, medal_3, suspended, win_loss, power_rating
-			from ".$this->table."
+			from `".$this->database."`.`".$this->table."`
 			where SquadID = {$this->db->quote($id)}
 		";
 
@@ -36,7 +36,7 @@ class squad_data_info extends squad_data_base
 				Squad_Time_Zone, Squad_Web_Link, Squad_Statement, Abbrv,
 				ribbon_1, ribbon_2, ribbon_3, ribbon_4, ribbon_5, ribbon_6,
 				medal_1, medal_2, medal_3, suspended, win_loss, power_rating
-			from ".$this->table."
+			from `".$this->database."`.`".$this->table."`
 		";
 
 		$sql_where = $this->build_where_clause();
@@ -93,7 +93,7 @@ class squad_data_info extends squad_data_base
 	public function create(squad_record_info_detail $record)
 	{
 		$sql = "
-			insert into ".$this->table."
+			insert into `".$this->database."`.`".$this->table."`
 			(SquadID, Squad_Leader_ID, Squad_Leader_ICQ, Squad_IRC,
 				Squad_Email, Squad_Join_PW, Squad_Logo, Approved, Rest,
 				time_registered, Squad_Red, Squad_Green, Squad_Blue,
@@ -147,7 +147,7 @@ class squad_data_info extends squad_data_base
 	{
 
 		$sql = "
-			update ".$this->table."
+			update `".$this->database."`.`".$this->table."`
 			set
 				Squad_Leader_ID = {$this->db->quote($record->get_Squad_Leader_ID())},
 				Squad_Leader_ICQ = {$this->db->quote($record->get_Squad_Leader_ICQ())},
@@ -187,7 +187,7 @@ class squad_data_info extends squad_data_base
 	public function delete(squad_record_info_detail $record)
 	{
 		$sql = "
-			delete from ".$this->table."
+			delete from `".$this->database."`.`".$this->table."`
 			where SquadID = {$this->db->quote($record->get_id())}
 		";
 

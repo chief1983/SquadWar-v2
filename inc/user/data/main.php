@@ -74,7 +74,7 @@ class user_data_main extends user_data_base
     	//see if user matches this login/pwd
     	$sql = "
     		select id
-    		from ".$this->table."
+    		from `".$this->database."`.`".$this->table."`
     		where user_name = {$this->db->quote($login)}
 	    		and password = {$this->db->quote($treated_pwd)}
 	    		and banned = 0
@@ -90,7 +90,7 @@ class user_data_main extends user_data_base
     		//just look for user
 			$sql = "
 				select user_name, banned
-				from ".$this->table."
+				from `".$this->database."`.`".$this->table."`
 				where user_name = {$this->db->quote($login)}
 			";
 
