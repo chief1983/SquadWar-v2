@@ -14,7 +14,7 @@ $ret = squad_api::search($rec);
 $check_squads = $ret->get_results();
 
 $rec = user_api::new_search_record();
-$rec->set_Login($_POST['pxo_login']);
+$rec->set_user_name($_POST['pxo_login']);
 $ret = user_api::search($rec);
 $get_pxo_stuff = reset($ret->get_results());
 if(user_api::check_password($_POST['pxo_login'], $_POST['pxo_password']) !== 1)
@@ -59,13 +59,13 @@ $link = '';
 $rec = squad_api::new_detail_record();
 $rec->set_SquadName($_POST['squad_name']);
 $rec->set_SquadPassword($_POST['admin_password']);
-$rec->set_SquadMembers($get_pxo_stuff->get_TrackerID());
+$rec->set_SquadMembers($get_pxo_stuff->get_id());
 $status = $rec->save();
 $squad_id = $rec->get_id();
 
 $rec = squad_api::new_info_detail_record();
 $rec->set_SquadID($squad_id);
-$rec->set_Squad_Leader_ID($get_pxo_stuff->get_TrackerID());
+$rec->set_Squad_Leader_ID($get_pxo_stuff->get_id());
 $rec->set_Squad_Email($_POST['squad_email']);
 $rec->set_Squad_Join_PW($_POST['join_password']);
 $rec->set_Squad_Time_Zone($_POST['squad_time_zone']);
@@ -91,7 +91,7 @@ $message = <<<EOT
 	{$_POST['squad_name']}
 	{$_POST['squad_email']}
 	{$_POST['pxo_login']}
-	{$get_pxo_stuff->get_TrackerID()}
+	{$get_pxo_stuff->get_id()}
 	{$_POST['squad_time_zone']}
 	{$icq}
 	{$link}

@@ -37,7 +37,7 @@ if($get_squad_info)
 }
 
 $rec = user_api::new_search_record();
-$rec->set_TrackerID($get_squad->get_squadmembers());
+$rec->set_id($get_squad->get_squadmembers());
 $ret = user_api::search($rec);
 $get_pilots = $ret->get_results();
 
@@ -94,7 +94,7 @@ include(BASE_PATH.'doc_mid.php');
 					 				<div class="copy">Squad Leader:</div>
 					 			</td>
 					 			<td valign="top" align="left">
-					 				<div class="copy"><?php if(!empty($get_squad_leader)): echo $get_squad_leader->get_Login(); else: ?>*yet to be determined<?php endif; ?></div>
+					 				<div class="copy"><?php if(!empty($get_squad_leader)): echo $get_squad_leader->get_user_name(); else: ?>*yet to be determined<?php endif; ?></div>
 					 			</td>
 					 		</tr>
 					 		<tr>
@@ -137,7 +137,7 @@ include(BASE_PATH.'doc_mid.php');
 					 				<?php if(!empty($get_pilots)): ?>
 					 					<div class="copy"><?php 
 					 						foreach($get_pilots as $pilot): 
-					 							?><a href="mailto:<?php echo $pilot->get_email(); ?>"><?php echo $pilot->get_Login(); ?></a><br /><?php 
+					 							?><a href="mailto:<?php echo $pilot->get_email(); ?>"><?php echo $pilot->get_user_name(); ?></a><br /><?php 
 					 						endforeach; ?></div>
 					 				<?php else: ?>
 					 					<div class="copy">*yet to be determined</div>

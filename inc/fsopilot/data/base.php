@@ -9,31 +9,8 @@
 */
 class fsopilot_data_base extends base_database
 {
-	protected $table = 'squadwar.FreeSpace2Full';
-
-	/**
-		build snippet of where clause for Pilot_IDs
-	**/
-	protected function where_clause_PilotID()
-	{
-		if(!method_exists($this->incoming_record, 'get_PilotID'))
-		{
-			return '';
-		}
-		$PilotID = $this->incoming_record->get_PilotID();
-		$where_fragment = '';
-		if(!empty($PilotID))
-		{
-			$PilotID = (array)$PilotID;
-			foreach($PilotID as $key => $id)
-			{
-				$PilotID[$key] = $this->db->quote($id);
-			}
-			$where_fragment = " and PilotID in (".implode(',',$PilotID).")";
-		}
-		return $where_fragment;
-	}
-
+	protected $table = 'squadwar.pilots';
+	protected $abbr = 'p';
 
 	/**
 		build snippet of where clause for ids
@@ -53,7 +30,7 @@ class fsopilot_data_base extends base_database
 			{
 				$id[$key] = $this->db->quote($single_id);
 			}
-			$where_fragment = " and PilotID in (".implode(',',$id).")";
+			$where_fragment = " and id in (".implode(',',$id).")";
 		}
 		return $where_fragment;
 	}

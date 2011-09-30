@@ -3,20 +3,18 @@
 class user_record_detail extends base_recorddetail
 {
 	/* each of these represent a field in the user table. */
-	protected $TrackerID;
-	protected $Login;
-	protected $Password;
-	protected $Validated;
+	protected $user_name;
+	protected $password;
+	protected $password_hint;
 	protected $email;
-	protected $firstname;
-	protected $lastname;
-	protected $datecreated;
-	protected $Security;
-	protected $ShowEmail;
-	protected $ShowRealName;
-	protected $LastSecurityTime;
-	protected $LastAuthTime;
-	protected $id_hash;
+	protected $squad;
+	protected $hash;
+	protected $created;
+	protected $last_login;
+	protected $banned;
+	protected $ban_reason;
+	protected $hide_presence;
+	protected $sees_hidden;
 
 	/* these are not in the user table. */
 	protected $Pilots = array(); // Array of pilots a user has, populated upon instantiation
@@ -26,78 +24,69 @@ class user_record_detail extends base_recorddetail
 		parent::__construct();
 		$this->datamodel_name = 'user_data_main';
 		$this->required_fields  = array(
-			'firstname','lastname','email','Login','Password'
+			'email','user_name','password'
 		);
 
 		//set timestamps to time this record was instantiated
 		$this->datecreated = $this->created;
 	}
 
-	public function get_id()
+	public function get_user_name()
 	{
-		return $this->TrackerID;
+		return $this->user_name;
 	}
-	public function set_id($val)
+	public function set_user_name($val)
 	{
-		$this->TrackerID = $val;
-	}
-	
-	public function get_TrackerID()
-	{
-		return $this->TrackerID;
-	}
-	public function set_TrackerID($val)
-	{
-		$this->TrackerID = $val;
-	}
-	
-	public function get_Login()
-	{
-		return $this->Login;
-	}
-	public function set_Login($val)
-	{
-		$this->Login = $val;
+		$this->user_name = $val;
 	}
 
-	public function set_Password($val)
+	public function get_password()
 	{
-        $this->Password = $val;
+		return $this->password;
 	}
-	public function get_Password()
+	public function set_password($val)
 	{
-		return $this->Password;
+		$this->password = $val;
 	}
-	public function change_Password($new_pw)
+
+	public function set_password_hint($val)
+	{
+        $this->password_hint = $val;
+	}
+	public function get_password_hint()
+	{
+		return $this->password_hint;
+	}
+	public function change_password($new_pw)
 	{
 		$model = new user_data_main();
 		return $model->change_Password($this, $new_pw);
 	}
 
-	public function get_Validated()
-	{
-		return $this->Validated;
-	}
-	public function set_Validated($val)
-	{
-		$this->Validated = $val;
-	}
-	
 	public function get_email($obey_pref = false)
 	{
-		if($obey_pref)
-		{
-			if(!$this->get_ShowEmail())
-			{
-				return '';
-			}
-		}
+//		if($obey_pref)
+//		{
+//			if(!$this->get_ShowEmail())
+//			{
+//				return '';
+//			}
+//		}
 
 		return $this->email;
 	}
 	public function set_email($val)
 	{
 		$this->email = $val;
+	}
+
+	public function get_squad()
+	{
+		return $this->squad;
+	}
+	public function set_squad($val)
+	{
+		$this->squad = $val;
 	}
 
 	public function get_firstname()
@@ -118,68 +107,68 @@ class user_record_detail extends base_recorddetail
 		$this->lastname = $val;
 	}
 
-	public function get_datecreated($format='F j, o')
+	public function get_hash()
 	{
-		$date = strtotime($this->datecreated);
+		return $this->hash;
+	}
+	public function set_hash($val)
+	{
+		$this->hash = $val;
+	}
+
+	public function get_created($format='F j, o')
+	{
+		$date = strtotime($this->created);
 		return date($format, $date);
 	}
-	public function set_datecreated($val)
+	public function set_created($val)
 	{
-		$this->datecreated = $val;
+		$this->created = $val;
 	}
 
-	public function get_Security()
+	public function get_last_login()
 	{
-		return $this->Security;
+		return $this->last_login;
 	}
-	public function set_Security($val)
+	public function set_last_login($val)
 	{
-		$this->Security = $val;
-	}
-
-	public function get_ShowEmail()
-	{
-		return $this->ShowEmail;
-	}
-	public function set_ShowEmail($val)
-	{
-		$this->ShowEmail = $val;
+		$this->last_login = $val;
 	}
 
-	public function get_ShowRealName()
+	public function get_banned()
 	{
-		return $this->ShowRealName;
+		return $this->banned;
 	}
-	public function set_ShowRealName($val)
+	public function set_banned($val)
 	{
-		$this->ShowRealName = $val;
-	}
-
-	public function get_LastSecurityTime()
-	{
-		return $this->LastSecurityTime;
-	}
-	public function set_LastSecurityTime($val)
-	{
-		$this->LastSecurityTime = $val;
+		$this->banned = $val;
 	}
 
-	public function get_LastAuthTime()
+	public function get_ban_reason()
 	{
-		return $this->LastAuthTime;
+		return $this->ban_reason;
 	}
-	public function set_LastAuthTime($val)
+	public function set_ban_reason($val)
 	{
-		$this->LastAuthTime = $val;
+		$this->ban_reason = $val;
 	}
 
-	public function get_id_hash()
+	public function get_hide_presence()
 	{
-		return $this->id_hash;
+		return $this->hide_presence;
 	}
-	public function set_id_hash($val)
+	public function set_hide_presence($val)
 	{
-		$this->id_hash = $val;
+		$this->hide_presence = $val;
+	}
+
+	public function get_sees_hidden()
+	{
+		return $this->sees_hidden;
+	}
+	public function set_sees_hidden($val)
+	{
+		$this->sees_hidden = $val;
 	}
 
 	public function get_Pilots()
@@ -197,7 +186,7 @@ class user_record_detail extends base_recorddetail
 		//gotta do this because when we add user we are autogenerating more
 		// than the ID.
 		$user = user_api::get($this->get_id());
-		$this->id_hash = $user->get_id_hash();
+//		$this->id_hash = $user->get_id_hash();
 		return $status;
 	}
 	
@@ -214,7 +203,7 @@ class user_record_detail extends base_recorddetail
 			$this->throw_notice('email address is being used already.');
 		}
 		//check to make sure Login isn't duplicate.
-		$user = user_api::get_user_by_Login($this->Login);
+		$user = user_api::get_user_by_user_name($this->Login);
 		//is this user record's ID the same as the one we found for the login?
 		if($user && $this->id != $user->get_id())
 		{
@@ -236,10 +225,10 @@ class user_record_detail extends base_recorddetail
 	**/
 	public function get_name($obey_pref = false)
 	{
-		if(!$this->ShowRealName)
-		{
-			return '';
-		}
+//		if(!$this->ShowRealName)
+//		{
+//			return '';
+//		}
 		$name = $this->firstname . ' ' . $this->lastname;
 
 		return trim($name);

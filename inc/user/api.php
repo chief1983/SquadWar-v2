@@ -67,37 +67,30 @@ class user_api
 	public static function current()
 	{
 
-		$user_id_hash = null;
+		$username = null;
 
 		/**
 			this will find current user.
 		**/
 		//there is a cookie, most common use case.
-		if( array_key_exists('id_hash', $_COOKIE)
-			&& !empty($_COOKIE['id_hash'])
+		if( !empty($_COOKIE['logged_in'])
+			&& $_COOKIE['logged_in'] == md5('1')
 		)
 		{
-			$user_id_hash = $_COOKIE["id_hash"];
-		}
-		//look for our session/cookie
-		else if(array_key_exists("id_hash", $_SESSION)
-			&& !empty($_SESSION['id_hash'])
-		)
-		{
-			$user_id_hash = $_SESSION["id_hash"];
+			$username = $_COOKIE["username"];
 		}
 
 		/**
 			create user record from user ID.
 		**/
-		if(empty($user_id_hash))  //no user.  get outta here, return false.
+		if(empty($username))  //no user.  get outta here, return false.
 		{
 			//return new record_user_detail();
 			return false;
 		}
 		else //take id_hash and get a user record.
 		{
-			$user_to_return = self::get_user_by_hash($user_id_hash);
+			$user_to_return = self::get_user_by_user_name($username);
 			if($user_to_return instanceof user_record_detail)
 			{
 				return $user_to_return;
@@ -108,18 +101,6 @@ class user_api
 			}
 		}
 
-	}
-
-	/**
-		shortcut method.
-		@return user_record_search
-	**/
-	public static function get_user_by_hash($hash)
-	{
-		$rec = self::new_search_record();
-		$rec->set_id_hash($hash);
-		$ret = self::search($rec);
-		return $ret->get_first_result();
 	}
 
 	/**
@@ -138,10 +119,10 @@ class user_api
 		shortcut method.
 		@return user_record_search
 	**/
-	public static function get_user_by_login($login)
+	public static function get_user_by_user_name($login)
 	{
 		$rec = self::new_search_record();
-		$rec->set_Login($login);
+		$rec->set_user_name($login);
 		$ret = self::search($rec);
 		return $ret->get_first_result();
 	}
@@ -178,25 +159,36 @@ class user_api
 		returns 2 if username(email) does not exist.
 		returns 3 if user is not validated
 	**/
-	public static function login($login, $pwd, $set_cookie = false)
+	public static function login($login, $pwd, $set_cookie = false, $check_fs2netd = false)
 	{
+		$cookie_timeout = 60*60*24*30;
 		$model = new user_data_main();
-		$status = $model->authenticate_user($login, $pwd);
+		if($pwd)
+		{
+			$status = $model->authenticate_user($login, $pwd);
+		}
+		elseif($check_fs2netd && $_COOKIE['username'] == $login && $_COOKIE['logged_in'] == md5('1'))
+		{
+			$status = 1;
+		}
 		if($status == 1)
 		{
-			$user = self::get_user_by_login($login);
-			$_SESSION['id_hash'] = $user->get_id_hash();
+			$user = self::get_user_by_user_name($login);
+			setcookie('logged_in', md5('1'), time() + $cookie_timeout);
+			setcookie('username', $user->get_user_name(), time() + $cookie_timeout);
+			$_COOKIE['logged_in'] = md5('1');
+			$_COOKIE['username'] = 
 			$_SESSION['loggedin'] = 1;
 			$_SESSION['show_challenge'] = 0;
 			$_SESSION['adminlastchosen'] = '';
-			$_SESSION['login'] = $user->get_Login();
-			$_SESSION['firstname'] = $user->get_firstname();
-			$_SESSION['lastname'] = $user->get_lastname();
+			$_SESSION['login'] = $user->get_user_name();
+			$_SESSION['firstname'] = '';
+			$_SESSION['lastname'] = '';
 			$_SESSION['email'] = $user->get_email();
-			$_SESSION['trackerid'] = $user->get_TrackerID();
+			$_SESSION['user_id'] = $user->get_id();
 			if($set_cookie)
 			{
-				setcookie('id_hash', $user->get_id_hash, time()+2592000);
+//				setcookie('id_hash', $user->get_id_hash, time()+2592000);
 			}
 		}
 
@@ -210,14 +202,14 @@ class user_api
 	**/
 	public static function logout()
 	{
-		$_SESSION['id_hash'] = '';
 		$_SESSION['loggedin'] = false;
 		$_SESSION['login'] = '';
 		$_SESSION['trackerid'] = '';
 		$_SESSION['firstname'] = '';
 		$_SESSION['lastname'] = '';
 		$_SESSION['email'] = '';
-		setcookie('id_hash', '');
+		setcookie('logged_in', '');
+		setcookie('username', '');
 	}
 
 	//return an empty instance of the detail record

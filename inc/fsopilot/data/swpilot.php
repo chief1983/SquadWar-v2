@@ -12,7 +12,7 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 	public function get($id)
 	{
 		$sql = "
-			select sp.PilotID, sp.TrackerID, sp.ICQ, sp.connection_type,
+			select sp.PilotID, sp.user_id, sp.ICQ, sp.connection_type,
 				sp.time_zone, sp.Member_Since, sp.show_email, sp.email,
 				sp.Pilot_Name, sp.Recruitme, sp.Special, sp.Active,
 				tz.description as fetch_time_zone,
@@ -57,7 +57,7 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 		$this->init_return($record);
 
 		$sql = "
-			select sp.PilotID, sp.TrackerID, sp.ICQ, sp.connection_type,
+			select sp.PilotID, sp.user_id, sp.ICQ, sp.connection_type,
 				sp.time_zone, sp.Member_Since, sp.show_email, sp.email,
 				sp.Pilot_Name, sp.Recruitme, sp.Special, sp.Active,
 				tz.description as fetch_time_zone,
@@ -138,14 +138,14 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 		$sql = "
 			insert into ".$this->table."
 			(
-				PilotID, TrackerID, ICQ, connection_type, time_zone,
+				PilotID, user_id, ICQ, connection_type, time_zone,
 				Member_Since, show_email, email, Pilot_Name, Recruitme,
 				Special, Active
 			)
 			values
 			(
 				{$this->db->quote($record->get_PilotID())},
-				{$this->db->quote($record->get_TrackerID())},
+				{$this->db->quote($record->get_user_id())},
 				{$this->db->quote($record->get_ICQ())},
 				{$this->db->quote($record->get_connection_type())},
 				{$this->db->quote($record->get_time_zone())},
@@ -174,7 +174,7 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 		$sql = "
 			update ".$this->table."
 			set
-				TrackerID = {$this->db->quote($record->get_TrackerID())},
+				user_id = {$this->db->quote($record->get_user_id())},
 				ICQ = {$this->db->quote($record->get_ICQ())},
 				connection_type = {$this->db->quote($record->get_connection_type())},
 				time_zone = {$this->db->quote($record->get_time_zone())},
@@ -231,7 +231,7 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 	{
 		$sql = " where 1=1 ";
 		$sql .= $this->where_clause_PilotID();
-		$sql .= $this->where_clause_TrackerID();
+		$sql .= $this->where_clause_user_id();
 		$sql .= $this->where_clause_Pilot_Name();
 		$sql .= $this->where_clause_Recruitme();
 		return $sql;
@@ -251,20 +251,44 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 
 
 	/**
-		build snippet of where clause for TrackerID
+		build snippet of where clause for PilotIDs
 	**/
-	protected function where_clause_TrackerID()
+	protected function where_clause_PilotID()
 	{
-		if(!method_exists($this->incoming_record, 'get_TrackerID'))
+		if(!method_exists($this->incoming_record, 'get_PilotID'))
+		{
+			return '';
+		}
+		$PilotID = $this->incoming_record->get_PilotID();
+		$where_fragment = '';
+		if(!empty($PilotID))
+		{
+			$PilotID = (array)$PilotID;
+			foreach($PilotID as $key => $single_id)
+			{
+				$PilotID[$key] = $this->db->quote($single_id);
+			}
+			$where_fragment = " and sp.PilotID in (".implode(',',$PilotID).")";
+		}
+		return $where_fragment;
+	}
+
+
+	/**
+		build snippet of where clause for user_id
+	**/
+	protected function where_clause_user_id()
+	{
+		if(!method_exists($this->incoming_record, 'get_user_id'))
 		{
 			return '';
 		}
 
-		$TrackerID = $this->incoming_record->get_TrackerID();
+		$user_id = $this->incoming_record->get_user_id();
 		$where_fragment = '';
-		if($TrackerID != '')
+		if($user_id != '')
 		{
-			$where_fragment=" and sp.TrackerID = {$this->db->quote($TrackerID)}";
+			$where_fragment=" and sp.user_id = {$this->db->quote($user_id)}";
 		}
 		return $where_fragment;
 	}

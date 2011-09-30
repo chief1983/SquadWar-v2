@@ -3,7 +3,7 @@
 class fsopilot_record_swpilot_search extends base_recordsearch
 {
 	protected $PilotID;
-	protected $TrackerID;
+	protected $user_id;
 	protected $Pilot_Name;
 	protected $Recruitme;
 
@@ -26,13 +26,13 @@ class fsopilot_record_swpilot_search extends base_recordsearch
 		$this->PilotID = $val;
 	}
 
-	public function get_TrackerID()
+	public function get_user_id()
 	{
-		return $this->TrackerID;
+		return $this->user_id;
 	}
-	public function set_TrackerID($val)
+	public function set_user_id($val)
 	{
-		$this->TrackerID = $val;
+		$this->user_id = $val;
 	}
 
 	public function get_Pilot_Name()

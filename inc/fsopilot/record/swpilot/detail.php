@@ -4,7 +4,7 @@ class fsopilot_record_swpilot_detail extends base_recorddetail
 {
 	/* each of these represent a field in the fsopilot table. */
 	protected $PilotID;
-	protected $TrackerID;
+	protected $user_id;
 	protected $ICQ;
 	protected $connection_type;
 	protected $time_zone;
@@ -30,7 +30,7 @@ class fsopilot_record_swpilot_detail extends base_recorddetail
 		parent::__construct();
 		$this->datamodel_name = 'fsopilot_data_swpilot';
 		$this->required_fields  = array(
-			'PilotID','TrackerID','Pilot_Name','Member_Since','email'
+			'PilotID','user_id','Pilot_Name','Member_Since','email'
 		);
 
 		//set timestamps to time this record was instantiated
@@ -56,13 +56,13 @@ class fsopilot_record_swpilot_detail extends base_recorddetail
 		$this->PilotID = $val;
 	}
 
-	public function get_TrackerID()
+	public function get_user_id()
 	{
-		return $this->TrackerID;
+		return $this->user_id;
 	}
-	public function set_TrackerID($val)
+	public function set_user_id($val)
 	{
-		$this->TrackerID = $val;
+		$this->user_id = $val;
 	}
 
 	public function get_ICQ()

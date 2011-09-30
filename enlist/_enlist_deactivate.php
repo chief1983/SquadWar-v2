@@ -12,7 +12,7 @@ if(!empty($_POST['pilotid']))
 {
 	$ret = fsopilot_api::get_swpilot($_POST['pilotid']);
 	$rec = reset($ret->get_results());
-	if($rec->get_TrackerID() != $_SESSION['trackerid'])
+	if($rec->get_user_id() != $_SESSION['user_id'])
 	{
 		// Houston, we have a problem.
 		echo "You don't have permission to edit this pilot.";

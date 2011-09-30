@@ -3,27 +3,29 @@
 class fsopilot_record_detail extends base_recorddetail
 {
 	/* each of these represent a field in the fsopilot table. */
-	protected $PilotID;
-	protected $TrackerID;
-	protected $Pilot;
-	protected $Rank;
-	protected $Score;
-	protected $Medals;
-	protected $Kills;
-	protected $Assists;
-	protected $KillCount;
-	protected $KillCountOK;
-	protected $PShotsFired;
-	protected $SShotsFired;
-	protected $PShotsHit;
-	protected $SShotsHit;
-	protected $PBoneheadHits;
-	protected $SBoneheadHits;
-	protected $BoneheadKills;
-	protected $MissionsFlown;
-	protected $FlightTime;
-	protected $LastFlown;
-	
+	protected $id;
+	protected $user_id;
+	protected $pilot_name;
+	protected $score;
+	protected $missions_flown;
+	protected $flight_time;
+	protected $last_flown;
+	protected $kill_count;
+	protected $kill_count_ok;
+	protected $assists;
+	protected $p_shots_fired;
+	protected $p_shots_hit;
+	protected $p_bonehead_hits;
+	protected $s_shots_fired;
+	protected $s_shots_hit;
+	protected $s_bonehead_hits;
+	protected $rank;
+	protected $num_ship_kills;
+	protected $ship_kills;
+	protected $num_medals;
+	protected $medals;
+	protected $d_mod;
+
 	/* these are not in the fsopilot table. */
 	protected $swpilot;
 	protected $last_activity;
@@ -33,7 +35,7 @@ class fsopilot_record_detail extends base_recorddetail
 		parent::__construct();
 		$this->datamodel_name = 'fsopilot_data_main';
 		$this->required_fields  = array(
-			'TrackerID','Pilot'
+			'user_id','pilot_name'
 		);
 
 		//set timestamps to time this record was instantiated
@@ -41,193 +43,193 @@ class fsopilot_record_detail extends base_recorddetail
 		$this->modified_time = $this->created;
 	}
 
-	public function get_id()
+	public function get_user_id()
 	{
-		return $this->PilotID;
+		return $this->user_id;
 	}
-	public function set_id($val)
+	public function set_user_id($val)
 	{
-		$this->PilotID = $val;
-	}
-
-	public function get_PilotID()
-	{
-		return $this->PilotID;
-	}
-	public function set_PilotID($val)
-	{
-		$this->PilotID = $val;
+		$this->user_id = $val;
 	}
 
-	public function get_TrackerID()
+	public function get_pilot_name()
 	{
-		return $this->TrackerID;
+		return $this->pilot_name;
 	}
-	public function set_TrackerID($val)
+	public function set_pilot_name($val)
 	{
-		$this->TrackerID = $val;
-	}
-
-	public function get_Pilot()
-	{
-		return $this->Pilot;
-	}
-	public function set_Pilot($val)
-	{
-		$this->Pilot = $val;
+		$this->pilot_name = $val;
 	}
 
-	public function get_Rank()
+	public function get_score()
 	{
-		return $this->Rank;
+		return $this->score;
 	}
-	public function set_Rank($val)
+	public function set_score($val)
 	{
-		$this->Rank = $val;
-	}
-
-	public function get_Score()
-	{
-		return $this->Score;
-	}
-	public function set_Score($val)
-	{
-		$this->Score = $val;
+		$this->score = $val;
 	}
 
-	public function get_Medals()
+	public function get_missions_flown()
 	{
-		return $this->Medals;
+		return $this->missions_flown;
 	}
-	public function set_Medals($val)
+	public function set_missions_flown($val)
 	{
-		$this->Medals = $val;
-	}
-
-	public function get_Kills()
-	{
-		return $this->Kills;
-	}
-	public function set_Kills($val)
-	{
-		$this->Kills = $val;
+		$this->missions_flown = $val;
 	}
 
-	public function get_Assists()
+	public function get_flight_time()
 	{
-		return $this->Assists;
+		return $this->flight_time;
 	}
-	public function set_Assists($val)
+	public function set_flight_time($val)
 	{
-		$this->Assists = $val;
-	}
-
-	public function get_KillCount()
-	{
-		return $this->KillCount;
-	}
-	public function set_KillCount($val)
-	{
-		$this->KillCount = $val;
+		$this->flight_time = $val;
 	}
 
-	public function get_KillCountOK()
+	public function get_last_flown()
 	{
-		return $this->KillCountOK;
+		return $this->last_flown;
 	}
-	public function set_KillCountOK($val)
+	public function set_last_flown($val)
 	{
-		$this->KillCountOK = $val;
-	}
-
-	public function get_PShotsFired()
-	{
-		return $this->PShotsFired;
-	}
-	public function set_PShotsFired($val)
-	{
-		$this->PShotsFired = $val;
+		$this->last_flown = $val;
 	}
 
-	public function get_SShotsFired()
+	public function get_kill_count()
 	{
-		return $this->SShotsFired;
+		return $this->kill_count;
 	}
-	public function set_SShotsFired($val)
+	public function set_kill_count($val)
 	{
-		$this->SShotsFired = $val;
-	}
-
-	public function get_PShotsHit()
-	{
-		return $this->PShotsHit;
-	}
-	public function set_PShotsHit($val)
-	{
-		$this->PShotsHit = $val;
+		$this->kill_count = $val;
 	}
 
-	public function get_SShotsHit()
+	public function get_kill_count_ok()
 	{
-		return $this->SShotsHit;
+		return $this->kill_count_ok;
 	}
-	public function set_SShotsHit($val)
+	public function set_kill_count_ok($val)
 	{
-		$this->SShotsHit = $val;
-	}
-
-	public function set_PBoneheadHits($val)
-	{
-        $this->PBoneheadHits = $val;
-	}
-	public function get_PBoneheeadHits()
-	{
-		return $this->PBoneheadHits;
+		$this->kill_count_ok = $val;
 	}
 
-	public function set_SBoneheadHits($val)
+	public function get_assists()
 	{
-        $this->SBoneheadHits = $val;
+		return $this->assists;
 	}
-	public function get_SBoneheeadHits()
+	public function set_assists($val)
 	{
-		return $this->SBoneheadHits;
-	}
-
-	public function get_BoneheadKills()
-	{
-		return $this->BoneheadKills;
-	}
-	public function set_BoneheadKills($val)
-	{
-		$this->BoneheadKills = $val;
+		$this->assists = $val;
 	}
 
-	public function get_MissionsFlown()
+	public function get_p_shots_fired()
 	{
-		return $this->MissionsFlown;
+		return $this->p_shots_fired;
 	}
-	public function set_MissionsFlown($val)
+	public function set_p_shots_fired($val)
 	{
-		$this->MissionsFlown = $val;
-	}
-
-	public function get_FlightTime()
-	{
-		return $this->FlightTime;
-	}
-	public function set_FlightTime($val)
-	{
-		$this->FlightTime = $val;
+		$this->p_shots_fired = $val;
 	}
 
-	public function get_LastFlown()
+	public function get_p_shots_hit()
 	{
-		return $this->LastFlown;
+		return $this->p_shots_hit;
 	}
-	public function set_LastFlown($val)
+	public function set_p_shots_hit($val)
 	{
-		$this->LastFlown = $val;
+		$this->p_shots_hit = $val;
+	}
+
+	public function get_p_bonehead_hits()
+	{
+		return $this->p_bonehead_hits;
+	}
+	public function set_p_bonehead_hits($val)
+	{
+		$this->p_bonehead_hits = $val;
+	}
+
+	public function get_s_shots_fired()
+	{
+		return $this->s_shots_fired;
+	}
+	public function set_s_shots_fired($val)
+	{
+		$this->s_shots_fired = $val;
+	}
+
+	public function get_s_shots_hit()
+	{
+		return $this->s_shots_hit;
+	}
+	public function set_s_shots_hit($val)
+	{
+		$this->s_shots_hit = $val;
+	}
+
+	public function set_s_bonehead_hits($val)
+	{
+        $this->s_bonehead_hits = $val;
+	}
+	public function get_s_bonehead_hits()
+	{
+		return $this->s_bonehead_hits;
+	}
+
+	public function set_rank($val)
+	{
+        $this->rank = $val;
+	}
+	public function get_rank()
+	{
+		return $this->rank;
+	}
+
+	public function get_num_ship_kills()
+	{
+		return $this->num_ship_kills;
+	}
+	public function set_num_ship_kills($val)
+	{
+		$this->num_ship_kills = $val;
+	}
+
+	public function get_ship_kills()
+	{
+		return $this->ship_kills;
+	}
+	public function set_ship_kills($val)
+	{
+		$this->ship_kills = $val;
+	}
+
+	public function get_num_medals()
+	{
+		return $this->num_medals;
+	}
+	public function set_num_medals($val)
+	{
+		$this->num_medals = $val;
+	}
+
+	public function get_medals()
+	{
+		return $this->medals;
+	}
+	public function set_medals($val)
+	{
+		$this->medals = $val;
+	}
+
+	public function get_d_mod()
+	{
+		return $this->d_mod;
+	}
+	public function set_d_mod($val)
+	{
+		$this->d_mod = $val;
 	}
 
 	public function get_swpilot()
@@ -246,15 +248,6 @@ class fsopilot_record_detail extends base_recorddetail
 	public function validate()
 	{
 		$valid = parent::validate();
-		
-		//check to make sure TrackerID isn't duplicate.
-		$fsopilot = fsopilot_api::get_fsopilot_by_TrackerID($this->TrackerID);
-		//is this fsopilot record's ID the same as the one we found for the TrackerID?
-		if($fsopilot && $this->id != $fsopilot->get_id())
-		{
-			$valid = false;
-			$this->throw_notice('TrackerID is being used already.');
-		}
 
 		return $valid;
 	}

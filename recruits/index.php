@@ -15,21 +15,21 @@ $rec->set_Recruitme(1);
 switch($type)
 {
 	case 'kills':
-		$rec->set_sort_by('KillCountOK');
+		$rec->set_sort_by('kill_count_ok');
 		$rec->set_sort_dir('DESC');
 		break;
 	case 'msns':
-		$rec->set_sort_by('MissionsFlown');
+		$rec->set_sort_by('missions_flown');
 		$rec->set_sort_dir('DESC');
 		break;
 	case 'time':
-		$rec->set_sort_by('FlightTime');
+		$rec->set_sort_by('flight_time');
 		$rec->set_sort_dir('DESC');
 		break;
 	case 'scores':
 	default:
 		$type = 'scores';
-		$rec->set_sort_by('Score');
+		$rec->set_sort_by('score');
 		$rec->set_sort_dir('DESC');
 		break;
 }
@@ -92,16 +92,16 @@ include(BASE_PATH.'doc_mid.php');
 					for($start = $thispage; $start <= min(count($recruits),$stop); $start++):
 						$recruit = $recruits[$start-1];
 						$swpilot = $recruit->get_swpilot();
-						$str_rank = util::str_rank($recruit->get_Rank());
-						$str_time = util::str_time($recruit->get_FlightTime());
+						$str_rank = util::str_rank($recruit->get_rank());
+						$str_time = util::str_time($recruit->get_flight_time());
 
 						?>
 							<tr>
-							<td align="left"><div class="recruit" style="white-space:nowrap"> <?php echo $i; ?>. <?php echo $str_rank; ?> <?php if($swpilot->get_show_email()): ?><a href="mailto:<?php echo $swpilot->get_email(); ?>"><?php echo substr($recruit->get_Pilot(), 0, 12); ?></a><?php else:  echo substr($recruit->get_Pilot(), 0, 12);  endif; ?></div></td>
+							<td align="left"><div class="recruit" style="white-space:nowrap"> <?php echo $i; ?>. <?php echo $str_rank; ?> <?php if($swpilot->get_show_email()): ?><a href="mailto:<?php echo $swpilot->get_email(); ?>"><?php echo substr($recruit->get_pilot_name(), 0, 12); ?></a><?php else:  echo substr($recruit->get_pilot_name(), 0, 12);  endif; ?></div></td>
 						<?php
-						$score = ($type == "scores") ? "<b>".$recruit->get_Score()."</b>" : $recruit->get_Score();
-						$killcount = ($type == "kills") ? "<b>".$recruit->get_KillCountOK()."</b>" : $recruit->get_KillCountOK();
-						$missions = ($type == "msns") ? "<b>".$recruit->get_MissionsFlown()."</b>" : $recruit->get_MissionsFlown();
+						$score = ($type == "scores") ? "<b>".$recruit->get_score()."</b>" : $recruit->get_score();
+						$killcount = ($type == "kills") ? "<b>".$recruit->get_kill_count_ok()."</b>" : $recruit->get_kill_count_ok();
+						$missions = ($type == "msns") ? "<b>".$recruit->get_missions_flown()."</b>" : $recruit->get_missions_flown();
 						$time = ($type == "time") ? "<b>".$str_time."</b>" : $str_time;
 						?>
 							<td align="right"><div class="recruit"><?php echo $score; ?></div></td>

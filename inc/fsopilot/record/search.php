@@ -2,27 +2,37 @@
 
 class fsopilot_record_search extends base_recordsearch
 {
-	protected $TrackerID;
-	protected $Pilot;
+	protected $id;
+	protected $user_id;
+	protected $pilot_name;
 	protected $Recruitme;
 
 
-	public function get_TrackerID()
+	public function get_id()
 	{
-		return $this->TrackerID;
+		return $this->id;
 	}
-	public function set_TrackerID($val)
+	public function set_id($val)
 	{
-		$this->TrackerID = $val;
+		$this->id = $val;
 	}
 
-	public function get_Pilot()
+	public function get_user_id()
 	{
-		return $this->Pilot;
+		return $this->user_id;
 	}
-	public function set_Pilot($val)
+	public function set_user_id($val)
 	{
-		$this->Pilot = $val;
+		$this->user_id = $val;
+	}
+
+	public function get_pilot_name()
+	{
+		return $this->pilot_name;
+	}
+	public function set_pilot_name($val)
+	{
+		$this->pilot_name = $val;
 	}
 
 	public function get_Recruitme()

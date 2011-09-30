@@ -18,7 +18,14 @@ else
 
 if(empty($_SESSION['loggedin']))
 {
-	$_SESSION['loggedin'] = false;
+	if(!empty($_COOKIE['username']))
+	{
+		$status = user_api::login($_COOKIE['username'], false, true, true);
+	}
+	if(empty($status))
+	{
+		$_SESSION['loggedin'] = false;
+	}
 }
 
 // Page requires login
@@ -43,7 +50,7 @@ if(!$_SESSION['loggedin'])
 {
 	// Get number of validated FS2NetD users
 	$rec = user_api::new_search_record();
-	$rec->set_Validated(1);
+	$rec->set_banned(0);
 	$count_pxo_users = user_api::get_count($rec);
 
 	// Get number of total pilots in FS2NetD
@@ -56,9 +63,9 @@ if(!$_SESSION['loggedin'])
 	$players = array();
 	foreach($get_fs2_pilots as $pilot)
 	{
-		if(!in_array($pilot->get_TrackerID(), $players))
+		if(!in_array($pilot->get_user_id(), $players))
 		{
-			$players[] = $pilot->get_TrackerID();
+			$players[] = $pilot->get_user_id();
 		}
 	}
 	$count_fs2_players = count($players);
@@ -80,7 +87,7 @@ else
 {
 	// Get number of pilots the current user has in FS2NetD
 	$rec = fsopilot_api::new_search_record();
-	$rec->set_TrackerID($_SESSION['trackerid']);
+	$rec->set_user_id($_SESSION['user_id']);
 	$count_fs2_pilots = fsopilot_api::get_count($rec);
 	$_SESSION['totalfsopilots'] = $count_fs2_pilots;
 }

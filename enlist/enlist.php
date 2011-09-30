@@ -9,7 +9,7 @@ define('SECURE',1);
 include('../bootstrap.php');
 
 $rec = fsopilot_api::new_search_record();
-$rec->set_TrackerID($_SESSION['trackerid']);
+$rec->set_user_id($_SESSION['user_id']);
 if(!empty($_GET['action']) && $_GET['action'] == 'deactivate')
 {
 	$rec->set_Recruitme(1);
@@ -43,15 +43,15 @@ include(BASE_PATH.'doc_mid.php');
 							<ol>
 							<?php foreach($fs2_search_pilots as $pilot):
 								$swpilot = $pilot->get_swpilot(); ?>
-									<li><b>Pilot:</b> <?php echo $pilot->get_Pilot(); ?><br />
-										<b>Score:</b> <?php echo $pilot->get_Score(); ?><br />
-										<b>Rank:</b> <?php echo util::str_rank($pilot->get_Rank()); ?><br />
-										<b>Kills:</b> <?php echo $pilot->get_KillCountOK(); ?><br />
-										<b>Missions Flown:</b> <?php echo $pilot->get_MissionsFlown(); ?><br />
-										<b>Flight Time:</b> <?php echo util::str_time($pilot->get_FlightTime()); ?><br />
+									<li><b>Pilot:</b> <?php echo $pilot->get_pilot_name(); ?><br />
+										<b>Score:</b> <?php echo $pilot->get_score(); ?><br />
+										<b>Rank:</b> <?php echo util::str_rank($pilot->get_rank()); ?><br />
+										<b>Kills:</b> <?php echo $pilot->get_kill_count_ok(); ?><br />
+										<b>Missions Flown:</b> <?php echo $pilot->get_missions_flown(); ?><br />
+										<b>Flight Time:</b> <?php echo util::str_time($pilot->get_flight_time()); ?><br />
 										<form action="_enlist.php" method="post" name="addpilot">
 											<input type="hidden" name="refer" value="<?php echo $_SERVER['PHP_SELF']; ?>" />
-											<input type="hidden" name="pilotid" value="<?php echo $pilot->get_PilotID(); ?>" />
+											<input type="hidden" name="pilotid" value="<?php echo $pilot->get_id(); ?>" />
 										<?php if(empty($swpilot)): ?>
 											<input type="hidden" name="action" value="add" />
 											<input type="submit" value="Enlist this pilot" />
@@ -95,15 +95,15 @@ include(BASE_PATH.'doc_mid.php');
 							<?php foreach($fs2_search_pilots as $pilot):
 								$swpilot = $pilot->get_swpilot(); ?>
 									<?php if(!empty($swpilot)): ?>
-										<li><b>Pilot:</b> <?php echo $pilot->get_Pilot(); ?><br />
-											<b>Score:</b> <?php echo $pilot->get_Score(); ?><br />
-											<b>Rank:</b> <?php echo util::str_rank($pilot->get_Rank()); ?><br />
-											<b>Kills:</b> <?php echo $pilot->get_KillCountOK(); ?><br />
-											<b>Missions Flown:</b> <?php echo $pilot->get_MissionsFlown(); ?><br />
-											<b>Flight Time:</b> <?php echo util::str_time($pilot->get_FlightTime()); ?><br />
+										<li><b>Pilot:</b> <?php echo $pilot->get_pilot_name(); ?><br />
+											<b>Score:</b> <?php echo $pilot->get_score(); ?><br />
+											<b>Rank:</b> <?php echo util::str_rank($pilot->get_rank()); ?><br />
+											<b>Kills:</b> <?php echo $pilot->get_kill_count_ok(); ?><br />
+											<b>Missions Flown:</b> <?php echo $pilot->get_missions_flown(); ?><br />
+											<b>Flight Time:</b> <?php echo util::str_time($pilot->get_flight_time()); ?><br />
 											<form action="_enlist_deactivate.php" method="post" name="addpilot">
 												<input type="hidden" name="refer" value="<?php echo $_SERVER['PHP_SELF']; ?>" />
-												<input type="hidden" name="pilotid" value="<?php echo $pilot->get_PilotID(); ?>" />
+												<input type="hidden" name="pilotid" value="<?php echo $pilot->get_id(); ?>" />
 												<b>ICQ:</b> <?php echo $swpilot->get_ICQ(); ?><br />
 												<b>Time Zone:</b> <?php echo htmlspecialchars($swpilot->get_fetch_time_zone()); ?><br />
 												<b>Connection Type:</b> <?php echo $swpilot->get_fetch_connection_type(); ?><br />

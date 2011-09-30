@@ -65,8 +65,8 @@
 						<td><div class="copy"><?php echo $_SESSION['email']; ?></div></td>
 					</tr>
 					<tr>
-						<td align="right"><div class="copy">PXO Tracker ID:</div></td>
-						<td><div class="copy"><?php echo $_SESSION['trackerid']; ?></div></td>
+						<td align="right"><div class="copy">PXO User ID:</div></td>
+						<td><div class="copy"><?php echo $_SESSION['user_id']; ?></div></td>
 					</tr>
 					<tr>
 						<td align="right"><div class="copy">FreeSpace 2 Pilots:</div></td>

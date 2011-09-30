@@ -35,15 +35,15 @@ include(BASE_PATH.'doc_mid.php');
 		<br />
 			<form action="_enlist_update.php" method="post" name="enlist_update">
 				<input type="hidden" name="action" value="update" />
-				<input type="hidden" name="pilotid" value="<?php echo $check_pilot->get_PilotID(); ?>" />
+				<input type="hidden" name="pilotid" value="<?php echo $check_pilot->get_id(); ?>" />
 				<table>
 					<tr>
-						<td align="right"><div class="copy"><b>TrackerID:</b></div></td>
-						<td><div class="copy"><?php echo $check_pilot->get_TrackerID(); ?></div></td>
+						<td align="right"><div class="copy"><b>User ID:</b></div></td>
+						<td><div class="copy"><?php echo $check_pilot->get_user_id(); ?></div></td>
 					</tr>
 					<tr>
 						<td align="right"><div class="copy"><b>Pilot:</b></div></td>
-						<td><div class="copy"><?php echo $check_pilot->get_Pilot_Name(); ?></div></td>
+						<td><div class="copy"><?php echo $check_pilot->get_pilot_name(); ?></div></td>
 					</tr>
 					<tr>
 						<td align="right"><div class="copy"><b>ICQ:</b></div></td>
@@ -99,15 +99,15 @@ include(BASE_PATH.'doc_mid.php');
 			<form action="_enlist_update.php" method="post" name="enlist_update">
 				<input type="hidden" name="action" value="add" />
 				<input type="hidden" name="refer" value="<?php echo $_SERVER['PHP_SELF']; ?>" />
-				<input type="hidden" name="pilotid" value="<?php echo $pilot->get_PilotID(); ?>" />
+				<input type="hidden" name="pilotid" value="<?php echo $pilot->get_id(); ?>" />
 				<table>
 					<tr>
-						<td align="right"><div class="copy"><b>TrackerID:</b></div></td>
-						<td><div class="copy"><?php echo $_SESSION['trackerid']; ?></div></td>
+						<td align="right"><div class="copy"><b>User ID:</b></div></td>
+						<td><div class="copy"><?php echo $_SESSION['user_id']; ?></div></td>
 					</tr>
 					<tr>
 						<td align="right"><div class="copy"><b>Pilot:</b></div></td>
-						<td><div class="copy"><?php echo $pilot->get_Pilot(); ?></div></td>
+						<td><div class="copy"><?php echo $pilot->get_pilot_name(); ?></div></td>
 					</tr>
 					<tr>
 						<td align="right"><div class="copy"><b>ICQ:</b></div></td>

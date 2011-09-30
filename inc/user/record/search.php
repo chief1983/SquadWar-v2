@@ -2,42 +2,30 @@
 
 class user_record_search extends base_recordsearch
 {
-	protected $TrackerID;
-	protected $Login;
+	protected $id;
+	protected $user_name;
 	protected $email;
-	protected $firstname;
-	protected $lastname;
-	protected $Validated;
-	protected $id_hash;
+	protected $banned;
 
 
 	public function get_id()
 	{
-		return $this->TrackerID;
+		return $this->id;
 	}
 	public function set_id($val)
 	{
-		$this->TrackerID = $val;
+		$this->id = $val;
 	}
-	
-	public function get_TrackerID()
+
+	public function get_user_name()
 	{
-		return $this->TrackerID;
+		return $this->user_name;
 	}
-	public function set_TrackerID($val)
+	public function set_user_name($val)
 	{
-		$this->TrackerID = $val;
+		$this->user_name = $val;
 	}
-	
-	public function get_Login()
-	{
-		return $this->Login;
-	}
-	public function set_Login($val)
-	{
-		$this->Login = $val;
-	}
-	
+
 	public function get_email()
 	{
 		return $this->email;
@@ -46,41 +34,14 @@ class user_record_search extends base_recordsearch
 	{
 		$this->email = $val;
 	}
-	
-	public function get_firstname()
-	{
-		return $this->firstname;
-	}
-	public function set_firstname($val)
-	{
-		$this->firstname = $val;
-	}
 
-	public function get_lastname()
+	public function get_banned()
 	{
-		return $this->lastname;
+		return $this->banned;
 	}
-	public function set_lastname($val)
+	public function set_banned($val)
 	{
-		$this->lastname = $val;
-	}
-
-	public function get_Validated()
-	{
-		return $this->Validated;
-	}
-	public function set_Validated($val)
-	{
-		$this->Validated = $val;
-	}
-
-	public function get_id_hash()
-	{
-		return $this->id_hash;
-	}
-	public function set_id_hash($val)
-	{
-		$this->id_hash = $val;
+		$this->banned = $val;
 	}
 }
 

@@ -14,8 +14,8 @@ if(!empty($_POST['pilotid']))
 	$pilot = fsopilot_api::get($_POST['pilotid']);
 	if(!empty($pilot))
 	{
-		$trackerid = $pilot->get_TrackerID();
-		if($trackerid != $_SESSION['trackerid'])
+		$trackerid = $pilot->get_user_id();
+		if($trackerid != $_SESSION['user_id'])
 		{
 			// This user shouldn't be modifying this pilot, wrong Tracker ID.
 			$message[] = "You don't have permission to edit this pilot.";
@@ -48,8 +48,8 @@ if(empty($message))
 	{
 		$rec = fsopilot_api::new_swpilot_detail_record();
 		$rec->set_PilotID($_POST['pilotid']);
-		$rec->set_TrackerID($pilot->get_TrackerID());
-		$rec->set_Pilot_Name($pilot->get_Pilot());
+		$rec->set_user_id($pilot->get_user_id());
+		$rec->set_Pilot_Name($pilot->get_pilot_name());
 		if(!empty($_POST['ICQ']))
 		{
 			$rec->set_ICQ($_POST['ICQ']);

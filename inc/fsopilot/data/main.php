@@ -7,69 +7,24 @@
 class fsopilot_data_main extends fsopilot_data_base
 {
 	protected $tables = array();
-
-	public function get($id)
-	{
-		$sql = "
-			select p.PilotID, p.TrackerID, p.Pilot, p.Rank, p.Score, p.Medals,
-				p.Kills, p.Assists, p.KillCount, p.KillCountOK, p.PShotsFired,
-				p.SShotsFired, p.PShotsHit, p.SShotsHit, p.PBoneheadHits,
-				p.SBoneheadHits, p.BoneheadKills, p.MissionsFlown,
-				p.FlightTime, p.LastFlown
-			from ".$this->table." p
-			where p.PilotID = {$this->db->quote($id)}
-		";
-
-		return $this->exec_sql_return_record($sql, 'fsopilot_record_detail');
-	}
-
+	protected $all_fields = array('p.id', 'p.user_id', 'p.pilot_name',
+		'p.score', 'p.missions_flown', 'p.flight_time', 'p.last_flown',
+		'p.kill_count', 'p.kill_count_ok', 'p.assists', 'p.p_shots_fired',
+		'p.p_shots_hit', 'p.p_bonehead_hits', 'p.s_shots_fired',
+		'p.s_shots_hit', 'p.s_bonehead_hits', 'p.rank', 'p.num_ship_kills',
+		'p.ship_kills', 'p.num_medals', 'p.medals', 'p.d_mod');
+	protected $primary_fields = array('p.id');
+	protected $detail_record = 'fsopilot_record_detail';
 
 	public function search(fsopilot_record_search $record)
 	{
-		$this->init_return($record);
-
-		$sql = "
-			select p.PilotID, p.TrackerID, p.Pilot, p.Rank, p.Score, p.Medals,
-				p.Kills, p.Assists, p.KillCount, p.KillCountOK, p.PShotsFired,
-				p.SShotsFired, p.PShotsHit, p.SShotsHit, p.PBoneheadHits,
-				p.SBoneheadHits, p.BoneheadKills, p.MissionsFlown,
-				p.FlightTime, p.LastFlown
-			from ".$this->table." p
-		";
-
-		$sql_where = $this->build_where_clause();
-		$sql_from = $this->build_from_clause();
-		$sql .= $sql_from . $sql_where;
-		$sql .= $this->build_order_clause();
-		$sql .= $this->build_limit_clause();
-
-		if(!$this->errors)
-		{
-			$this->exec_sql_populate_return($sql, 'fsopilot_record_detail');
-			$this->return->end();
-		}
-
-		$pag = new base_pagination(
-			$this->search_db_get_recordcount($sql_from, $sql_where),
-			$this->incoming_record->get_page_size(),
-			$this->incoming_record->get_page_number()
-		);
-
-		$this->return->set_pagination($pag);
-
-		$this->return->end();
-		return $this->return;
+		return parent::search($record);
 	}
 
 
 	public function get_count(fsopilot_record_search $record)
 	{
-		$this->init_return($record);
-
-		$sql_where = $this->build_where_clause();
-		$sql_from = $this->build_from_clause();
-
-		return $this->search_db_get_recordcount($sql_from, $sql_where);
+		return parent::get_count($record);
 	}
 
 
@@ -78,7 +33,7 @@ class fsopilot_data_main extends fsopilot_data_base
 	**/
 	public function save(fsopilot_record_detail $record)
 	{
-		parent::save($record);
+		return parent::save($record);
 	}
 
 
@@ -87,42 +42,7 @@ class fsopilot_data_main extends fsopilot_data_base
 	**/
 	protected function create(fsopilot_record_detail $record)
 	{
-		$sql = "
-			insert into ".$this->table."
-			(
-				TrackerID, Pilot, Rank, Score, Medals, Kills, Assists,
-				KillCount, KillCountOK, PShotsFired, SShotsFired, PShotsHit,
-				SShotsHit, PBoneheadHits, SBoneheadHits, BoneheadKills,
-				MissionsFlown, FlightTime, LastFlown
-			)
-			values
-			(
-				{$this->db->quote(SITE_CODE)},
-				{$this->db->quote($record->get_TrackerID())},
-				{$this->db->quote($record->get_Pilot())},
-				{$this->db->quote($record->get_Rank())},
-				{$this->db->quote($record->get_Score())},
-				{$this->db->quote($record->get_Medals())},
-				{$this->db->quote($record->get_Kills())},
-				{$this->db->quote($record->get_Assists())},
-				{$this->db->quote($record->get_KillCount())},
-				{$this->db->quote($record->get_KillCountOK())},
-				{$this->db->quote($record->get_PShotsFired())},
-				{$this->db->quote($record->get_SShotsFired())},
-				{$this->db->quote($record->get_PShotsHit())},
-				{$this->db->quote($record->get_SShotsHit())},
-				{$this->db->quote($record->get_PBoneheadHits())},
-				{$this->db->quote($record->get_SBoneheadHits())},
-				{$this->db->quote($record->get_BoneheadKills())},
-				{$this->db->quote($record->get_MissionsFlown())},
-				{$this->db->quote($record->get_FlightTime())},
-				{$this->db->quote($record->get_LastFlown())}
-			)
-		";
-
-		$id = $this->exec_sql_return_id($sql);
-
-		return $id;
+		return parent::create($record);
 	}
 
 
@@ -131,75 +51,21 @@ class fsopilot_data_main extends fsopilot_data_base
 	**/
 	protected function update(fsopilot_record_detail $record)
 	{
-
-		$sql = "
-			update ".$this->table."
-			set
-				TrackerID = {$this->db->quote($record->get_TrackerID())},
-				Pilot = {$this->db->quote($record->get_Pilot())},
-				Rank = {$this->db->quote($record->get_Rank())},
-				Score = {$this->db->quote($record->get_Score())},
-				Medals = {$this->db->quote($record->get_Medals())},
-				Kills = {$this->db->quote($record->get_Kills())},
-				Assists = {$this->db->quote($record->get_Assists())},
-				KillCount = {$this->db->quote($record->get_KillCount())},
-				PShotsFired = {$this->db->quote($record->get_PShotsFired())},
-				SShotsFired = {$this->db->quote($record->get_SShotsFired())},
-				PShotsHit = {$this->db->quote($record->get_PShotsHit())},
-				SShotsHit = {$this->db->quote($record->get_SShotsHit())},
-				PBoneheadHits = {$this->db->quote($record->get_PBoneheadHits())},
-				SBoneheadHits = {$this->db->quote($record->get_SBoneheadHits())},
-				BoneheadKills = {$this->db->quote($record->get_BoneheadKills())},
-				MissionsFlown = {$this->db->quote($record->get_MissionsFlown())},
-				FlightTime = {$this->db->quote($record->get_FlightTime())},
-				LastFlown = {$this->db->quote($record->get_LastFlown())}
-			where PilotID = {$this->db->quote($record->get_id())}
-		";
-
-		$status = $this->exec_sql_return_status($sql);
-		return $status;
+		return parent::update($record);
 	}
 
 	public function delete(fsopilot_record_detail $record)
 	{
-		$sql = "
-			delete from ".$this->table."
-			where PilotID = {$this->db->quote($record->get_id())}
-		";
-
-		return $this->exec_sql_return_status($sql);
-
-	}
-
-
-    //used by search method to find total records.
-	protected function search_db_get_recordcount($sql_from, $sql_where)
-	{
-		$sql = "
-			select count(*) as recordcount
-			from ".$this->table." p
-		";
-		$sql .= $sql_from;
-		$sql .= $sql_where;
-
-		$results = $this->exec_sql_return_array($sql);
-
-		$recordcount = 0;
-
-		if( array_key_exists("0", $results)
-			&& array_key_exists("recordcount", $results[0])
-		)
-		{
-			return $results[0]['recordcount'];
-		}
+		return parent::delete($record);
 	}
 
 
 	protected function build_where_clause()
 	{
 		$sql = " where 1=1 ";
-		$sql .= $this->where_clause_TrackerID();
-		$sql .= $this->where_clause_Pilot();
+		$sql .= $this->where_clause_id();
+		$sql .= $this->where_clause_user_id();
+		$sql .= $this->where_clause_pilot_name();
 		$sql .= $this->where_clause_Recruitme();
 		return $sql;
 	}
@@ -214,7 +80,7 @@ class fsopilot_data_main extends fsopilot_data_base
 		//check to see which tables are required.
 		if(in_array("SWPilots", $this->tables))
 		{
-			$sql .= ' inner join squadwar.SWPilots sp on p.PilotID = sp.PilotID ';
+			$sql .= ' inner join squadwar.SWPilots sp on p.id = sp.PilotID ';
 		}
 
 		return $sql;
@@ -222,40 +88,40 @@ class fsopilot_data_main extends fsopilot_data_base
 
 
 	/**
-		build snippet of where clause for first (name)
+		build snippet of where clause for user_id
 	**/
-	protected function where_clause_TrackerID()
+	protected function where_clause_user_id()
 	{
-		if(!method_exists($this->incoming_record, 'get_TrackerID'))
+		if(!method_exists($this->incoming_record, 'get_user_id'))
 		{
 			return '';
 		}
 
-		$TrackerID = $this->incoming_record->get_TrackerID();
+		$user_id = $this->incoming_record->get_user_id();
 		$where_fragment = '';
-		if($TrackerID != '')
+		if($user_id != '')
 		{
-			$where_fragment=" and p.TrackerID = {$this->db->quote($TrackerID)}";
+			$where_fragment=" and p.user_id = {$this->db->quote($user_id)}";
 		}
 		return $where_fragment;
 	}
 
 
 	/**
-		build snippet of where clause for Pilot
+		build snippet of where clause for pilot_name
 	**/
-	protected function where_clause_Pilot()
+	protected function where_clause_pilot_name()
 	{
-		if(!method_exists($this->incoming_record, 'get_Pilot'))
+		if(!method_exists($this->incoming_record, 'get_pilot_name'))
 		{
 			return '';
 		}
 
-		$Pilot = $this->incoming_record->get_Pilot();
+		$pilot_name = $this->incoming_record->get_pilot_name();
 		$where_fragment = '';
-		if($Pilot != '')
+		if($pilot_name != '')
 		{
-			$where_fragment=" and p.Pilot = {$this->db->quote($Pilot)}";
+			$where_fragment=" and p.pilot_name = {$this->db->quote($pilot_name)}";
 		}
 		return $where_fragment;
 	}
@@ -273,7 +139,7 @@ class fsopilot_data_main extends fsopilot_data_base
 
 		$Recruitme = $this->incoming_record->get_Recruitme();
 		$where_fragment = '';
-		if($Recruitme != '')
+		if(!is_null($Recruitme))
 		{
 			$where_fragment=" and sp.Recruitme = {$this->db->quote($Recruitme)}";
 			$this->tables[] = 'SWPilots';

@@ -9,31 +9,8 @@
 */
 class user_data_base extends base_database
 {
-	protected $table = 'squadwar.Users';
-
-	/**
-		build snippet of where clause for Tracker_IDs
-	**/
-	protected function where_clause_TrackerID()
-	{
-		if(!method_exists($this->incoming_record, 'get_TrackerID'))
-		{
-			return '';
-		}
-		$TrackerID = $this->incoming_record->get_TrackerID();
-		$where_fragment = '';
-		if(!empty($TrackerID))
-		{
-			$TrackerID = (array)$TrackerID;
-			foreach($TrackerID as $key => $id)
-			{
-				$TrackerID[$key] = $this->db->quote($id);
-			}
-			$where_fragment = " and TrackerID in (".implode(',', $TrackerID).")";
-		}
-		return $where_fragment;
-	}
-
+	protected $table = 'squadwar.users';
+	protected $abbr = 'u';
 
 	/**
 		build snippet of where clause for ids
@@ -48,7 +25,12 @@ class user_data_base extends base_database
 		$where_fragment = '';
 		if(!empty($id))
 		{
-			$where_fragment = " and TrackerID = {$this->db->quote($id)}";
+			$id = (array)$id;
+			foreach($id as $key => $single_id)
+			{
+				$id[$key] = $this->db->quote($single_id);
+			}
+			$where_fragment = " and id in (".implode(',',$id).")";
 		}
 		return $where_fragment;
 	}

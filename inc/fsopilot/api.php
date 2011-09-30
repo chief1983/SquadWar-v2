@@ -96,10 +96,10 @@ class fsopilot_api
 		shortcut method.
 		@return fsopilot_record_search
 	**/
-	public static function get_pilots_by_TrackerID($TrackerID)
+	public static function get_pilots_by_user_id($user_id)
 	{
 		$rec = self::new_search_record();
-		$rec->set_TrackerID($TrackerID);
+		$rec->set_user_id($user_id);
 		return self::search($rec);
 	}
 
