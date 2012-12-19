@@ -9,7 +9,7 @@
 */
 class news_data_base extends base_database
 {
-	protected $database = 'internetsql';
+	protected $database = NEWS_DB;
 	protected $table = 'news_main';
 
 	/**
@@ -50,4 +50,3 @@ class news_data_base extends base_database
 	}
 
 }
-?>
