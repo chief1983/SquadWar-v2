@@ -28,12 +28,13 @@ $headers = 'From: SquadWar <' . $from . ">\r\n" .
     'Reply-To: ' . $from . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 $subject = "Squad Approved";
+$rules_page = "http://{$_SERVER['SERVER_NAME']}".RELATIVEPATH."rules/";
 $message = <<<EOT
 
 Your squad has been approved for participation.
 
 For more information on the SquadWar rules, visit the rules page at:
-http://www.squadwar.com/rules/
+{$rules_page}
 
 Thanks,
 

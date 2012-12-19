@@ -14,6 +14,7 @@ $ret = match_api::populate_squads($ret, true);
 $ret = util::sort_results_on_child_data($ret, 'info', 'time_created', array(SORT_STRING));
 $get_pending_matches = $ret->get_results();
 
+$rules_page = "http://{$_SERVER['SERVER_NAME']}".RELATIVEPATH."rules/";
 /* start comment */
 ?>
 <table border="1" cellspacing="0">
@@ -203,7 +204,7 @@ The Auto-Forfeit system has updated match {$match->get_SWCode()}.
 The match was stuck in phase {$current_phase}.  Therefore, your squad was awarded the forfeit for this match versus {$match_loser->get_SquadName()}.
 
 For more information on the SquadWar rules, visit the rules page at:
-http://www.squadwar.com/rules/
+{$rules_page}
 
 Thanks,
 
@@ -225,7 +226,7 @@ The Auto-Forfeit system has updated match {$match->get_SWCode()}.
 The match was stuck in phase {$current_phase} for longer than the allowed time.  Therefore, your squad forfeits this match versus {$match_winner->get_SquadName()}.
 
 For more information on the SquadWar rules, visit the rules page at:
-http://www.squadwar.com/rules/
+{$rules_page}
 
 Thanks,
 
@@ -264,7 +265,7 @@ The Auto-Forfeit system is reporting the status of match {$match->get_SWCode()}.
 The match did not occur in the scheduled time and both squads reported a no-show.  You will be contacted by an administrator regarding the status of this match.
 
 For more information on the SquadWar rules, visit the rules page at:
-http://www.squadwar.com/rules/
+{$rules_page}
 
 Thanks,
 
@@ -338,7 +339,7 @@ The Auto-Forfeit system has updated match {$match->get_SWCode()}.
 The match was overdue and only your squad reported a no-show.  Therefore, your squad was awarded the forfeit for this match versus {$match_loser->get_SquadName()}.
 
 For more information on the SquadWar rules, visit the rules page at:
-http://www.squadwar.com/rules/
+{$rules_page}
 
 Thanks,
 
@@ -360,7 +361,7 @@ The Auto-Forfeit system has updated match {$match->get_SWCode()}.
 The match was overdue and your squad did not report a no-show.  Therefore, your squad forfeits this match versus {$match_winner->get_SquadName()}.
 
 For more information on the SquadWar rules, visit the rules page at:
-http://www.squadwar.com/rules/
+{$rules_page}
 
 Thanks,
 
