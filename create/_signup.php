@@ -52,20 +52,7 @@ if(!util::check_email_address($_POST['squad_email']))
 {
 	util::location('index.php?message=1&email_message=Invalid%20email%20address.');
 }
-/*
 
-<cfoutput>
-	#form.squad_name#<br>
-	#form.squad_email#<br>
-	#form.pxo_login#<br>
-	#form.pxo_password#<br>
-	#get_pxo_stuff.trackerid#<br>
-	#form.join_password#<br>
-	#form.admin_password#<br>
-	#form.squad_time_zone#<br>
-</cfoutput>
-
-*/
 $icq = '';
 $link = '';
 
