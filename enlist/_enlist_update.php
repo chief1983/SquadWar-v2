@@ -14,10 +14,10 @@ if(!empty($_POST['pilotid']))
 	$pilot = fsopilot_api::get($_POST['pilotid']);
 	if(!empty($pilot))
 	{
-		$trackerid = $pilot->get_user_id();
-		if($trackerid != $_SESSION['user_id'])
+		$user_id = $pilot->get_user_id();
+		if($user_id != $_SESSION['user_id'])
 		{
-			// This user shouldn't be modifying this pilot, wrong Tracker ID.
+			// This user shouldn't be modifying this pilot, wrong user_id.
 			$message[] = "You don't have permission to edit this pilot.";
 		}
 	}

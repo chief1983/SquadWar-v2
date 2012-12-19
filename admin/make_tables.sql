@@ -231,7 +231,7 @@ CREATE TABLE IF NOT EXISTS `SWMatches_Info` (
 
 CREATE TABLE IF NOT EXISTS `SWPilots` (
   `PilotID` int(10) unsigned NOT NULL,
-  `TrackerID` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `ICQ` varchar(50) NOT NULL DEFAULT '',
   `connection_type` int(10) unsigned NOT NULL DEFAULT '0',
   `time_zone` int(11) NOT NULL DEFAULT '0',
@@ -243,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `SWPilots` (
   `Special` int(11) DEFAULT NULL,
   `Active` tinyint(1) NOT NULL,
   PRIMARY KEY (`PilotID`),
-  UNIQUE KEY `Tracker_Name` (`TrackerID`,`Pilot_Name`),
+  UNIQUE KEY `UserID_Name` (`user_id`,`Pilot_Name`),
   KEY `Active` (`Active`),
   KEY `Recruitme` (`Recruitme`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

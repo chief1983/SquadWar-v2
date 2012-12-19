@@ -177,7 +177,7 @@ class user_api
 			setcookie('logged_in', md5('1'), time() + $cookie_timeout);
 			setcookie('username', $user->get_user_name(), time() + $cookie_timeout);
 			$_COOKIE['logged_in'] = md5('1');
-			$_COOKIE['username'] = 
+			$_COOKIE['username'] = $user->get_user_name();
 			$_SESSION['loggedin'] = 1;
 			$_SESSION['show_challenge'] = 0;
 			$_SESSION['adminlastchosen'] = '';
@@ -203,8 +203,10 @@ class user_api
 	public static function logout()
 	{
 		$_SESSION['loggedin'] = false;
+		$_SESSION['showchallenge'] = null;
+		$_SESSION['adminlastchosen'] = null;
 		$_SESSION['login'] = '';
-		$_SESSION['trackerid'] = '';
+		$_SESSION['user_id'] = '';
 		$_SESSION['firstname'] = '';
 		$_SESSION['lastname'] = '';
 		$_SESSION['email'] = '';

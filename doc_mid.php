@@ -56,11 +56,11 @@
 			<?php else: ?>
 				<div class="title">PXO Account <?php echo $_SESSION['login']; ?></div>
 				<table>
-					<tr>
+<?php /*					<tr>
 						<td align="right"><div class="copy">Full Name:</div></td>
 						<td><div class="copy"><?php echo $_SESSION['firstname']; ?> <?php echo $_SESSION['lastname']; ?></div></td>
 					</tr>
-					<tr>
+*/ ?>					<tr>
 						<td align="right"><div class="copy">PXO Account Email:</div></td>
 						<td><div class="copy"><?php echo $_SESSION['email']; ?></div></td>
 					</tr>
