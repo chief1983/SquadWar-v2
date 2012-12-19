@@ -141,7 +141,7 @@ class squad_data_sector extends squad_data_base
 		}
 		$SectorSquad = $this->incoming_record->get_SectorSquad();
 		$where_fragment = '';
-		if(!is_null($SectorSquad))
+		if(!empty($SectorSquad))
 		{
 			$SectorSquad = (array)$SectorSquad;
 			foreach($SectorSquad as $key => $id)
