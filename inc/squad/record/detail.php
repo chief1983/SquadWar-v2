@@ -80,7 +80,7 @@ class squad_record_detail extends base_recorddetail
 
 	public function get_SquadMembers()
 	{
-		return explode(',', $this->SquadMembers);
+		return explode(',', trim($this->SquadMembers, ','));
 	}
 	public function set_SquadMembers($val)
 	{
