@@ -12,6 +12,7 @@ class fsopilot_data_base extends base_database
 	protected $database = USER_DB;
 	protected $table = 'pilots';
 	protected $abbr = 'p';
+	protected $remote = true;
 
 	/**
 		build snippet of where clause for ids

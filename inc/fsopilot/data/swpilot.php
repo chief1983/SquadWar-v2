@@ -9,6 +9,8 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 	protected $database = SQUADWAR_DB;
 	protected $tables = array();
 	protected $table = 'SWPilots';
+	protected $abbr = 'sp';
+	protected $remote = false;
 	
 	public function get($id)
 	{
