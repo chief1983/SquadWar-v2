@@ -21,6 +21,10 @@ class base_database
 	{
 		$this->set_db();
 		$this->errors = false;
+		if(defined('TABLE_PREFIX') && !empty($this->table))
+		{
+			$this->table = TABLE_PREFIX . $this->table;
+		}
 	}
 
 

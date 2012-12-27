@@ -10,3 +10,4 @@ define('ADMIN_NAME','FS2NetD Administration');
 define('SQUADWAR_DB','squadwar'); // Should be same as database in mysql.conf.
 define('USER_DB','fs2netd'); // Database for FS2NetD user data that should already exist.
 define('NEWS_DB','internetsql'); // Database for SquadWar news.
+define('TABLE_PREFIX',''); // If you installed tables in a shared database using a table name prefix, define it here.
