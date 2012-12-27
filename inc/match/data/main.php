@@ -99,7 +99,7 @@ class match_data_main extends match_data_base
 		//check to see which tables are required.
 		if(in_array("info", $this->tables))
 		{
-			$sql .= ' inner join `'.SQUADWAR_DB.'`.`SWMatches_Info` mi on m.SWCode = mi.SWCode ';
+			$sql .= ' inner join `'.SQUADWAR_DB.'`.`'.match_data_info::table().'` mi on m.SWCode = mi.SWCode ';
 		}
 
 		return $sql;

@@ -41,6 +41,27 @@ class base_database
 		}
 	}
 
+	/**
+		@return string The data model's table name
+		@description Static function to get the prefixed version of a model's table name.
+	**/
+	public static function table()
+	{
+		$objname = get_called_class();
+		$obj = new $objname();
+		return $obj->get_table();
+	}
+
+
+	/**
+		@return string The data model's table name
+		@description Static function to get the prefixed version of a model's table name.
+	**/
+	public function get_table()
+	{
+		return TABLE_PREFIX . $this->table;
+	}
+
 
 	/**
 		@param $sql string
@@ -247,6 +268,7 @@ class base_database
 	protected function build_from_clause()
 	{
 		$sql = " ";
+		//check to see which tables are required.
 
 		return $sql;
 	}
