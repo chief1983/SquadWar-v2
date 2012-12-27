@@ -12,6 +12,7 @@ class user_data_base extends base_database
 	protected $database = USER_DB;
 	protected $table = 'users';
 	protected $abbr = 'u';
+	protected $remote = true;
 
 	/**
 		build snippet of where clause for ids

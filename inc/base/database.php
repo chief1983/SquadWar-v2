@@ -16,12 +16,13 @@ class base_database
 	protected $database = '';
 	protected $table = '';
 	protected $abbr = '';
+	protected $remote = false;
 
 	public function __construct()
 	{
 		$this->set_db();
 		$this->errors = false;
-		if(defined('TABLE_PREFIX') && !empty($this->table))
+		if(!$this->remote && defined('TABLE_PREFIX') && !empty($this->table))
 		{
 			$this->table = TABLE_PREFIX . $this->table;
 		}
