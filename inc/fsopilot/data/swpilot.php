@@ -23,8 +23,8 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 				tz.value_minutes as fetch_time_zone_minutes,
 				c.type as fetch_connection_type
 			from `".$this->database."`.`".$this->table."` sp
-				inner join form_time_zones tz on tz.ID = sp.time_zone
-				inner join form_connection_type c on c.ID = sp.connection_type
+				inner join `".$this->database."`.`".self::table('form_time_zones')."` tz on tz.ID = sp.time_zone
+				inner join `".$this->database."`.`".self::table('form_connection_type')."` c on c.ID = sp.connection_type
 			where sp.PilotID = {$this->db->quote($id)}
 		";
 
