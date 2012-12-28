@@ -245,15 +245,15 @@ class squad_data_main extends squad_data_base
 		//check to see which tables are required.
 		if(in_array("league", $this->tables))
 		{
-			$sql .= ' inner join `'.SQUADWAR_DB.'`.`'.squad_data_league::table().'` sl on s.SquadID = sl.SWSquad_SquadID ';
+			$sql .= ' inner join `'.SQUADWAR_DB.'`.`SWSquads_Leagues` sl on s.SquadID = sl.SWSquad_SquadID ';
 		}
 		if(in_array("info", $this->tables))
 		{
-			$sql .= ' inner join `'.SQUADWAR_DB.'`.`'.squad_data_info::table().'` si on s.SquadID = si.SquadID ';
+			$sql .= ' inner join `'.SQUADWAR_DB.'`.`SWSquad_Info` si on s.SquadID = si.SquadID ';
 		}
 		if(in_array("sectors", $this->tables))
 		{
-			$sql .= ' inner join `'.SQUADWAR_DB.'`.`'.squad_data_sector::table().'` sec on s.SquadID = sec.SectorSquad ';
+			$sql .= ' inner join `'.SQUADWAR_DB.'`.`SWSectors` sec on s.SquadID = sec.SectorSquad ';
 		}
 
 		return $sql;
