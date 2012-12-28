@@ -69,21 +69,6 @@ include(BASE_PATH.'doc_mid.php');
 	<table>
 		<tr>
 			<td align="right">
-				<div class="copy"><b><label for="firstname">First Name:</label></b></div>
-			</td>
-			<td align="left">
-				<div class="copy"><input type="text" name="firstname" id="firstname" size="25" maxlength="25" class="name required" title="You must enter your First Name" /></div>
-			</td>
-		</tr>
-		<tr>
-			<td align="right">
-				<div class="copy"><b><label for="lastname">Last Name:</label></b></div>
-			</td>
-			<td align="left"><input type="text" name="lastname" id="lastname" size="25" maxlength="25" class="name required"  title="You must enter your Last Name" />
-			</td>
-		</tr>
-		<tr>
-			<td align="right">
 				<div class="copy"><b><label for="login">Choose a login name:</label></b></div>
 			</td>
 			<td align="left">

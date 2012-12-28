@@ -182,8 +182,6 @@ class user_api
 			$_SESSION['show_challenge'] = 0;
 			$_SESSION['adminlastchosen'] = '';
 			$_SESSION['login'] = $user->get_user_name();
-			$_SESSION['firstname'] = '';
-			$_SESSION['lastname'] = '';
 			$_SESSION['email'] = $user->get_email();
 			$_SESSION['user_id'] = $user->get_id();
 			if($set_cookie)
@@ -207,8 +205,6 @@ class user_api
 		$_SESSION['adminlastchosen'] = null;
 		$_SESSION['login'] = '';
 		$_SESSION['user_id'] = '';
-		$_SESSION['firstname'] = '';
-		$_SESSION['lastname'] = '';
 		$_SESSION['email'] = '';
 		setcookie('logged_in', '');
 		setcookie('username', '');

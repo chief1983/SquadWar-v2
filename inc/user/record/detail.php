@@ -89,24 +89,6 @@ class user_record_detail extends base_recorddetail
 		$this->squad = $val;
 	}
 
-	public function get_firstname()
-	{
-		return $this->firstname;
-	}
-	public function set_firstname($val)
-	{
-		$this->firstname = $val;
-	}
-
-	public function get_lastname()
-	{
-		return $this->lastname;
-	}
-	public function set_lastname($val)
-	{
-		$this->lastname = $val;
-	}
-
 	public function get_hash()
 	{
 		return $this->hash;
@@ -219,21 +201,6 @@ class user_record_detail extends base_recorddetail
 								HELPER METHODS
 
 *******************************************************************************/
-	/**
-		This is sort of a pseudo-getter.  It pays attention to user's
-		preferences
-	**/
-	public function get_name($obey_pref = false)
-	{
-//		if(!$this->ShowRealName)
-//		{
-//			return '';
-//		}
-		$name = $this->firstname . ' ' . $this->lastname;
-
-		return trim($name);
-	}
-
 	/**
 		for this user, get the last bit of content (match, etc) created.
 	**/

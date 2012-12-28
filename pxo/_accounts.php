@@ -55,8 +55,6 @@ include(BASE_PATH.'doc_mid.php');
 									if ($check_login == 0 && empty($check_email) && empty($password_fail))
 									{
 										$rec = user_api::new_detail_record();
-										$rec->set_firstname($_POST['firstname']);
-										$rec->set_lastname($_POST['lastname']);
 										$rec->set_email($_POST['email']);
 										$rec->set_Login($_POST['login']);
 										$rec->set_Password($_POST['password']);
