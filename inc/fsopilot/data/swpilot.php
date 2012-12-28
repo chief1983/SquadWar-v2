@@ -69,7 +69,7 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 				c.type as fetch_connection_type
 			from `".$this->database."`.`".$this->table."` sp
 				inner join `".$this->database."`.`".self::table('form_time_zones')."` tz on tz.ID = sp.time_zone
-				inner join`".$this->database."`.`".self::table(' form_connection_type')."` c on c.ID = sp.connection_type
+				inner join`".$this->database."`.`".self::table('form_connection_type')."` c on c.ID = sp.connection_type
 		";
 
 		$sql_where = $this->build_where_clause();
