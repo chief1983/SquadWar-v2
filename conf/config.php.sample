@@ -4,6 +4,7 @@ define('RELATIVEPATH','');
 // These are a salt for the login system.  Changing this on the server makes it very difficult to hijack accounts via the cookie-based auth system.
 define('HASH_SALT_PRE','');
 define('HASH_SALT_POST','');
+define('MAX_SECTOR_PATHS','5');
 define('SITE_CODE','FS2');
 define('SUPPORT_EMAIL','fs2netd@gmail.com');
 define('ADMIN_NAME','FS2NetD Administration');
