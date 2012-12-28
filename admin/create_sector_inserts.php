@@ -1,4 +1,6 @@
 <?php
+define('BASE_PATH',dirname(__FILE__).'/../');
+require_once(BASE_PATH.'inc/autoload.php');
 include('../conf/config.php');
 
 $league = 4;
@@ -21,7 +23,7 @@ foreach($lines as $sector)
 	$entrynode = trim($sector_info[1]);
 	$sectors[] = $sectorname;
 
-	$sector_inserts[] = "INSERT INTO `".SQUADWAR_DB."`.`SWSectors` (`SectorName`,`Entry_Node`,`League_ID`) VALUES ('{$sectorname}',{$entrynode},{$league});\n";
+	$sector_inserts[] = "INSERT INTO `".SQUADWAR_DB."`.`".base_database::table('SWSectors')."` (`SectorName`,`Entry_Node`,`League_ID`) VALUES ('{$sectorname}',{$entrynode},{$league});\n";
 	if(!empty($parts[1]))
 	{
 		$paths = explode(',', trim($parts[1]));
@@ -33,9 +35,9 @@ foreach($lines as $sector)
 			$path = trim($path);
 			$pathsectors[] = $path;
 			$fields .= ", `path_".($key+1)."`";
-			$path_selects .= ", (SELECT `SWSectors_ID` FROM `".SQUADWAR_DB."`.`SWSectors` WHERE `League_ID` = {$league} AND `SectorName` = '{$path}')";
+			$path_selects .= ", (SELECT `SWSectors_ID` FROM `".SQUADWAR_DB."`.`".base_database::table('SWSectors')."` WHERE `League_ID` = {$league} AND `SectorName` = '{$path}')";
 		}
-		$path_inserts[] = "INSERT INTO `".SQUADWAR_DB."`.`SWSectors_Graph` (`SWSectors_ID`{$fields}) VALUES ((SELECT `SWSectors_ID` FROM `".SQUADWAR_DB."`.`SWSectors` WHERE `League_ID` = {$league} AND `SectorName` = '{$sectorname}'){$path_selects});\n";
+		$path_inserts[] = "INSERT INTO `".SQUADWAR_DB."`.`".base_database::table('SWSectors_Graph')."` (`SWSectors_ID`{$fields}) VALUES ((SELECT `SWSectors_ID` FROM `".SQUADWAR_DB."`.`".base_database::table('SWSectors')."` WHERE `League_ID` = {$league} AND `SectorName` = '{$sectorname}'){$path_selects});\n";
 	}
 }
 

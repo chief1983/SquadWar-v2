@@ -371,7 +371,7 @@ class squad_data_main extends squad_data_base
 			}
 			else
 			{
-				$where_fragment.=" and (SELECT COUNT(SectorName) FROM SWSectors WHERE (s.SquadID = SectorSquad)";
+				$where_fragment.=" and (SELECT COUNT(SectorName) FROM ".self::table('SWSquad_Info')." WHERE (s.SquadID = SectorSquad)";
 				if(!empty($league))
 				{
 					$where_fragment.="AND (League_ID = ".$league.") ";
