@@ -28,9 +28,9 @@ include(BASE_PATH.'doc_mid.php');
 Current game time is: <?php echo time(); ?>
 </div>
 						<table width="98%" cellpadding="1" cellspacing="0" border="0">
+							<tr><td colspan="8" align="center"><div class="title">Pending Matches</div></td></tr>
 						<?php if(count($get_matches)):
 							$coloredrow = 0; ?>
-								<tr><td colspan="8" align="center"><div class="title">Pending Matches</div></td></tr>
 								<?php foreach($get_matches as $match): ?>
 									<tr<?php if(++$coloredrow % 2): ?> bgcolor="#0B160D"<?php endif; ?>>
 										<td>
