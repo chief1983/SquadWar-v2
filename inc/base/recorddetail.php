@@ -81,7 +81,7 @@ class base_recorddetail extends base_record
 
 		if(!$valid)
 		{
-			$this->throw_notice("__CLASS__: Required fields for were missing. "
+			$this->throw_notice(get_class($this) . ": Required fields were missing. "
 				. "Please fill in ".rtrim($notice_snippet, ', '));
 		}
 
