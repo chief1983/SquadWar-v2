@@ -373,7 +373,7 @@ include(BASE_PATH.'doc_mid.php');
 							$CountOfSWCode_challenged = count($squad->get_matches_defender());
 							$CountOfSWCode_challenger = count($squad->get_matches_challenger()); ?>
 								<tr>
-									<td width="5" bgcolor="#<?php echo $teamcolor; ?>" align="right"><img src="images/spacer.gif" width="5" height="3" alt=" " border="0" /><br /></td>
+									<td width="5" bgcolor="#<?php echo $teamcolor; ?>" align="right"><img src="<?php echo RELATIVEPATH; ?>images/spacer.gif" width="5" height="3" alt=" " border="0" /><br /></td>
 									<td align="right"><div class="copy"><?php echo $displayrank; ?></div></td>
 									<td align="left"><div class="copy">&nbsp;<?php if($squad->get_SquadID() == $id): ?><b><?php echo $squad->get_SquadName(); ?></b><?php else: ?><a href="squadinfo.php?id=<?php echo $squad->get_SquadID(); ?>&amp;leagueid=<?php echo $leagueid; ?>"><?php echo $squad->get_SquadName(); ?></a><?php endif; ?></div></td>
 									<td align="center"><div class="copy"><?php if(!empty($l_wins)): echo $l_wins; else: ?>0<?php endif; ?>/<?php if(!empty($l_total_matches)): echo $l_total_matches; else: ?>0<?php endif; ?></div></td>
