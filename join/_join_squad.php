@@ -43,9 +43,9 @@ elseif($check_user !== 1)
 }
 
 $members = $squad->get_SquadMembers();
-if(!in_array($_SESSION['trackerid'], $members))
+if(!in_array($_SESSION['user_id'], $members))
 {
-	$members[] = $_SESSION['trackerid'];
+	$members[] = $_SESSION['user_id'];
 	$squad->set_SquadMembers($members);
 	$squad->save();
 	util::location(RELATIVEPATH.'squads/squadinfo.php?id='.$_POST['squadid']);
