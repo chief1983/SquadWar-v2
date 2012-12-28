@@ -18,7 +18,7 @@ $get_matches = $ret->get_results();
 
 include(BASE_PATH.'doc_top.php');
 
-include(BASE_PATH.'menu/main.php');
+include(BASE_PATH.'admin/menu/main.php');
 
 define('HIDELOGIN',1);
 include(BASE_PATH.'doc_mid.php');
