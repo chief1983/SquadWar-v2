@@ -200,7 +200,7 @@ class league_data_main extends league_data_base
 		//check to see which tables are required.
 		if(in_array("SWSquads_Leagues", $this->tables))
 		{
-			$sql .= ' inner join `'.SQUADWAR_DB.'`.`SWSquads_Leagues` sl on l.League_ID = sl.Leagues ';
+			$sql .= ' inner join `'.SQUADWAR_DB.'`.`'.self::table('SWSquads_Leagues').'` sl on l.League_ID = sl.Leagues ';
 		}
 
 		return $sql;

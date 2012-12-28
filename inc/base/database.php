@@ -7,7 +7,7 @@
 		* inits a DB connection
 		* runs queries and populates a return
 */
-class base_database
+abstract class base_database
 {
 	protected $errors;
 	protected $db;
@@ -24,7 +24,7 @@ class base_database
 		$this->errors = false;
 		if(!$this->remote && defined('TABLE_PREFIX') && !empty($this->table))
 		{
-			$this->table = TABLE_PREFIX . $this->table;
+			$this->table = self::table($this->table);
 		}
 	}
 
@@ -41,6 +41,16 @@ class base_database
 		}
 	}
 
+
+	public static function table($table)
+	{
+		if(is_string($table) && !empty($table))
+		{
+			$table = TABLE_PREFIX . $table;
+		}
+
+		return $table;
+	}
 
 	/**
 		@param $sql string
