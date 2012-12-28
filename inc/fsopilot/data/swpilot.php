@@ -242,18 +242,6 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 
 
 	/**
-		when we build the where clause, we also record which tables are needed.
-	**/
-	protected function build_from_clause()
-	{
-		$sql = " ";
-		//check to see which tables are required.
-		
-		return $sql;
-	}
-
-
-	/**
 		build snippet of where clause for PilotIDs
 	**/
 	protected function where_clause_PilotID()

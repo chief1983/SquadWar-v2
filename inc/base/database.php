@@ -247,6 +247,7 @@ class base_database
 	protected function build_from_clause()
 	{
 		$sql = " ";
+		//check to see which tables are required.
 
 		return $sql;
 	}
