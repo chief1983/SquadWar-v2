@@ -51,7 +51,7 @@ include(BASE_PATH.'doc_mid.php');
 
 				<?php else: ?>
 					<div calss="copy">
-						No pilots exist for this account.  You must log into PXO using FreeSpace 2 to create a multiplayer pilot in the PXO database before attempting to join a squad.<br />
+						No pilots exist for this account.  You must log into FS2NetD using FreeSpace 2 to create a multiplayer pilot in the FS2NetD database before attempting to join a squad.<br />
 					</div>
 				<?php endif; ?>
 

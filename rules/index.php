@@ -23,7 +23,7 @@ include(BASE_PATH.'doc_mid.php');
 				<div class="copy">
 						
 						<b>Overview:</b>
-						The basis for Squad War is that organized squadrons should be able to conquer and defend regions of space. Squad War allows multiplayer squadrons to challenge other squadrons for control of territory in the universe. Squad War is an organized form of team vs. team multiplayer gameplay. PXO servers will maintain a list of registered squadrons (each has a name, a password, and a list of members) which will be managed by users through a web page. Squadrons will fight it out (via team vs. team missions) for control of sectors. The PXO database will keep track of which squadron controls each sector. 
+						The basis for Squad War is that organized squadrons should be able to conquer and defend regions of space. Squad War allows multiplayer squadrons to challenge other squadrons for control of territory in the universe. Squad War is an organized form of team vs. team multiplayer gameplay. FS2NetD servers will maintain a list of registered squadrons (each has a name, a password, and a list of members) which will be managed by users through a web page. Squadrons will fight it out (via team vs. team missions) for control of sectors. The FS2NetD database will keep track of which squadron controls each sector. 
 						<br />
 						<b>Please note that these rules are subject to change at the discretion of the Administrator.</b>
 						<br />
@@ -32,9 +32,9 @@ include(BASE_PATH.'doc_mid.php');
 						<b>Squadrons</b>
 						<ul>
 						<li>A squadron consists of a squadron leader and multiple squadron officers.</li>
-						<li>PXO maintains a database of registered squadrons.  Each squadron has an unique ID number, a squadron name, squadron password and a list of squad members.</li>
+						<li>FS2NetD maintains a database of registered squadrons.  Each squadron has an unique ID number, a squadron name, squadron password and a list of squad members.</li>
 						<li>Squadrons may participate in multiple Squad War leagues simultaneously.</li>
-						<li>PXO maintains contact information for each squadron leader.</li>
+						<li>FS2NetD maintains contact information for each squadron leader.</li>
 						<li>Squadrons may consist of multiple members but need at least two members to join a league.</li>  
 						<li>Players may play for multiple squads, however a player who exists on more than one squad cannot play in a match where he exists on both rosters.</li>
 						</ul>
@@ -50,7 +50,7 @@ include(BASE_PATH.'doc_mid.php');
 						*/ ?>
 						<li>The match is resolved by one team winning by points, or a draw.  If a match results in a draw, the victory goes to the defending/challenged team, and the challenger is awarded a loss.</li>
 						<li>A minimum of two players from each squadron must be present for a team vs. team mission. (currently 1 for testing purposes)</li>
-						<li>The results of a match are updated on PXO via FreeSpace 2 during the mission debriefing.</li>
+						<li>The results of a match are updated on FS2NetD via FreeSpace 2 during the mission debriefing.</li>
 						<li>In the event a match ends prematurely, Either due to a losing team whimping out, a game crash, or other disconnect situation, the match will be declared invalid, and nothing gets updated.  If the match isn't replayed, expiration rules apply.</li>  
 						</ul>
 						

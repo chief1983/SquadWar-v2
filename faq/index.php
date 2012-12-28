@@ -27,7 +27,7 @@ include(BASE_PATH.'doc_mid.php');
 						</div>
 						<br />
 						<div class="answer">
-						<b>A:</b> The basis for Squad War is that organized squadrons should be able to conquer and defend regions of space. Squad War allows multiplayer squadrons to challenge other squadrons for control of territory in the universe. Squad War is an organized form of team vs. team multiplayer gameplay. PXO servers will maintain a list of registered squadrons (each has a name, a password, and a list of members) which will be managed by users through a web page. Squadrons will fight it out (via team vs. team missions) for control of sectors. The PXO database will keep track of which squadron controls each sector. 
+						<b>A:</b> The basis for Squad War is that organized squadrons should be able to conquer and defend regions of space. Squad War allows multiplayer squadrons to challenge other squadrons for control of territory in the universe. Squad War is an organized form of team vs. team multiplayer gameplay. FS2NetD servers will maintain a list of registered squadrons (each has a name, a password, and a list of members) which will be managed by users through a web page. Squadrons will fight it out (via team vs. team missions) for control of sectors. The FS2NetD database will keep track of which squadron controls each sector. 
 						</div>
 
 						<br />
@@ -37,17 +37,17 @@ include(BASE_PATH.'doc_mid.php');
 						</div>
 						<br />					
 						<div class="answer">
-						<b>A:</b> First, you need a valid copy of <a href="<?php echo FS2_PURCHASE_URL; ?>">FreeSpace 2</a>.  Once you have a copy of FreeSpace 2, you need to obtain a valid PXO account.  You can do this by clicking on "New Pilots" from the main SquadWar page, or by registering an acccount via the PXO web site.
+						<b>A:</b> First, you need a valid copy of <a href="<?php echo FS2_PURCHASE_URL; ?>">FreeSpace 2</a>.  Once you have a copy of FreeSpace 2, you need to obtain a valid FS2NetD account.  You can do this by clicking on "New Pilots" from the main SquadWar page, or by registering an acccount via the FS2NetD web site.
 						</div>							
 
 						<br />
 						
 						<div class="question">
-						<b>Q:</b> I already have a PXO account from Descent: FreeSpace - The Great War, Conflict: FreeSpace, Silent Theat, Descent 3 Demo, Descent 3, FreeSpace 2 Demo or FreeSpace 2, do I still need to register an account?
+						<b>Q:</b> I already have a FS2NetD account from Descent: FreeSpace - The Great War, Conflict: FreeSpace, Silent Theat, Descent 3 Demo, Descent 3, FreeSpace 2 Demo or FreeSpace 2, do I still need to register an account?
 						</div>
 						<br />					
 						<div class="answer">
-						<b>A:</b>  No, if you already have a PXO, you can use this account to log into the SquadWar web site.
+						<b>A:</b>  No, if you already have a FS2NetD, you can use this account to log into the SquadWar web site.
 						</div>
 						
 						<br />					
@@ -77,7 +77,7 @@ include(BASE_PATH.'doc_mid.php');
 						</div>
 						<br />					
 						<div class="answer">
-						<b>A:</b> Enlisting a pilot allows you to "show off" your PXO stats for a specific pilot on a public recruiting board. If Squad Leaders are looking for new members, or perhaps members to start a new squad, they will check out the Recruit Board to see who the best really is.
+						<b>A:</b> Enlisting a pilot allows you to "show off" your FS2NetD stats for a specific pilot on a public recruiting board. If Squad Leaders are looking for new members, or perhaps members to start a new squad, they will check out the Recruit Board to see who the best really is.
 						</div>															
 						
 						<br />
@@ -87,7 +87,7 @@ include(BASE_PATH.'doc_mid.php');
 						</div>
 						<br />					
 						<div class="answer">
-						<b>A:</b> The Recruit Board allows pilots to "show off" their PXO stats.  For more information, read the Question and Answer above.
+						<b>A:</b> The Recruit Board allows pilots to "show off" their FS2NetD stats.  For more information, read the Question and Answer above.
 						</div>															
 						
 						<br />																
@@ -143,7 +143,7 @@ include(BASE_PATH.'doc_mid.php');
 						<br />					
 						<div class="answer">
 						<b>A:</b> A match code is a specific ID number which corresponds to a SquadWar event.  When you pose a challenge, a match code is generated.  Write this match code down.  If you have your Squad's "admin password" you can view your current match codes by looking at your Squad's detailed league information.
-								You will use this match code when playing a SquadWar match in FreeSpace 2 on PXO to play the match.									
+								You will use this match code when playing a SquadWar match in FreeSpace 2 on FS2NetD to play the match.									
 						</div>															
 						
 						<br />		
@@ -153,8 +153,8 @@ include(BASE_PATH.'doc_mid.php');
 						</div>
 						<br />					
 						<div class="answer">
-						<b>A:</b> At least two members from each squad must be present for a valid SquadWar match to occur. All Squad participants should log into PXO and one Squad member should host the match.  The host must choose "Team" missions from the list of valid PXO missions and click the "SquadWar" button on the top left of the host screen.  When the host "commits" to the match, he will be prompted to enter the match code.  The host will enter the match code for your match to continue.
-									When the mission is over, PXO will update the SquadWar map information.
+						<b>A:</b> At least two members from each squad must be present for a valid SquadWar match to occur. All Squad participants should log into FS2NetD and one Squad member should host the match.  The host must choose "Team" missions from the list of valid FS2NetD missions and click the "SquadWar" button on the top left of the host screen.  When the host "commits" to the match, he will be prompted to enter the match code.  The host will enter the match code for your match to continue.
+									When the mission is over, FS2NetD will update the SquadWar map information.
 						</div>															
 						
 						<br />		
@@ -241,7 +241,7 @@ include(BASE_PATH.'doc_mid.php');
 						</div>
 						<br />					
 						<div class="answer">
-						<b>A:</b> After your match is complete, PXO waits a few minutes before moving and deleting the match code.  Please be patient and the match code will be moved to the match history information after a short period of time.
+						<b>A:</b> After your match is complete, FS2NetD waits a few minutes before moving and deleting the match code.  Please be patient and the match code will be moved to the match history information after a short period of time.
 						</div>															
 						
 						<br />																																		
@@ -261,7 +261,7 @@ include(BASE_PATH.'doc_mid.php');
 						</div>
 						<br />					
 						<div class="answer">
-						<b>A:</b> Chances are one of the clients lost contact temporarily with the server at the end of match.  PXO was made aware of the game state when the match ended and since it couldn't contact the missing player, that attempt to contact "timed out" causing the stats to update as normal.
+						<b>A:</b> Chances are one of the clients lost contact temporarily with the server at the end of match.  FS2NetD was made aware of the game state when the match ended and since it couldn't contact the missing player, that attempt to contact "timed out" causing the stats to update as normal.
 						</div>															
 						
 						<br />	

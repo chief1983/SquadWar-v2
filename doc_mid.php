@@ -42,7 +42,7 @@
 				</td>
 				<td><img src="images/spacer.gif" width="40" height="3" alt="" border="0" /></td>
 				<td valign="top">
-					<div class="title">PXO at a glance:</div>
+					<div class="title">FS2NetD at a glance:</div>
 					<table><tr><td>
 					<div class="copy">
 						<b><?php echo $count_pxo_users; ?></b> Validated Users<br />
@@ -54,14 +54,14 @@
 				</td></tr></table>
 				<?php // END NOT LOGGED IN ?>
 			<?php else: ?>
-				<div class="title">PXO Account <?php echo $_SESSION['login']; ?></div>
+				<div class="title">FS2NetD Account <?php echo $_SESSION['login']; ?></div>
 				<table>
 					<tr>
-						<td align="right"><div class="copy">PXO Account Email:</div></td>
+						<td align="right"><div class="copy">FS2NetD Account Email:</div></td>
 						<td><div class="copy"><?php echo $_SESSION['email']; ?></div></td>
 					</tr>
 					<tr>
-						<td align="right"><div class="copy">PXO User ID:</div></td>
+						<td align="right"><div class="copy">FS2NetD User ID:</div></td>
 						<td><div class="copy"><?php echo $_SESSION['user_id']; ?></div></td>
 					</tr>
 					<tr>

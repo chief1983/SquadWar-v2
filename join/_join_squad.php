@@ -38,8 +38,8 @@ elseif($_POST['join_password'] != $info->get_Squad_Join_PW())
 }
 elseif($check_user !== 1)
 {
-	// PXO login info incorrect
-	util::location(RELATIVEPATH.'error/error.php?message=Your%20PXO%20login%20and%20password%20are%20incorrect.');
+	// FS2NetD login info incorrect
+	util::location(RELATIVEPATH.'error/error.php?message=Your%20FS2NetD%20login%20and%20password%20are%20incorrect.');
 }
 
 $members = $squad->get_SquadMembers();

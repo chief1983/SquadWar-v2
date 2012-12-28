@@ -13,13 +13,15 @@ include(BASE_PATH.'doc_top.php');
 
 include(BASE_PATH.'menu/main.php');
 
-define('HIDELOGIN',1);
 include(BASE_PATH.'doc_mid.php');
 				// MAIN PAGE INFO
 ?>
 
 				<div class="copy">
-					<p>If you already have a PXO account from Descent: FreeSpace - The Great War, Silent Threat, Descent 3 Demo, Descent 3, FreeSpace 2 Demo or FreeSpace 2 you can use that to log in to the SquadWar site.</p>
+					<p>To use SquadWar, you must register a pilot on FS2NetD (click below).  Then you can return to the SquadWar page and log in with your FS2NetD account.  If you already have an FS2NetD account then just log in above.</p>
+					<form method="post" target="_blank" action="http://<?php echo FS2NETD_HOME; ?>/?area=register"><input type="submit" value="REGISTER" name="checker" /></form>
+
+<?/*					<p>If you already have a FS2NetD account from FreeSpace 2 Open, The Babylon Project, Beyond the Red Line, or Diaspora, you can use that to log in to the SquadWar site.</p>
 					<p>
 					<b>Please read the following License Agreement and click "I agree" at the bottom of the page to create a new account.</b></p>
 					<p>
@@ -151,7 +153,7 @@ include(BASE_PATH.'doc_mid.php');
 					California residents entered into and to be performed entirely within 
 					California.  All notices given by you or required under this Agreement shall be 
 					in writing and addressed to Parallax at 2004 Fox Drive Suite B - Champaign, IL 61820, or faxed to Parallax at
-					(217) 355-0767, or emailed support@pxo.net</p>
+					(217) 355-0767, or emailed <?php echo SUPPORT_EMAIL; ?></p>
 					<p>
 					12.  Agreements.  This Agreement and the terms and conditions set forth in 
 					the documentation for the Games comprise the entire agreement between 
@@ -174,6 +176,6 @@ include(BASE_PATH.'doc_mid.php');
 					</table>	
 					
 				</div>
-
+*/?>
 				<?php // END MAIN PAGE INFO ?>
 <?php include(BASE_PATH.'doc_bot.php'); ?>

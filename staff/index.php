@@ -21,14 +21,12 @@ include(BASE_PATH.'doc_mid.php');
 				<div class="Title">SquadWar Staff</div>
 				<br />
 				<div class="copy">
-					<b>Nathan Camarillo</b> - Administrator, Moderator, SquadWar Support<br />
-					<b>Eric Keyser</b>	 - PXO Support/FreeSpace 2 Multiplayer Support<br />
-					<b>James Tsai</b> - PXO Support/FreeSpace 2 Multiplayer Support<br />
-
+					<b>Cliff 'chief1983' Gordon</b> - Administrator, Moderator, SquadWar Support<br />
+					<b>taylor</b>	 - FS2NetD Support/FreeSpace 2 Multiplayer Support<br />
 				<p>
 				If you have a problem with single-player FreeSpace please contact Interplay support at <a href="http://www.interplay.com">http://www.interplay.com</a></p>
 				<p>
-				If you have a problem with PXO, connecting to PXO, or hosting a SquadWar match please contact PXO Support at: <a href="mailto:support@pxo.net">support@pxo.net</a></p>
+				If you have a problem with FS2NetD, connecting to FS2NetD, or hosting a SquadWar match please contact FS2NetD Support at: <a href="mailto:<?php echo SUPPORT_EMAIL; ?>"><?php echo SUPPORT_EMAIL; ?></a></p>
 				<p>
 				If you have a problem with the SquadWar web application, your SquadWar information, Squadron, or to dispute or report information about individuals detrimental to SquadWar, please write the circumstances in full and complete detail to: <a href="mailto:squadwar@volition-inc.com">squadwar@volition-inc.com</a></p>
 				</div>

@@ -147,7 +147,7 @@ include(BASE_PATH.'doc_mid.php');
 					California residents entered into and to be performed entirely within 
 					California.  All notices given by you or required under this Agreement shall be 
 					in writing and addressed to Parallax at 2004 Fox Drive Suite B - Champaign, IL 61820, or faxed to Parallax at
-					(217) 355-0767, or emailed support@pxo.net</p>
+					(217) 355-0767, or emailed <?php echo SUPPORT_EMAIL; ?></p>
 					<p>
 					12.  Agreements.  This Agreement and the terms and conditions set forth in 
 					the documentation for the Games comprise the entire agreement between 

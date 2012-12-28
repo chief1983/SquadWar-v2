@@ -30,7 +30,7 @@ if(count($check_squads) != 0)
 if(empty($get_pxo_stuff))
 {
 	// No user credentials found
-	util::location('index.php?message=Invalid%20PXO%20Login%20or%20password.');
+	util::location('index.php?message=Invalid%20FS2NetD%20Login%20or%20password.');
 }
 if(empty($_POST['join_password']))
 {

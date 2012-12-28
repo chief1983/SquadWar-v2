@@ -28,7 +28,7 @@ include(BASE_PATH.'doc_mid.php');
 			<font face="arial" color="FFFFFF"><b><?php echo $_GET['email_message']; ?></b></font></p>
 			<p>
 			Please try again, an error has been detected in your submission.<br> 								
-			If you have any further questions, feel free to contact <a href="mailto:webmaster@volition-inc.com">webmaster@volition-inc.com</a>.</p>		
+			If you have any further questions, feel free to contact <a href="mailto:<?php echo SUPPORT_EMAIL; ?>"><?php echo SUPPORT_EMAIL; ?></a>.</p>		
 			<p>
 			<a href="index.php">Return to sign-up page</a></p>
 		</div>					
@@ -42,7 +42,7 @@ include(BASE_PATH.'doc_mid.php');
 <?php else: ?>
 
 	<div class="Copy">
-	<p>We are currently taking registrations for SquadWar Squads.  Please fill out the form below.  You need a valid email address and a <a href="http://www.pxo.net">PXO</a> account.  You will be contacted as soon as your Squad name has been approved for use in SquadWar.</p>
+	<p>We are currently taking registrations for SquadWar Squads.  Please fill out the form below.  You need a valid email address and a <a href="http://<?php echo FS2NETD_HOME; ?>/">FS2NetD</a> account.  You will be contacted as soon as your Squad name has been approved for use in SquadWar.</p>
 	<p>
 	Below the form you will find a list of squads which have Registered.  All Squad Names are subject to approval from the SquadWar administrator.</p>
 	<p>
@@ -64,12 +64,12 @@ include(BASE_PATH.'doc_mid.php');
 							<td><input type="text" name="squad_email" title="You must enter your Squad Email." class="required" size="20" maxlength="50" /></td>
 						</tr>												
 						<tr>
-							<td align="right"><div class="form_required"><b>Your PXO Login:</b></div></td>
-							<td><input type="text" name="pxo_login" title="You must enter your PXO login." class="required" size="20" maxlength="50" /></td>
+							<td align="right"><div class="form_required"><b>Your FS2NetD Login:</b></div></td>
+							<td><input type="text" name="pxo_login" title="You must enter your FS2NetD login." class="required" size="20" maxlength="50" /></td>
 						</tr>	
 						<tr>
-							<td align="right"><div class="form_required"><b>Your PXO Password:</b></div></td>
-							<td><input type="password" name="pxo_password" title="You must enter your PXO password." class="required" size="20" maxlength="50" /></td>
+							<td align="right"><div class="form_required"><b>Your FS2NetD Password:</b></div></td>
+							<td><input type="password" name="pxo_password" title="You must enter your FS2NetD password." class="required" size="20" maxlength="50" /></td>
 						</tr>										
 						<tr>
 							<td align="right"><div class="form_required"><b>Squad Join Password:</b></div></td>

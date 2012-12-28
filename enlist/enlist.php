@@ -34,7 +34,7 @@ include(BASE_PATH.'doc_mid.php');
 						<div class="title"><font color="white"><b><?php echo $_SESSION['login']; ?>'s FreeSpace 2 Pilots</b></font></div>								
 						<?php if(count($fs2_search_pilots) == 0): ?>
 							<div class="copy">
-								No pilots exist for this account.  You must log into PXO using FreeSpace 2 to create a multiplayer pilot in the PXO database.<br />
+								No pilots exist for this account.  You must log into FS2NetD using FreeSpace 2 to create a multiplayer pilot in the FS2NetD database.<br />
 							</div>
 						<?php else: ?>
 							<br />

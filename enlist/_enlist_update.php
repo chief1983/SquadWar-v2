@@ -80,7 +80,7 @@ include(BASE_PATH.'doc_mid.php');
 					<font face="arial" color="FF0000"><b><?php echo implode("<br />\n", $message); ?></b></font></p>
 					<p>
 					Please try again, an error has been detected in your submission.<br /> 								
-					If you have any further questions, feel free to contact <a href="mailto:squadwar@pxo.net">squadwar@pxo.net</a>.</p>			
+					If you have any further questions, feel free to contact <a href="mailto:<?php echo SUPPORT_EMAIL; ?>"><?php echo SUPPORT_EMAIL; ?></a>.</p>			
 
 				<?php // END MAIN PAGE INFO ?>
 <?php include(BASE_PATH.'doc_bot.php'); ?>

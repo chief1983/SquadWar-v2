@@ -34,29 +34,27 @@ include(BASE_PATH.'doc_mid.php');
 
 <div class="copy">
 <b>IMPORTANT NOTE:</b><br />
-	<b>A working email address is required for PXO registration.</b><p>
+	<b>A working email address is required for FS2NetD registration.</b><p>
 	Without it a working email address, you will be unable to complete your registration.
 	Your email address will <b>not</b> be given to solicitors, bulk emailers or anyone else.</p>
 	<p>
-	You may receive email from PXO announcing game updates, contests, or special events.</p>
+	You may receive email from FS2NetD announcing game updates, contests, or special events.</p>
 	<p>
 	To improve your Internet play, please make sure you're using the latest version of your game.  To do so, hit the
 	"Update" button in your Launcher.</p>
 	<p>
-	<b>NOTE:</b>  Parallax Online is not a standalone gaming service.  It is designed to work with Volition/Outrage
+	<b>NOTE:</b>  FS2NetD is not a standalone gaming service.  It is designed to work with Volition/SCP
 	games like 
-	<a href="http://www.volition-inc.com/fs/">Descent: FreeSpace - The Great War</a>,
-	<a href="http://www.volition-inc.com/st">Descent: FreeSpace - Silent Threat</a>,
-	<a href="http://www.outrage.com/descent3.htm">Descent 3 Demo</a>,
-	<a href="http://www.outrage.com/descent3.htm">Descent 3</a>,
-	<a href="http://www.freespace2.com">FreeSpace 2 Demo</a>,
-	and <a href="http://www.freespace2.com">FreeSpace 2</a>
+	<a href="http://www.hard-light.net/">FreeSpace 2</a>,
+	<a href="http://babylon.hard-light.net/">The Babylon Project</a>,
+	<a href="http://www.beyondtheredline.net/">Beyond the Red Line</a>,
+	and <a href="http://www.diaspora-game.com/">Diaspora</a>
 	for your PC.
-	If you created a PXO account for one
+	If you created a FS2NetD account for one
 	of these games, you do not need to register again to play the other.</p>
 
-	<p>Your login name is simply a name used to identify your PXO account. It does not need to be the same
-	as your pilot's callsign in FreeSpace/Descent 3.</p>
+	<p>Your login name is simply a name used to identify your FS2NetD account. It does not need to be the same
+	as your pilot's callsign in FreeSpace 2.</p>
 	<p>If you receive an error that says that your requested login already exists
 	and you've never registered before, it means that someone else has already chosen that login.  To fix this, select
 	a different login.</p>

@@ -32,13 +32,13 @@ include(BASE_PATH.'doc_mid.php');
 							<?php if(util::check_email_address($_POST['email'])): ?>
 															
 									<?php if ($check_login != 0): ?>
-										That login already exists in the <b>PXO</b> database.
+										That login already exists in the <b>FS2NetD</b> database.
 										<p>
 										Please return to the form and try again.</p>										
 									<?php endif; ?>
 									
 									<?php if (!empty($check_email)): ?>
-										That email address already exists in the <b>PXO</b> database.
+										That email address already exists in the <b>FS2NetD</b> database.
 										<p>
 										Please return to the form and try again.</p>
 									<?php endif; ?>
@@ -76,26 +76,26 @@ include(BASE_PATH.'doc_mid.php');
 										<b>Check your email.</b></p>
 										<p>
 										It may take several minutes for the email to arrive.  Follow the instructions in the email to complete your
-										PXO Registration!</p>
+										FS2NetD Registration!</p>
 										<p>
 										If you do not receive the email within a few hours, please contact us at:<br />
-										<a href="mailto:support@pxo.net">support@pxo.net</a></p>
+										<a href="mailto:<?php echo SUPPORT_EMAIL; ?>"><?php echo SUPPORT_EMAIL; ?></a></p>
 */?>
 										<p>You can now <a href="<?php echo RELATIVEPATH; ?>login.php">log in</a>.</p>
 <?php
 $mailto = $_POST['email'];
 $from = SUPPORT_EMAIL;
-$subject = "Your Parallax Online Account";
+$subject = "Your FS2NetD Account";
 $message = <<<EOT
-Your Parallax Online Registration has been received.
+Your FS2NetD Registration has been received.
 
 =======================================
-Your PXO Tracker ID number is: {$rec->get_id()}
-Your PXO Login is: {$_POST['login']}
+Your FS2NetD Tracker ID number is: {$rec->get_id()}
+Your FS2NetD Login is: {$_POST['login']}
 Your password is : {$_POST['password']}
 =======================================
 
-You must now validate your PXO Account, which you can do by clicking on this URL:
+You must now validate your FS2NetD Account, which you can do by clicking on this URL:
 
 http://www.pxo.net/validate.php?id={$rec->get_id()}
 EOT;
@@ -119,7 +119,7 @@ If you have any questions or problems, please email help@parallaxonline.com
 										<font face="arial" color="#FF0000"><b>Invalid email.</b></font></p>
 										<p>
 										You have entered an invalid email address.  Please try again.<br />
-										If you have any further questions, feel free to contact <a href="<?php echo SUPPORT_EMAIL; ?>">support@pxo.net</a>.</p>
+										If you have any further questions, feel free to contact <a href="<?php echo SUPPORT_EMAIL; ?>"><?php echo SUPPORT_EMAIL; ?></a>.</p>
 								
 									<?php
 									}
