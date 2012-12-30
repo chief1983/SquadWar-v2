@@ -174,7 +174,8 @@ include(BASE_PATH.'doc_mid.php');
 					 										echo $match->get_Challenger()->get_SquadName(); ?></a><?php else:
 					 										echo $match->get_Challenger()->get_SquadName(); endif; ?> has challenged 
 					 										<?php if($match->get_SWSquad2() != $id): ?><a
-					 										href="squadinfo.php?id=<?php echo $match->get_SWSquad2(); ?>"><?php
+					 										href="squadinfo.php?id=<?php echo $match->get_SWSquad2(); ?>&amp;leagueid=<?php
+															echo $leagueid; ?>"><?php
 					 										echo $match->get_Challenged()->get_SquadName(); ?></a><?php else:
 					 										echo $match->get_Challenged()->get_SquadName(); endif; ?> for control of <?php
 					 										echo $match->get_SWSector()->get_SectorName(); ?>.</div></li>
