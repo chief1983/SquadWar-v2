@@ -115,9 +115,9 @@ include(BASE_PATH.'doc_mid.php');
 											<br />
 										</li>
 									<?php endif; ?>
-								</ol>
-								</div>
 							<?php endforeach; ?>
+							</ol>
+							</div>
 						<?php endif; ?>
 					<?php endif; ?>
 			
