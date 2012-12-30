@@ -70,7 +70,7 @@ class db_query
 			$this->error_messages[] = $error_message;
 			
 			// Throw a warning if there is an error.
-			trigger_error($this->con->error);			
+			trigger_error("{$this->con->error} (SQL: {$this->sql})");
 		}
 	}
 
