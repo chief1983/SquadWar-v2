@@ -162,9 +162,16 @@ class fsopilot_data_swpilot extends fsopilot_data_base
 			)
 		";
 
-		$id = $this->exec_sql_return_id($sql);
+		$status = $this->exec_sql_return_status($sql);
 
-		return $id;
+		if($status)
+		{
+			return $record->get_PilotID();
+		}
+		else
+		{
+			return $status;
+		}
 	}
 
 
