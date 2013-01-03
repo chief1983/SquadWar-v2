@@ -32,6 +32,42 @@ class util
 		return self::$footer_elements;
 	}
 
+	public function enum($array, $asBitwise = FALSE)
+	{
+		if($array === null)
+		{
+			return FALSE;   # Error incorrect type
+		}
+		if(!is_array($array))
+		{
+			return FALSE;   # Error incorrect type
+		}
+
+		$count = 0; # Counter variable
+
+		# The foreach: & endforeach is just a style of programming
+		# You can use brackets {} all the same
+		# The case is the same for the if statements
+		# I just find the colons to look a bit cleaner and so it does not
+		# get confused with my javascript
+
+		foreach($array as $i)
+		{
+			if($i === null)
+			{
+				if($count == 0)
+				{
+					define($i, 0);
+				}
+				else
+				{
+					define($i, ($asBitwise === true) ? 1 << ($count - 1) : $count);
+				}
+			}
+			$count++;
+		}
+	}
+
 	public function str_rank($rank_id)
 	{
 		$ranks = array(
