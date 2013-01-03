@@ -5,7 +5,7 @@ class mission_record_search extends base_recordsearch
 	protected $id;
 	protected $filename;
 	protected $name;
-
+	protected $status;
 
 	public function get_id()
 	{
@@ -33,6 +33,13 @@ class mission_record_search extends base_recordsearch
 	{
 		$this->name = $val;
 	}
-}
 
-?>
+	public function get_status()
+	{
+		return $this->status;
+	}
+	public function set_status($val)
+	{
+		$this->status = $val;
+	}
+}

@@ -104,6 +104,24 @@ class mission_data_main extends mission_data_base
 		}
 		return $where_fragment;
 	}
-}
 
-?>
+
+	/**
+		build snippet of where clause for status, 1 is enabled, 0 is disabled currently
+	**/
+	protected function where_clause_status()
+	{
+		if(!method_exists($this->incoming_record, 'get_status'))
+		{
+			return '';
+		}
+
+		$banned = $this->incoming_record->get_status();
+		$where_fragment = '';
+		if(!is_null($status))
+		{
+			$where_fragment=" and m.status = {$this->db->quote($status)}";
+		}
+		return $where_fragment;
+	}
+}

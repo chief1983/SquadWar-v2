@@ -9,6 +9,7 @@ class mission_record_detail extends base_recorddetail
 	protected $specifics;
 	protected $respawns;
 	protected $players;
+	protected $status;
 
 	public function __construct()
 	{
@@ -72,5 +73,13 @@ class mission_record_detail extends base_recorddetail
 	{
 		$this->players = $val;
 	}
+
+	public function get_status()
+	{
+		return $this->status;
+	}
+	public function set_status($val)
+	{
+		$this->status = $val;
+	}
 }
-?>
