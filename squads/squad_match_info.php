@@ -25,6 +25,15 @@ if($get_match)
 	$current_phase = $info->get_current_phase();
 }
 
+if($current_phase == 2)
+{
+	// Get mission list, instead of using form_missions.txt.
+	$rec = mission_api::new_search_record();
+	$rec->set_status(1);
+	$ret = mission_api::search($rec);
+	$missions = $ret->get_results();
+}
+
 include(BASE_PATH.'doc_top.php');
 
 include(BASE_PATH.'menu/main.php');
@@ -188,7 +197,9 @@ include(BASE_PATH.'doc_mid.php');
 				<td>&nbsp;&nbsp;</td>
 				<td>
 					<select name="mission">
-						<?php include(BASE_PATH.'forms/form_missions.txt'); ?>
+						<?php foreach($missions as $mission): ?>
+						<option value="<?php echo $mission->get_filename(); ?>"><?php echo $mission->get_filename(); ?> <?php echo $mission->get_name(); ?></option>
+						<?php endforeach; ?>
 					</select>										
 				</td>
 			</tr>
