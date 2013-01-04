@@ -52,7 +52,7 @@
 					<img src="<?php echo RELATIVEPATH; ?>images/main/footer_left.gif" width="110" height="18" alt="" border="0" /><br />
 				</td>
 				<td style="background-image:url(<?php echo RELATIVEPATH; ?>images/main/bkg_bar_bot.gif);" valign="top">
-					<img src="<?php echo RELATIVEPATH; ?>images/main/footer_right.gif" width="220" height="18" alt="" border="0" align="right" /><br clear="all" />
+					<img src="<?php echo RELATIVEPATH; ?>images/main/footer_right.gif" width="141" height="18" alt="" border="0" align="right" /><br clear="all" />
 				</td>
 			</tr>
 			</table>
