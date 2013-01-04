@@ -1,0 +1,9 @@
+body {
+    scrollbar-face-color: black; 
+    scrollbar-shadow-color: black; 
+    scrollbar-highlight-color: #ffffff; 
+    scrollbar-3dlight-color: black; 
+    scrollbar-darkshadow-color: black; 
+    scrollbar-track-color: #172A1B; 
+    scrollbar-arrow-color: rgb(92,170,110);
+}

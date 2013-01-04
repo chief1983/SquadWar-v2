@@ -1,105 +1,99 @@
-P  {}
+p  {}
 
-H1  {
+h1  {
 	font-weight : bold;
-	color : Black;
+	color : black;
 }
 
-H2  {}
+h2  {}
 
-H3  {}
+h3  {}
 
-A  {
-	color : rgb(92,170,110);
+a  {
+	color : #5caa6e;
 }
 
-A:Visited  {
-	color : rgb(92,170,110);
+a:visited  {
+	color : #5caa6e;
 }
 
-A:Active  {
-	color : rgb(138,255,165);
+a:active  {
+	color : #8affa5;
 	text-decoration : underline;
 }
 
-A:Hover  {
-	color : rgb(138,255,165);
+a:hover  {
+	color : #8affa5;
 	text-decoration : underline;
 }
 
-BODY  {
+body  {
 	font-size : 10pt;
 	font-family : Arial;
 	color : white;
-	scrollbar-face-color: black; 
-	scrollbar-shadow-color: black; 
-	scrollbar-highlight-color: #ffffff; 
-	scrollbar-3dlight-color: black; 
-	scrollbar-darkshadow-color: black; 
-	scrollbar-track-color: #172A1B; 
-	scrollbar-arrow-color: rgb(92,170,110);
+	background-color : black;
 }
 
 .newstitle  {
 	font-family : Arial;
 	font-weight : bold;
-	color : White;
+	color : white;
 	font-size : 12pt;
 }
 
 .newsitem  {
 	font-family : Arial;
-	color : Silver;
+	color : silver;
 	font-size : 10pt;
 }
 
 .title  {
 	font-family : Arial;
 	font-weight : bold;
-	color : White;
+	color : white;
 	font-size : 12pt;
 }
 
 .copy  {
 	font-size : 10pt;
 	font-family : Arial;
-	color : White;
+	color : white;
 }
 
 .form_required  {
 	font-size : 10pt;
 	font-family : Arial;
-	color : White;
+	color : white;
 }
 
 .form  {
 	font-size : 10pt;
 	font-family : Arial;
-	color : Silver;
+	color : silver;
 }
 
 .recruit  {
 	font-size : 8pt;
 	font-family : Arial;
-	color : White;
+	color : white;
 }
 
 .admin_table  {
 	font-size : 8pt;
 	font-family : Arial;
-	color : White;
+	color : white;
 }
 
 .squadtable  {
 	font-size : 8pt;
 	font-family : Arial;
-	color : White;
+	color : white;
 }
 
 .mapcaption  {
 	font-size : 8pt;
 	font-family : Arial;
-	color : White;
+	color : white;
 }
 
 .question  {
@@ -117,6 +111,6 @@ BODY  {
 .editor  {
 	font-family : Arial;
 	font-size : 10pt;
-	color : Silver;
+	color : silver;
 }
 

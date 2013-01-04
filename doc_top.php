@@ -16,12 +16,15 @@
 	<meta name="keywords" lang="en-us" content="Hard Light Productions Source Code Project SquadWar Port PXO FS2NetD" />
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<link href="<?php echo RELATIVEPATH; ?>squadwar.css" rel="stylesheet" type="text/css" />
+	<!--[if IE]>
+	<link href="<?php echo RELATIVEPATH; ?>squadwar-ie.css" rel="stylesheet" type="text/css" />
+	<![endif]-->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="<?php echo RELATIVEPATH; ?>squadwar.js"></script>
 <?php echo implode("\n", util::get_head())."\n"; ?>
 </head>
-<body text="#FFFFFF" bgcolor="#000000" alink="#8AFFA5" link="#5CAA6E" vlink="#5CAA6E">
+<body>
 
 			<table cellpadding="0" cellspacing="0" width="100%" border="0">
 			<tr>
