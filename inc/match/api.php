@@ -85,6 +85,54 @@ class match_api
 	}
 
 	/**
+		@param $code int
+		@param $sector int
+		@param $first int
+		@param $second int
+		@param $winner int
+		@param $loser int
+		@param $league int
+
+		shortcut method.
+		@return match_record_search
+	**/
+	public static function award_match($code, $sector, $first, $second, $winner, $loser, $league, $special)
+	{
+		$match = match_api::get_by_SWCode($code);
+
+		if(!$match)
+		{
+			return false;
+		}
+
+		$time = time();
+
+		$rec = squad_api::new_sector_search_record();
+		$rec->set_SWSectors_ID($sector);
+		$ret = squad_api::search($rec);
+		$sector = reset($ret->get_results());
+		$sector->set_SectorSquad($winner);
+		$sector->set_SectorTime($time);
+		$sector->save();
+
+		$rec = squad_api::new_matchhistory_detail_record();
+		$rec->set_MatchID($match->get_MatchID());
+		$rec->set_SWCode($code);
+		$rec->set_SWSquad1($first);
+		$rec->set_SWSquad2($second);
+		$rec->set_SWSector_ID($sector);
+		$rec->set_match_victor($winner);
+		$rec->set_match_loser($loser);
+		$rec->set_match_time($time);
+		$rec->set_League_ID($league);
+		$rec->save();
+
+		$match->delete();
+
+		return true;
+	}
+
+	/**
 		@param $ret base_return
 		Populates matches with associated match_info record
 		@return base_return
@@ -223,4 +271,3 @@ class match_api
 		return new match_record_info_search();
 	}
 }
-?>
