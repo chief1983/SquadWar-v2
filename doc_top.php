@@ -19,8 +19,8 @@
 	<!--[if IE]>
 	<link href="<?php echo RELATIVEPATH; ?>squadwar-ie.css" rel="stylesheet" type="text/css" />
 	<![endif]-->
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="<?php echo RELATIVEPATH; ?>squadwar.js"></script>
 <?php echo implode("\n", util::get_head())."\n"; ?>
 </head>
