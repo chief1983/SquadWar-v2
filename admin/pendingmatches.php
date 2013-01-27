@@ -43,9 +43,9 @@ Current game time is: <?php echo time(); ?>
 										<td><div class="copy">&nbsp;<?php echo $match->get_SWCode(); ?>&nbsp;</div></td>
 										<td>
 											<div class="copy">
-												<a href="_award_match.php?code=<?php echo $match->get_SWCode(); ?>&amp;sector=<?php echo $match->get_SWSector_ID(); ?>&amp;time=<?php echo time(); ?>&amp;league=<?php echo $match->get_League_ID(); ?>&amp;first=<?php echo $match->get_SWSquad1(); ?>&amp;second=<?php echo $match->get_SWSquad2(); ?>&amp;winner=<?php echo $match->get_SWSquad1(); ?>&amp;loser=<?php echo $match->get_SWSquad2(); ?>"><?php echo $match->get_Challenger()->get_SquadName(); ?></a>
+												<a href="_award_match.php?code=<?php echo $match->get_SWCode(); ?>&amp;sector=<?php echo $match->get_SWSector_ID(); ?>&amp;league=<?php echo $match->get_League_ID(); ?>&amp;first=<?php echo $match->get_SWSquad1(); ?>&amp;second=<?php echo $match->get_SWSquad2(); ?>&amp;winner=<?php echo $match->get_SWSquad1(); ?>&amp;loser=<?php echo $match->get_SWSquad2(); ?>"><?php echo $match->get_Challenger()->get_SquadName(); ?></a>
 												Challenged
-												<a href="_award_match.php?code=<?php echo $match->get_SWCode(); ?>&amp;sector=<?php echo $match->get_SWSector_ID(); ?>&amp;time=<?php echo time(); ?>&amp;league=<?php echo $match->get_League_ID(); ?>&amp;first=<?php echo $match->get_SWSquad1(); ?>&amp;second=<?php echo $match->get_SWSquad2(); ?>&amp;winner=<?php echo $match->get_SWSquad2(); ?>&amp;loser=<?php echo $match->get_SWSquad1(); ?>"><?php echo $match->get_Challenged()->get_SquadName(); ?></a>
+												<a href="_award_match.php?code=<?php echo $match->get_SWCode(); ?>&amp;sector=<?php echo $match->get_SWSector_ID(); ?>&amp;league=<?php echo $match->get_League_ID(); ?>&amp;first=<?php echo $match->get_SWSquad1(); ?>&amp;second=<?php echo $match->get_SWSquad2(); ?>&amp;winner=<?php echo $match->get_SWSquad2(); ?>&amp;loser=<?php echo $match->get_SWSquad1(); ?>"><?php echo $match->get_Challenged()->get_SquadName(); ?></a>
 												for control of
 												<?php if(!$match->get_SWSector()->get_SectorSquad()): ?><b>Unclaimed</b><?php endif; ?>
 												Sector
