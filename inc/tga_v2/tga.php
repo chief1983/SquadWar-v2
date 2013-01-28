@@ -95,7 +95,7 @@ function imagecreatefromtga($filename)
 		default:	die('Unsupported TGA format');					
 	}
 	
-	if ($header['pixel_size'] != 24)
+	if ($header['pixel_size'] != 24 && $header['pixel_size'] != 32)
 	{
 		die('Unsupported TGA color depth');	
 	}
@@ -148,7 +148,8 @@ function imagecreatefromtga($filename)
 		$reverse = false;
 	}    
     
-	$pixels = str_split($data, 3);
+	$num_bytes = $header['pixel_size']/8;
+	$pixels = str_split($data, $num_bytes);
 	$i = 0;
 	
 	//read pixels 
