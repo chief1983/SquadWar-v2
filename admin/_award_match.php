@@ -5,7 +5,7 @@
    or otherwise commercially exploit the source or things you created based on the 
    source.
 */
-include('../bootstrap.php');
+require('../bootstrap.php');
 
 $result = match_api::award_match(
 	$_GET['code'],
