@@ -14,7 +14,8 @@ $result = match_api::award_match(
 	$_GET['second'],
 	$_GET['winner'],
 	$_GET['loser'],
-	$_GET['league']
+	$_GET['league'],
+	1
 );
 
 if(!$result)
