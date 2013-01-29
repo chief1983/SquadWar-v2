@@ -125,10 +125,7 @@ class match_api
 		$rec->set_match_loser($loser);
 		$rec->set_match_time($time);
 		$rec->set_League_ID($league);
-		if($special)
-		{
-			$rec->set_special($special);
-		}
+		$rec->set_special($special);
 		$rec->save();
 
 		$match->delete();
