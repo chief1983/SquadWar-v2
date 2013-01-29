@@ -34,6 +34,22 @@ if($current_phase == 2)
 	$missions = $ret->get_results();
 }
 
+$script = <<<EOT
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery("#match_claim_form").validate(
+		{
+			submitHandler: function(f){
+				jQuery('#match_claim_form input[type=submit]').attr('disabled', 'disabled');
+				jQuery('#pleasewait').toggle()
+				form.submit();
+			}
+		});
+	});
+</script>
+EOT;
+util::push_head($script);
+
 include(BASE_PATH.'doc_top.php');
 
 include(BASE_PATH.'menu/main.php');
@@ -407,11 +423,20 @@ include(BASE_PATH.'doc_mid.php');
 				<?php if($other_reported): ?><div class="copy">The other Squad has declared a No-Show or requests a reschedule.</div><?php endif; ?>
 				<?php if(!$this_reported): ?>
 				<div class="copy">
-					<form action="noshow.php" method="post">
-					<input type="hidden" name="SWCode" value="<?php echo $get_match->get_SWCode(); ?>" />
-					<input type="submit" value="Report the other squad was a No-Show or request a Reschedule" />
+					<p>To claim a match victory after it is played, take a screenshot (<a href="<?php echo RELATIVEPATH; ?>images/example.png">example</a>) of the results screen and upload it here.</p>
+					<form enctype="multipart/form-data" id="match_claim_form" action="_manual_award.php" method="post" class="validate">
+						<input type="hidden" name="MAX_FILE_SIZE" value="18000000" />
+						<input type="hidden" name="code" value="<?php echo $get_match->get_SWCode(); ?>" />
+						Upload screenshot: <input onchange="jQuery('label[for=\'uploadedfile\']').hide();" title="Screenshot is required." class="required" id="uploadedfile" name="uploadedfile" type="file" />
+						<input type="submit" value="Claim Match" />
+						<span id="pleasewait" style="display:none;">Please wait for processing to complete...</span>
 					</form>
-				</div>		
+					<p>Or, to report a no-show or request a reschedule:</p>
+					<form action="noshow.php" method="post">
+						<input type="hidden" name="SWCode" value="<?php echo $get_match->get_SWCode(); ?>" />
+						<input type="submit" value="Report the other squad was a No-Show or request a Reschedule" />
+					</form>
+				</div>
 				<?php else: ?>
 				<div class="copy">
 					Your squad has declared a No-Show or requests a reschedule.
