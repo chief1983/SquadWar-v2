@@ -149,7 +149,6 @@ function imagecreatefromtga($filename)
 	}    
     
 	$num_bytes = $header['pixel_size']/8;
-	$pixels = str_split($data, $num_bytes);
 	$i = 0;
 	
 	//read pixels 
@@ -159,7 +158,7 @@ function imagecreatefromtga($filename)
 	    {		
 	    	for ($x=0; $x<$header['width']; $x++)
 	    	{
-	    		imagesetpixel($im, $x, $y, dwordize($pixels[$i]));
+	    		imagesetpixel($im, $x, $y, dwordize(substr($data, $num_bytes * $i, $num_bytes)));
 	    		$i++;
 	    	}
 	    }
@@ -170,7 +169,7 @@ function imagecreatefromtga($filename)
 	    {		
 	    	for ($x=0; $x<$header['width']; $x++)
 	    	{
-	    		imagesetpixel($im, $x, $y, dwordize($pixels[$i]));
+	    		imagesetpixel($im, $x, $y, dwordize(substr($data, $num_bytes * $i, $num_bytes)));
 	    		$i++;
 	    	}
 	    }
