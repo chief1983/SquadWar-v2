@@ -58,6 +58,11 @@ body  {
 	font-size : 10pt;
 	font-family : Arial;
 	color : white;
+	text-align : left;
+}
+
+.full_width_container  {
+	width : 95%;
 }
 
 .form_required  {

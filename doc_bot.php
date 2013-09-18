@@ -11,9 +11,9 @@
 		</center>
 
 			<?php if(isset($main_news)): ?>
-				<?php if(count($main_news)): ?>
 				<br />
 					<center>
+				<?php if(count($main_news)): ?>
 					<?php foreach($main_news as $news_item): ?>
 
 						<a name="news<?php echo $news_item->get_newsID(); ?>"></a>
@@ -34,15 +34,16 @@
 							<br />
 
 					<?php endforeach; ?>
-					</center>
 				<br />
 				<?php else: ?>
-				<br />
+				<div class="full_width_container">
 					<div class="copy">
 						Sorry, but there is no news for FreeSpace 2 at this time.
 					</div>
+				</div>
 				<br />
 				<?php endif; ?>
+					</center>
 			<?php endif; ?>
 
 				</td>
