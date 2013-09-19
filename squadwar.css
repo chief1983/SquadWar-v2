@@ -58,11 +58,14 @@ body  {
 	font-size : 10pt;
 	font-family : Arial;
 	color : white;
-	text-align : left;
 }
 
 .full_width_container  {
 	width : 95%;
+}
+
+.full_width_container .copy  {
+	text-align : left;
 }
 
 .form_required  {
