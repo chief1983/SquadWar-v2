@@ -7,7 +7,9 @@
 */
 include('../bootstrap.php');
 
-$document_title = 'SquadWar - Enter Map';
+$get_squad = squad_api::get($_SESSION['squadid']);
+util::prepend_title($get_squad->get_SquadName());
+util::prepend_title('Enter Map');
 
 $_SESSION['challenging'] = 1;
 

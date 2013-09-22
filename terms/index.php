@@ -7,7 +7,7 @@
 */
 include('../bootstrap.php');
 
-$document_title = 'SquadWar - Online License Agreement';
+util::prepend_title('Online License Agreement');
 
 include(BASE_PATH.'doc_top.php');
 

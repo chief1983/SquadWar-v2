@@ -40,7 +40,8 @@ if($red == '' || $green == '' || $blue == '' || $red + $green + $blue < 96 || $r
 	$fontcolor = 'ffffff';
 }
 
-$document_title = 'SquadWar - Set Color';
+util::prepend_title($get_squad->get_SquadName());
+util::prepend_title('Set Color');
 
 include(BASE_PATH.'doc_top.php');
 

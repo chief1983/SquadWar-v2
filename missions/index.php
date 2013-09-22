@@ -11,7 +11,7 @@ $rec = mission_api::new_search_record();
 $ret = mission_api::search($rec);
 $get_missions = $ret->get_results();
 
-$document_title = 'SquadWar - Missions';
+util::prepend_title('Missions');
 
 include(BASE_PATH.'doc_top.php');
 

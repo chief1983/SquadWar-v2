@@ -7,7 +7,7 @@
 */
 include('../bootstrap.php');
 
-$document_title = 'SquadWar - Admin';
+util::prepend_title('Admin');
 
 include(BASE_PATH.'doc_top.php');
 

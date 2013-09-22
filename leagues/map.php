@@ -28,10 +28,11 @@ if(empty($get_league)):
 League not found.
 
 <?php elseif(!empty($_GET['isfullscreen'])):
+	util::prepend_title('League '.$get_league->get_Title().' Map');
 	$relativepath = '../../';
 	?><html>
 	<head>
-	<title></title>
+	<title><?php echo util::get_title(); ?></title>
 	</head>
 	<body style="background-color:#000000">
 	<center>

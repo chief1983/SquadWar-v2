@@ -13,7 +13,7 @@ if(!empty($_GET['id']))
 	$get_squad = squad_api::get($_GET['id']);
 }
 
-$document_title = 'SquadWar - Join a Squad';
+util::prepend_title('Join '.$get_squad->get_SquadName());
 
 include(BASE_PATH.'doc_top.php');
 

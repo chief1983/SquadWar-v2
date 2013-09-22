@@ -7,12 +7,14 @@
 */
 include('../bootstrap.php');
 
-$document_title = 'SquadWar - Issue Challenge';
-
 if(!empty($_SESSION['squadid']))
 {
 	$get_squad = squad_api::get($_SESSION['squadid']);
+	util::prepend_title($get_squad->get_SquadName());
 }
+
+util::prepend_title('Issue Challenge');
+
 $get_league = league_api::get($_GET['leagueid']);
 
 $league_proceed = true;

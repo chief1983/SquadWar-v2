@@ -65,7 +65,7 @@ if(empty($message))
 	util::location('enlist.php?action=add');
 }
 
-$document_title = 'SquadWar - Enlist a Pilot';
+util::prepend_title('Enlist a Pilot');
 
 include(BASE_PATH.'doc_top.php');
 

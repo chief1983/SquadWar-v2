@@ -16,6 +16,8 @@ else
 	util::custom_die('Could not load config!  Copy conf/config.php.sample to conf/config.php and fill it out.');
 }
 
+util::append_title(SITE_TITLE);
+
 if(empty($_SESSION['loggedin']))
 {
 	if(!empty($_COOKIE['username']))

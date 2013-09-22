@@ -7,7 +7,7 @@
 */
 include('bootstrap.php');
 
-$document_title = 'SquadWar - League';
+util::prepend_title('League Pending Matches');
 
 include(BASE_PATH.'doc_top.php');
 

@@ -7,7 +7,9 @@
 */
 include('../bootstrap.php');
 
-$document_title = 'SquadWar - Challenge an Entry Node';
+$get_squad = squad_api::get($_SESSION['squadid']);
+util::prepend_title($get_squad->get_SquadName());
+util::prepend_title('Challenge an Entry Node');
 
 $_SESSION['challenging'] = 1;
 

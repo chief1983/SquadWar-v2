@@ -68,7 +68,8 @@ if(!empty($_GET['leagueid']))
 	$match_history = $ret->get_results();
 }
 
-$document_title = 'SquadWar - Squad Info';
+util::prepend_title($get_squad->get_SquadName());
+util::prepend_title('Squad Info');
 
 include(BASE_PATH.'doc_top.php');
 

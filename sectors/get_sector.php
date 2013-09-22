@@ -7,6 +7,8 @@
 */
 include('../bootstrap.php');
 
+util::prepend_title('Get Sector');
+
 if(!empty($_GET['id']))
 {
 	$rec = squad_api::new_sector_search_record();
@@ -20,7 +22,7 @@ if(!empty($_GET['id']))
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-	<title>Get Sector</title>
+	<title><?php echo util::get_title(); ?></title>
 	<link href="<?php echo RELATIVEPATH; ?>squadwar.css" rel="stylesheet" type="text/css" />	
 </head>
 <body text="#ffffff" bgcolor="#000000" alink="#8AFFA5" link="#5CAA6E" vlink="#5CAA6E">

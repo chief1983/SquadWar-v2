@@ -4,6 +4,7 @@ class util
 {
 	protected static $head_elements = array();
 	protected static $footer_elements = array();
+	protected static $title = array();
 
 	public static function custom_die($msg)
 	{
@@ -30,6 +31,21 @@ class util
 	public static function get_footer()
 	{
 		return self::$footer_elements;
+	}
+
+	public static function prepend_title($text)
+	{
+		array_unshift(self::$title, $text);
+	}
+
+	public static function append_title($text)
+	{
+		self::$title[] = $text;
+	}
+
+	public static function get_title()
+	{
+		return implode(TITLE_SEPARATOR, self::$title);
 	}
 
 	public function enum($array, $asBitwise = FALSE)

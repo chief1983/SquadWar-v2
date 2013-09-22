@@ -7,7 +7,7 @@
 */
 include('bootstrap.php');
 
-$document_title = 'SquadWar - News Archive';
+util::prepend_title('News Archive');
 
 $cutoff_date = date("Y-m-d H:i:s", strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " -1 month"));
 $rec = news_api::new_search_record();

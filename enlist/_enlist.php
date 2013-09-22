@@ -20,7 +20,7 @@ elseif(!empty($_POST['action']) && $_POST['action'] == 'add')
 $get_form_time_zones = fsopilot_api::get_form_time_zones();
 $get_form_connection_type = fsopilot_api::get_form_connection_types();
 
-$document_title = 'SquadWar - Enlist a Pilot';
+util::prepend_title('Enlist a Pilot');
 
 include(BASE_PATH.'doc_top.php');
 

@@ -14,7 +14,7 @@ $check_login = user_api::get_count($rec);
 
 $check_email = user_api::get_user_by_email($_POST['email']);
 
-$document_title = 'SquadWar - Register';
+util::prepend_title('Register');
 
 include(BASE_PATH.'doc_top.php');
 

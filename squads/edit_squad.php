@@ -20,7 +20,8 @@ $ret = squad_api::populate_info($ret);
 $get_squad = reset($ret->get_results());
 $get_squad_info = $get_squad->get_info();
 
-$document_title = 'SquadWar - Edit Squad';
+util::prepend_title($get_squad->get_SquadName());
+util::prepend_title('Edit Squad');
 
 include(BASE_PATH.'doc_top.php');
 

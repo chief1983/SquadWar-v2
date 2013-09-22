@@ -18,7 +18,7 @@ $ret = fsopilot_api::search($rec);
 $ret = fsopilot_api::populate_swpilots($ret);
 $fs2_search_pilots = $ret->get_results();
 
-$document_title = 'SquadWar - Enlist a Pilot';
+util::prepend_title('Enlist a Pilot');
 
 include(BASE_PATH.'doc_top.php');
 

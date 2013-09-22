@@ -8,13 +8,15 @@
 define('SECURE',1);
 include('../bootstrap.php');
 
-$document_title = 'SquadWar - Join League';
-
 if(empty($_SESSION['squadid']))
 {
 	$message = urlencode('You must log into your squad');
 	util::location(RELATIVEPATH.'error/error.php?message='.$message);
 }
+
+$get_squad = squad_api::get($_SESSION['squadid']);
+util::prepend_title($get_squad->get_SquadName());
+util::prepend_title('Join League');
 
 $rec = league_api::new_search_record();
 $rec->set_Active(1);

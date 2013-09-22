@@ -8,7 +8,7 @@
 define('SECURE',1);
 include('../bootstrap.php');
 
-$document_title = 'SquadWar - Squads';
+util::prepend_title('Squads');
 
 include(BASE_PATH.'doc_top.php');
 

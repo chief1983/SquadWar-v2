@@ -7,7 +7,7 @@
 */
 include('../bootstrap.php');
 
-$document_title = 'SquadWar - Pending Squads Admin';
+util::prepend_title('Pending Squads Admin');
 
 $rec = squad_api::new_search_record();
 $rec->set_Active(0);

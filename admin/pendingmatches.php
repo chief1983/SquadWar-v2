@@ -7,7 +7,7 @@
 */
 include('../bootstrap.php');
 
-$document_title = 'SquadWar - Pending Matches Admin';
+util::prepend_title('Pending Matches Admin');
 
 $rec = match_api::new_search_record();
 $ret = match_api::search($rec);

@@ -8,8 +8,6 @@
 define('SECURE',1);
 include('../bootstrap.php');
 
-$document_title = 'SquadWar - Admin Squad';
-
 // preprocess login stuff
 if(!empty($_POST['id']))
 {
@@ -164,6 +162,9 @@ else
 		}
 	}
 }
+
+util::prepend_title($get_squad->get_SquadName());
+util::prepend_title('Admin Squad');
 
 // end preprocess login stuff
 

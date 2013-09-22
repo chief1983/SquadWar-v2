@@ -7,7 +7,7 @@
 */
 include('../bootstrap.php');
 
-$document_title = 'SquadWar - Win-Loss';
+util::prepend_title('Win-Loss');
 
 $rec = squad_api::new_search_record();
 $rec->set_Active(1);

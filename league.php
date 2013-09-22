@@ -7,8 +7,7 @@
 */
 include('bootstrap.php');
 
-$document_title = 'SquadWar - League';
-
+$title = '';
 if(!empty($_GET['leagueid']))
 {
 	$leagueid = $_GET['leagueid'];
@@ -19,6 +18,7 @@ if(!empty($_GET['leagueid']))
 	if(!empty($get_league_squads))
 	{
 		$get_league = league_api::get($leagueid);
+		$title = ' '.$get_league->get_Title();
 
 		$rec = squad_api::new_search_record();
 		$rec->set_league($leagueid);
@@ -44,6 +44,8 @@ if(!empty($_GET['leagueid']))
 		$squadgroup['Squadrons hold no Systems in this League'] = $ret->get_results();
 	}
 }
+
+util::prepend_title('League'.$title);
 
 include(BASE_PATH.'doc_top.php');
 

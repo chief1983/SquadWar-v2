@@ -10,7 +10,7 @@ include('../bootstrap.php');
 
 $get_form_time_zones = fsopilot_api::get_form_time_zones();
 
-$document_title = 'SquadWar - Create a Squad';
+util::prepend_title('Create a Squad');
 
 include(BASE_PATH.'doc_top.php');
 

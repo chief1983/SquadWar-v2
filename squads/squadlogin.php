@@ -19,7 +19,7 @@ $script = <<<EOT
 EOT;
 util::push_head($script);
 
-$document_title = 'SquadWar - Admin Squad';
+util::prepend_title('Admin Squad Login');
 
 include(BASE_PATH.'doc_top.php');
 

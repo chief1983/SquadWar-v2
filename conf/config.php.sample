@@ -13,3 +13,6 @@ define('USER_DB','fs2netd'); // Database for FS2NetD user data that should alrea
 define('NEWS_DB','internetsql'); // Database for SquadWar news.
 define('TABLE_PREFIX',''); // If you installed tables in a shared database using a table name prefix, define it here.
 define('FS2NETD_HOME','fs2netd.game-warden.com');
+define('FS2_PURCHASE_URL','http://www.gog.com/game/freespace_2');
+define('SITE_TITLE', 'SquadWar');
+define('TITLE_SEPARATOR', ' | ');

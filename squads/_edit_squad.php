@@ -35,7 +35,7 @@ if(!empty($_POST['squad_leader_icq']))
 
 $status = $get_squad_info->save();
 
-$document_title = 'SquadWar - Edit Squad';
+util::prepend_title('Edit Squad');
 
 include(BASE_PATH.'doc_top.php');
 

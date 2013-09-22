@@ -7,7 +7,9 @@
 */
 include('../bootstrap.php');
 
-$document_title = 'SquadWar - Pending Matches';
+$get_squad = squad_api::get($_SESSION['squadid']);
+util::prepend_title($get_squad->get_SquadName());
+util::prepend_title('Pending Matches');
 
 $rec = match_api::new_search_record();
 $rec->set_either_squad($_SESSION['squadid']);

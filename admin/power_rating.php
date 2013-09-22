@@ -7,7 +7,7 @@
 */
 include('../bootstrap.php');
 
-$document_title = 'SquadWar - Power Rating';
+util::prepend_title('Power Rating');
 
 $inc = 200;
 

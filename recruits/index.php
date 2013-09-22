@@ -61,7 +61,7 @@ else
 $current = $thispage;
 $i = $thispage;
 
-$document_title = 'SquadWar - Recruit Board';
+util::prepend_title('Recruit Board');
 
 include(BASE_PATH.'doc_top.php');
 

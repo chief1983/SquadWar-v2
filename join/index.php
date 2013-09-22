@@ -14,7 +14,7 @@ $ret = squad_api::search($rec);
 $ret = squad_api::populate_info($ret);
 $get_squads = $ret->get_results();
 
-$document_title = 'SquadWar - Join a Squad';
+util::prepend_title('Join a Squad');
 
 include(BASE_PATH.'doc_top.php');
 

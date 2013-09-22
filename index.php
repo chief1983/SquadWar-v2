@@ -1,8 +1,6 @@
 <?php
 include('bootstrap.php');
 
-$document_title = 'SquadWar';
-
 $cutoff_date = date("Y-m-d H:i:s", strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " -1 month"));
 $rec = news_api::new_search_record();
 $rec->set_SquadWar(1);

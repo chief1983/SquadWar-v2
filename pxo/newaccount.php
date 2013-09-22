@@ -12,7 +12,7 @@ if($_SESSION['loggedin'])
 	util::location(RELATIVEPATH.'index.php');
 }
 
-$document_title = 'SquadWar - Register';
+util::prepend_title('Register');
 
 $script = <<<EOT
 	<script type="text/javascript">

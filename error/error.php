@@ -1,7 +1,7 @@
 <?php
 include('../bootstrap.php');
 
-$document_title = 'SquadWar - Error';
+util::prepend_title('Error');
 
 include(BASE_PATH.'doc_top.php');
 

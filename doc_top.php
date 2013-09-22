@@ -11,7 +11,7 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title><?php echo $document_title; ?></title>
+	<title><?php echo util::get_title(); ?></title>
 	<meta name="Author" lang="en-us" content="Cliff Gordon" />
 	<meta name="keywords" lang="en-us" content="Hard Light Productions Source Code Project SquadWar Port PXO FS2NetD" />
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
