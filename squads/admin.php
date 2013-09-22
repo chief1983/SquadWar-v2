@@ -10,8 +10,6 @@ include('../bootstrap.php');
 
 $squads = squad_api::get_active_squads();
 
-$get_squad = squad_api::get($_SESSION['squadid']);
-util::prepend_title($get_squad->get_SquadName());
 util::prepend_title('Admin Squad Login');
 
 include(BASE_PATH.'doc_top.php');
