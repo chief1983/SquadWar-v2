@@ -28,11 +28,20 @@ if(empty($get_league)):
 League not found.
 
 <?php elseif(!empty($_GET['isfullscreen'])):
-	util::prepend_title('League '.$get_league->get_Title().' Map');
+	util::prepend_title($get_league->get_Title() . ' League Map');
 	$relativepath = '../../';
 	?><html>
 	<head>
 	<title><?php echo util::get_title(); ?></title>
+	<meta name="Author" lang="en-us" content="Cliff Gordon" />
+	<meta name="keywords" lang="en-us" content="Hard Light Productions Source Code Project SquadWar Port PXO FS2NetD" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="<?php echo RELATIVEPATH; ?>squadwar.css" rel="stylesheet" type="text/css" />
+	<!--[if IE]>
+	<link href="<?php echo RELATIVEPATH; ?>squadwar-ie.css" rel="stylesheet" type="text/css" />
+	<![endif]-->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php echo RELATIVEPATH; ?>squadwar.js"></script>
 	</head>
 	<body style="background-color:#000000">
 	<center>
@@ -52,7 +61,6 @@ League not found.
 	</center>
 	</body>
 	</html>
-
 <?php else: ?>
 
 		<map name="fullscreen" id="fullscreen">
@@ -86,5 +94,3 @@ League not found.
 			</tr>
 		</table>
 <?php endif; ?>
-
-
