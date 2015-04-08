@@ -9,13 +9,20 @@ function openAnyWindow(url, name)
 	for (i=2; i<l; i++)
 	{
 		var param = openAnyWindow.arguments[i];
-		if ( (parseInt(param) == 0) || (isNaN(parseInt(param))) )
+		if ( (parseInt(param, 10) === 0) || (isNaN(parseInt(param, 10))) )
 		{
 			features += param + ',';
 		}
 		else
 		{
-			(w == "") ? w = "width=" + param + "," : h = "height=" + param;
+			if(w === "")
+			{
+				w = "width=" + param + ",";
+			}
+			else
+			{
+				h = "height=" + param;
+			}
 		}
 	}
 
