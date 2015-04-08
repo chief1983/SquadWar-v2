@@ -17,7 +17,7 @@ $get_matches = $ret->get_results();
 ?>
 
 						<table width="90%" cellpadding="0" cellspacing="0" border="0">
-						<?php if(count($get_matches)):
+							<?php
 							$coloredrow = 0;
 							$thisdate = ''; ?>
 							<tr><td colspan="3" align="center"><div class="title">Results from the Last 48 Hours</div></td></tr>
@@ -47,5 +47,4 @@ $get_matches = $ret->get_results();
 									</td>
 								</tr>
 							<?php endforeach; ?>		
-						<?php endif; ?>
 						</table>
