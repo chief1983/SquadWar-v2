@@ -18,7 +18,7 @@ if(!empty($_GET['leagueid']))
 	if(!empty($get_league_squads))
 	{
 		$get_league = league_api::get($leagueid);
-		$title = ' '.$get_league->get_Title();
+		$title = $get_league->get_Title().' ';
 
 		$rec = squad_api::new_search_record();
 		$rec->set_league($leagueid);
@@ -45,7 +45,7 @@ if(!empty($_GET['leagueid']))
 	}
 }
 
-util::prepend_title('League'.$title);
+util::prepend_title("{$title}League");
 
 include(BASE_PATH.'doc_top.php');
 
