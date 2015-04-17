@@ -16,3 +16,4 @@ define('FS2NETD_HOME','fs2netd.game-warden.com');
 define('FS2_PURCHASE_URL','http://www.gog.com/game/freespace_2');
 define('SITE_TITLE', 'SquadWar');
 define('TITLE_SEPARATOR', ' | ');
+define('GV_BINPATH', ''); // Path to GraphViz binaries, for league map.  If not empty, must end in trailing slash.

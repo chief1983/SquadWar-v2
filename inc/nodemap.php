@@ -51,6 +51,7 @@ class nodemap
 		$result = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 		$this->gv = new Image_GraphViz(false, array('overlap'=>'scale','bgcolor'=>'transparent'), 'nodemap');
+		$this->gv->binPath = GV_BINPATH;
 
 		foreach($result as $row)
 		{
