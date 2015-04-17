@@ -8,7 +8,7 @@ class dbm
 	private function __construct()
 	{
 	}
-	public static function get($connection_name=NULL)
+	public static function get($connection_name=NULL, $type = NULL)
 	{
 		// letting the devs be lazy and not pass in a site code
 		if($connection_name === NULL && defined('SITE_CODE') === TRUE)
@@ -24,7 +24,7 @@ class dbm
 
 		self::get_config($connection_name, $config_path);
 
-		$db = self::get_database_object($connection_name);
+		$db = self::get_database_object($connection_name, $type);
 
 		// return the goodness
 		return $db;
@@ -88,10 +88,22 @@ class dbm
 			return NULL;
 		}
 	}
-	protected static function get_database_object($connection_name)
+	protected static function get_database_object($connection_name, $type = NULL)
 	{
-		// create object
-		$db = new db_db($connection_name,self::get_link($connection_name));
+		if($type == 'pdo')
+		{
+			$db = new PDO(
+				'mysql:dbname='.self::$dsn[$connection_name]['database'].';host='
+					.self::$dsn[$connection_name]['host'],
+				self::$dsn[$connection_name]['user'],
+				self::$dsn[$connection_name]['password']
+			);
+		}
+		else
+		{
+			// create object
+			$db = new db_db($connection_name,self::get_link($connection_name));
+		}
 		return $db;
 	}
 	protected static function valid_connection_name($connection_name)
