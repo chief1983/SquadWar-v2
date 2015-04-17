@@ -5,6 +5,7 @@
    or otherwise commercially exploit the source or things you created based on the 
    source.
 */
+if(!defined('BODYONLY')):
 // start doc bot ?>
 				
 			</td></tr></table>
@@ -58,7 +59,8 @@
 			</tr>
 			</table>
 
-<?php echo implode("\n", util::get_footer())."\n"; ?>
+<?php endif;
+echo implode("\n", util::get_footer())."\n"; ?>
 </body>
 </html>
 

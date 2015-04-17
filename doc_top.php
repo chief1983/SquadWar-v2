@@ -27,8 +27,8 @@
 <?php echo implode("\n", util::get_head())."\n"; ?>
 </head>
 <body>
-
-			<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<?php if(!defined('BODYONLY')):
+?>			<table cellpadding="0" cellspacing="0" width="100%" border="0">
 			<tr>
 				<td valign="top" width="110" height="23" style="background-image:url(<?php echo RELATIVEPATH; ?>images/main/bkg_bar_top.gif);">
 					<img src="<?php echo RELATIVEPATH; ?>images/main/header_top.jpg" width="110" height="23" alt="" border="0" /><br />
@@ -43,4 +43,4 @@
 			</tr>			
 			<tr>
 				<td style="background-image:url(<?php echo RELATIVEPATH; ?>images/main/bkg_left_bot.gif);" width="110" align="left" valign="top">
-<?php // end doc top ?>	
+<?php endif; // end doc top ?>
