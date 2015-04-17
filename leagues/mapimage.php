@@ -12,9 +12,7 @@ if(!empty($_GET['image']))
 }
 
 $xml = $map->fetch_graph('svg');
-$xml = trim(str_replace(array('<?xml version="1.0" encoding="UTF-8" standalone="no"?>',
-	'<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"',
-	'"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'), '', $xml));
+$xml = preg_replace("/^<\?.+?<!--/ms", "<!--", $xml, 1);
 
 $league = league_api::get($_GET['leagueid']);
 
