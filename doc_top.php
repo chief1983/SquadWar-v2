@@ -16,6 +16,7 @@
 	<meta name="description" content="Squadwar brought to you by Hard Light Productions" />
 	<meta name="keywords" lang="en-us" content="Hard Light Productions Source Code Project SquadWar Port PXO FS2NetD" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="icon" href="<?=RELATIVEPATH;?>favicon.ico" type="image/x-icon" />
 	<link href="<?=RELATIVEPATH;?>css/squadwar.css" rel="stylesheet" type="text/css" />
 	<!--[if IE]>
 	<link href="<?=RELATIVEPATH;?>squadwar-ie.css" rel="stylesheet" type="text/css" />
