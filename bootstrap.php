@@ -48,62 +48,63 @@ if(defined('SECURE') && !SECURE)
 	}
 }
 
-if(!$_SESSION['loggedin'])
+if(!defined('NOWRAPPER'))
 {
-	// Get number of validated FS2NetD users
-	$rec = user_api::new_search_record();
-	$rec->set_banned(0);
-	$count_pxo_users = user_api::get_count($rec);
-
-	// Get number of total pilots in FS2NetD
-	$rec = fsopilot_api::new_search_record();
-	$res = fsopilot_api::search($rec);
-	$get_fs2_pilots = $res->get_results();
-	$count_fs2_pilots = count($get_fs2_pilots);
-
-	// Get number of unique players that have created a pilot in FS2NetD
-	$players = array();
-	foreach($get_fs2_pilots as $pilot)
+	if(!$_SESSION['loggedin'])
 	{
-		if(!in_array($pilot->get_user_id(), $players))
+		// Get number of validated FS2NetD users
+		$rec = user_api::new_search_record();
+		$rec->set_banned(0);
+		$count_pxo_users = user_api::get_count($rec);
+
+		// Get number of total pilots in FS2NetD
+		$rec = fsopilot_api::new_search_record();
+		$res = fsopilot_api::search($rec);
+		$get_fs2_pilots = $res->get_results();
+		$count_fs2_pilots = count($get_fs2_pilots);
+
+		// Get number of unique players that have created a pilot in FS2NetD
+		$players = array();
+		foreach($get_fs2_pilots as $pilot)
 		{
-			$players[] = $pilot->get_user_id();
+			if(!in_array($pilot->get_user_id(), $players))
+			{
+				$players[] = $pilot->get_user_id();
+			}
 		}
-	}
-	$count_fs2_players = count($players);
+		$count_fs2_players = count($players);
 
-	// Get number of total squads in FS2NetD
-	$rec = squad_api::new_search_record();
-	$count_sw_squads = squad_api::get_count($rec);
+		// Get number of total squads in FS2NetD
+		$rec = squad_api::new_search_record();
+		$count_sw_squads = squad_api::get_count($rec);
 
-	$script = <<<EOT
-	<script type="text/javascript">
-		jQuery(document).ready(function(){
-			jQuery("form.validate").validate();
-		});
-	</script>
+		$script = <<<EOT
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery("form.validate").validate();
+			});
+		</script>
 EOT;
-	util::push_head($script);
+		util::push_head($script);
+	}
+	else
+	{
+		// Get number of pilots the current user has in FS2NetD
+		$rec = fsopilot_api::new_search_record();
+		$rec->set_user_id($_SESSION['user_id']);
+		$count_fs2_pilots = fsopilot_api::get_count($rec);
+		$_SESSION['totalfsopilots'] = $count_fs2_pilots;
+	}
+
+	$rec = new league_record_search();
+	$rec->set_Active(1);
+	$rec->set_sort_by('League_ID');
+	$res = league_api::search($rec);
+	$get_swleagues = $res->get_results();
+
+	$rec = new league_record_search();
+	$rec->set_Archived(1);
+	$rec->set_sort_by('League_ID');
+	$res = league_api::search($rec);
+	$get_old_swleagues = $res->get_results();
 }
-else
-{
-	// Get number of pilots the current user has in FS2NetD
-	$rec = fsopilot_api::new_search_record();
-	$rec->set_user_id($_SESSION['user_id']);
-	$count_fs2_pilots = fsopilot_api::get_count($rec);
-	$_SESSION['totalfsopilots'] = $count_fs2_pilots;
-}
-
-$rec = new league_record_search();
-$rec->set_Active(1);
-$rec->set_sort_by('League_ID');
-$res = league_api::search($rec);
-$get_swleagues = $res->get_results();
-
-$rec = new league_record_search();
-$rec->set_Archived(1);
-$rec->set_sort_by('League_ID');
-$res = league_api::search($rec);
-$get_old_swleagues = $res->get_results();
-
-?>
