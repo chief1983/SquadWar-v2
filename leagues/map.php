@@ -38,15 +38,12 @@ else:
 		<map name="fullscreen" id="fullscreen">
 			<area shape="rect" coords="400,0,449,68" href="<?php echo $fullscreenhref; ?>" target="map" alt="fullscreen" />
 		</map>		
-		<map name="fullscreen2" id="fullscreen2">
-			<area shape="rect" coords="400,0,449,68" href="<?php echo $fullscreenhref; ?>" target="map" alt="fullscreen2" />
-		</map>				
 
-		<table width="490" cellpadding="0" cellspacing="0" border="0">
+		<table width="490" cellpadding="0" cellspacing="0" border="0" class="center">
 			<tr>
 				<td valign="top" rowspan="3"><img src="<?php echo RELATIVEPATH; ?>images/leagues/3/left.gif" width="12" height="435" alt="" border="0" /><br /></td>
 				<td valign="top"><img src="<?php echo RELATIVEPATH; ?>images/leagues/3/top.gif" width="450" height="28" alt="" border="0" /><br /></td>
-				<td valign="top" rowspan="3"><img src="<?php echo RELATIVEPATH; ?>images/leagues/3/right.gif" width="28" height="435" alt="" border="0" usemap="#fullscreen2" /><br /></td>
+				<td valign="top" rowspan="3"><img src="<?php echo RELATIVEPATH; ?>images/leagues/3/right.gif" width="28" height="435" alt="" border="0" /><br /></td>
 			</tr>
 			<tr>
 				<td width="450" height="338" align="center">

@@ -16,7 +16,7 @@ $ret = squad_api::populate_matchhistory_sectors($ret);
 $get_matches = $ret->get_results();
 ?>
 
-						<table width="90%" cellpadding="0" cellspacing="0" border="0">
+						<table width="90%" cellpadding="0" cellspacing="0" border="0" class="center">
 							<?php
 							$coloredrow = 0;
 							$thisdate = ''; ?>

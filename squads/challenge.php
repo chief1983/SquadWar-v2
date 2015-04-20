@@ -370,7 +370,6 @@ include(BASE_PATH.'doc_mid.php');
 		You have filled your available challenge slots.
 		<?php endif; ?>
 
-		<center>
 		<?php
 			$_SESSION['owned'] = $ownedstring;
 			$_SESSION['unclaimed'] = $unownedstring;
@@ -378,7 +377,6 @@ include(BASE_PATH.'doc_mid.php');
 			include(BASE_PATH.'leagues/map.php');
 			$_SESSION['show_challenge'] = 0;
 		?>
-		</center>
 
 		<?php if($validchallenge): ?>
 			<form action="_challengeack.php" method="post">

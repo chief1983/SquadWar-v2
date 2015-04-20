@@ -64,6 +64,11 @@ body  {
 	width : 95%;
 }
 
+.center  {
+	margin-left : auto;
+	margin-right : auto;
+}
+
 .full_width_container .copy  {
 	text-align : left;
 }

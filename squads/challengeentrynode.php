@@ -76,9 +76,7 @@ include(BASE_PATH.'menu/main.php');
 include(BASE_PATH.'doc_mid.php');
 				// MAIN PAGE INFO
 ?>
-<center>
-	<?php include(BASE_PATH.'leagues/map.php'); ?>
-</center>
+<?php include(BASE_PATH.'leagues/map.php'); ?>
 <?php if(!$league_proceed): ?>
 	<div class="title" align="center">This league is over.</div>	
 <?php else: ?>

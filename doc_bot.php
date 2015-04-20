@@ -9,16 +9,14 @@ if(!defined('BODYONLY')):
 // start doc bot ?>
 				
 			</td></tr></table>
-		</center>
 
 			<?php if(isset($main_news)): ?>
 				<br />
-					<center>
 				<?php if(count($main_news)): ?>
 					<?php foreach($main_news as $news_item): ?>
 
 						<a name="news<?php echo $news_item->get_newsID(); ?>"></a>
-						<table width="95%" cellpadding="0" cellspacing="0" border="0">
+						<table width="95%" cellpadding="0" cellspacing="0" border="0" class="center">
 							<tr>
 								<td colspan="2" valign="top" bgcolor="#172A1B">
 									<div class="newstitle"><?php echo date('n.j.y g:i A', strtotime($news_item->get_date_posted('Y-m-d H:i:s'))); ?> - <?php echo $news_item->get_title(); ?><br /></div>							
@@ -37,14 +35,13 @@ if(!defined('BODYONLY')):
 					<?php endforeach; ?>
 				<br />
 				<?php else: ?>
-				<div class="full_width_container">
+				<div class="full_width_container center">
 					<div class="copy">
 						Sorry, but there is no news for FreeSpace 2 at this time.
 					</div>
 				</div>
 				<br />
 				<?php endif; ?>
-					</center>
 			<?php endif; ?>
 
 				</td>

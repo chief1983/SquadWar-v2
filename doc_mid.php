@@ -12,8 +12,7 @@
 		<br />
 
 		<?php if(!defined('HIDELOGIN')): ?>
-		<center>
-			<table width="95%" cellpadding="0" cellspacing="0" border="0"><tr><td>
+			<table width="95%" class="center" cellpadding="0" cellspacing="0" border="0"><tr><td>
 			<?php if(!$_SESSION['loggedin']): ?>
 				<?php // NOT LOGGED IN ?>
 				<table><tr><td valign="top">
@@ -71,10 +70,8 @@
 				</table>
 			<?php endif; ?>
 			</td></tr></table>
-		</center>
 
 		<hr noshade="noshade" style="color:#2E5537;" />
 		<?php endif; ?>
 
-		<center>
-			<table width="95%" cellpadding="0" cellspacing="0" border="0"><tr><td>
+			<table width="95%" class="center" cellpadding="0" cellspacing="0" border="0"><tr><td>

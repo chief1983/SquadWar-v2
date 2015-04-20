@@ -124,8 +124,7 @@ include(BASE_PATH.'doc_mid.php');
 		<br />
 
 		<form action="_propose_phase_1.php" method="post">
-		<center>
-		<table>
+		<table class="center">
 			<tr>
 				<th><font color="white">&nbsp;</font></th>
 				<th><font color="white">Date</font></th>
@@ -170,7 +169,6 @@ include(BASE_PATH.'doc_mid.php');
 			</tr>
 			<?php endfor; ?>
 		</table>
-		</center>
 		<br />
 		<input type="hidden" name="SWCode" value="<?php echo $get_match->get_SWCode(); ?>" />
 		<center><input type="submit" value="Propose these times" /></center>
@@ -208,8 +206,7 @@ include(BASE_PATH.'doc_mid.php');
 		<br />
 
 		<form action="_propose_phase_2.php" method="post">
-		<center>
-		<table>
+		<table class="center">
 			<tr>
 				<td align="right"><div class="copy"><b>Mission:</b></div></td>
 				<td>&nbsp;&nbsp;</td>
@@ -293,7 +290,6 @@ include(BASE_PATH.'doc_mid.php');
 				</td>										
 			</tr>																								
 		</table>
-		</center>
 
 		<input type="hidden" name="SWCode" value="<?php echo $get_match->get_SWCode(); ?>" />
 		<center><input type='submit' value='Set Battle Parameters' /></center>

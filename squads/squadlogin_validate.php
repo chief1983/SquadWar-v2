@@ -306,9 +306,7 @@ include(BASE_PATH.'doc_mid.php');
 		SquadWar <?php echo $get_league->get_Title(); ?> League
 	</div>
 
-	<center>
-		<?php include(BASE_PATH."leagues/map.php"); ?>
-	</center>
+	<?php include(BASE_PATH."leagues/map.php"); ?>
 
 				<?php
 					$squadrank = '0';
@@ -442,24 +440,22 @@ include(BASE_PATH.'doc_mid.php');
 					<?php else: ?>
 					<div class="title">Match History in This League</div>	
 					<br />
-					<center>
-						<table width="90%" border="1" style="border:1px solid #5A63F7;" cellspacing="0">
+					<table width="90%" border="1" style="border:1px solid #5A63F7;" cellspacing="0" class="center">
+					<tr>
+							<td align="left"><div class="copy"><b>System Name</b></div></td>
+							<td><div class="copy"><b>Victor</b></div></td>
+							<td><div class="copy"><b>Loser</b></div></td>
+							<td><div class="copy"><b>Match Time</b></div></td>								
+					</tr>
+					<?php foreach($match_history as $match): ?>
 						<tr>
-								<td align="left"><div class="copy"><b>System Name</b></div></td>
-								<td><div class="copy"><b>Victor</b></div></td>
-								<td><div class="copy"><b>Loser</b></div></td>
-								<td><div class="copy"><b>Match Time</b></div></td>								
+							<td align="left"><div class="copy">&nbsp;<?php echo $match->get_SWSector()->get_SectorName(); ?></div></td>
+							<td><div class="copy">&nbsp;<?php if($match->get_match_victor() == $id): ?><b><?php echo $match->get_Squad1()->get_SquadName(); ?></b><?php else: echo $match->get_Squad1()->get_SquadName(); endif; ?></div></td>
+							<td><div class="copy">&nbsp;<?php if($match->get_match_loser() == $id): ?><b><?php echo $match->get_Squad2()->get_SquadName(); ?></b><?php else: echo $match->get_Squad2()->get_SquadName(); endif; ?></div></td>
+							<td><div class="copy">&nbsp;<?php if($match->get_match_time() == '0'): ?>Creation<?php else: echo date('h:i A m.d.Y T', $match->get_match_time()); endif; ?></div></td>
 						</tr>
-						<?php foreach($match_history as $match): ?>
-							<tr>
-								<td align="left"><div class="copy">&nbsp;<?php echo $match->get_SWSector()->get_SectorName(); ?></div></td>
-								<td><div class="copy">&nbsp;<?php if($match->get_match_victor() == $id): ?><b><?php echo $match->get_Squad1()->get_SquadName(); ?></b><?php else: echo $match->get_Squad1()->get_SquadName(); endif; ?></div></td>
-								<td><div class="copy">&nbsp;<?php if($match->get_match_loser() == $id): ?><b><?php echo $match->get_Squad2()->get_SquadName(); ?></b><?php else: echo $match->get_Squad2()->get_SquadName(); endif; ?></div></td>
-								<td><div class="copy">&nbsp;<?php if($match->get_match_time() == '0'): ?>Creation<?php else: echo date('h:i A m.d.Y T', $match->get_match_time()); endif; ?></div></td>
-							</tr>
-						<?php endforeach; ?>
-						</table>	
-					</center>		
+					<?php endforeach; ?>
+					</table>	
 					<?php endif; ?>
 
 <?php endif; ?>

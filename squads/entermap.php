@@ -36,9 +36,7 @@ include(BASE_PATH.'menu/main.php');
 include(BASE_PATH.'doc_mid.php');
 				// MAIN PAGE INFO
 ?>
-	<center>
-		<?php include(BASE_PATH.'leagues/map.php'); ?>
-	</center>
+	<?php include(BASE_PATH.'leagues/map.php'); ?>
 	<?php if(!count($check_all_nodes)): ?>
 	<form action="_entermap.php" method="post">
 		<label for="sector">Challenge</label>

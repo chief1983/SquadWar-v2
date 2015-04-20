@@ -34,34 +34,32 @@ include(BASE_PATH.'doc_mid.php');
 				<div class="copy">
 					<?php foreach($get_missions as $mission): ?>
 						<div class="title"><?php echo $mission->get_filename(); ?>: <?php echo $mission->get_name(); ?></div>
-						<center>
-							<table width="95%">
-								<tr>
-									<td><div class="copy"><b>Description:</b></div></td>
-									<td rowspan="4">
-										<a href="../images/missions/<?php echo $mission->get_filename(); ?>_full.png">
-											<img src="../images/missions/<?php echo $mission->get_filename(); ?>.png" width="240" height="180" alt="<?php echo $mission->get_name(); ?> screenshot" border="0" align="right" />
-										</a>
-									</td>
-								</tr>
-								<tr>
-									<td><div class="copy">
-									<?php echo $mission->get_description(); ?>
-									</div></td>
-								</tr>
-								<tr>
-									<td><div class="copy"><b>Specifics:</b>
-									</div></td>
-								</tr>
-								<tr>
-									<td><div class="copy">
-									<?php echo $mission->get_specifics(); ?>
-									<br /><br />Max Respawns: <?php echo $mission->get_respawns(); ?>
-									<br />Max Players: <?php echo $mission->get_players(); ?>
-									</div></td>
-								</tr>
-							</table>
-						</center>
+						<table width="95%" class="center">
+							<tr>
+								<td><div class="copy"><b>Description:</b></div></td>
+								<td rowspan="4">
+									<a href="../images/missions/<?php echo $mission->get_filename(); ?>_full.png">
+										<img src="../images/missions/<?php echo $mission->get_filename(); ?>.png" width="240" height="180" alt="<?php echo $mission->get_name(); ?> screenshot" border="0" align="right" />
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td><div class="copy">
+								<?php echo $mission->get_description(); ?>
+								</div></td>
+							</tr>
+							<tr>
+								<td><div class="copy"><b>Specifics:</b>
+								</div></td>
+							</tr>
+							<tr>
+								<td><div class="copy">
+								<?php echo $mission->get_specifics(); ?>
+								<br /><br />Max Respawns: <?php echo $mission->get_respawns(); ?>
+								<br />Max Players: <?php echo $mission->get_players(); ?>
+								</div></td>
+							</tr>
+						</table>
 						<br />
 						<br />
 

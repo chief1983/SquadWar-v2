@@ -14,7 +14,7 @@ $ret = match_api::populate_info($ret);
 // $ret = match_api::sort_by_Time_Created($ret);
 $get_matches = $ret->get_results();
 ?>
-	<table width="90%" cellpadding="0" cellspacing="0" border="0">
+	<table width="90%" cellpadding="0" cellspacing="0" border="0" class="center">
 	<?php if(count($get_matches)):
 		$coloredrow = 0;
 		$thisdate = ''; ?>

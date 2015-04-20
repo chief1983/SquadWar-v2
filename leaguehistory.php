@@ -21,11 +21,9 @@ include(BASE_PATH.'doc_mid.php');
 if(!empty($_GET['leagueid'])):
 	$leagueid = $_GET['leagueid'];
 ?>
-	<center>
 		<?php include('leagues/map.php'); ?>
 		<br />
 		<?php include('leagues/t_w_view.php'); ?>
-	</center>			
 <?php endif; ?>
 
 				<?php // END MAIN PAGE INFO ?>
