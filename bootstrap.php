@@ -77,15 +77,6 @@ if(!defined('NOWRAPPER'))
 		// Get number of total squads in FS2NetD
 		$rec = squad_api::new_search_record();
 		$count_sw_squads = squad_api::get_count($rec);
-
-		$script = <<<EOT
-		<script type="text/javascript">
-			jQuery(document).ready(function(){
-				jQuery("form.validate").validate();
-			});
-		</script>
-EOT;
-		util::push_head($script);
 	}
 	else
 	{

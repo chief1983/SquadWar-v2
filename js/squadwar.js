@@ -35,6 +35,8 @@ function openAnyWindow(url, name)
 }
 
 $(document).ready(function() {
+	$('form.validate').validate();
+
 	// Set up panzoom plugin on the SVG image
 	var svg = $(".svg_wrapper svg").panzoom({
 		contain: 'invert',
