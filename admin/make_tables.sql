@@ -293,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `SWSectors_Graph` (
 CREATE TABLE IF NOT EXISTS `SWSquads` (
   `SquadID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `SquadName` varchar(32) NOT NULL,
-  `SquadPassword` varchar(16) NOT NULL,
+  `SquadPassword` varchar(34) NOT NULL,
   `SquadMembers` varchar(255) NOT NULL,
   `Active` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`SquadID`),
