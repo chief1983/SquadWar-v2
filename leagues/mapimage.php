@@ -53,6 +53,7 @@ if(!empty($src))
 	<link href="<?=RELATIVEPATH;?>css/tooltipster-punk.css" rel="stylesheet" type="text/css" />
 	<link href="<?=RELATIVEPATH;?>css/tooltipster-shadow.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="<?=RELATIVEPATH;?>js/jquery.panzoom.min.js"></script>
 	<script type="text/javascript" src="<?=RELATIVEPATH;?>js/jquery.tooltipster.min.js"></script>
 	<script type="text/javascript" src="<?=RELATIVEPATH;?>js/squadwar.js"></script>
