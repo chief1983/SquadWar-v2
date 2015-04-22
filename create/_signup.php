@@ -22,35 +22,41 @@ if(user_api::check_password($_POST['pxo_login'], $_POST['pxo_password']) !== 1)
 	$get_pxo_stuff = array();
 }
 
+$messages = array();
 if(count($check_squads) != 0)
 {
 	// Squad name already taken
-	util::location('index.php?message=That%20squad%20name%20is%20already%20taken.%20Please%20try%20another%20name.');
+	$messages[] = "That squad name is already taken. Please try another name.";
 }
 if(empty($get_pxo_stuff))
 {
 	// No user credentials found
-	util::location('index.php?message=Invalid%20FS2NetD%20Login%20or%20password.');
+	$messages[] = "Invalid FS2NetD Login or password.";
 }
 if(empty($_POST['join_password']))
 {
-	util::location('index.php?message=Empty%20join%20password.');
+	$messages[] = "Empty join password.";
 }
 if($_POST['join_password'] != $_POST['join_password2'])
 {
-	util::location('index.php?message=Your%20Squad%20join%20password%20and%20confirmation%20do%20not%20match.');
+	$messages[] = "Your Squad join password and confirmation do not match.";
 }
 if(empty($_POST['admin_password']))
 {
-	util::location('index.php?message=Empty%20admin%20password.');
+	$messages[] = "Empty admin password.";
 }
 if($_POST['admin_password'] != $_POST['admin_password2'])
 {
-	util::location('index.php?message=Your%20Squad%20admin%20password%20and%20confirmation%20do%20not%20match.');
+	$messages[] = "Your Squad admin password and confirmation do not match.";
 }
-if(!util::check_email_address($_POST['squad_email']))
+if(!filter_var($_POST['squad_email'], FILTER_VALIDATE_EMAIL))
 {
-	util::location('index.php?message=1&email_message=Invalid%20email%20address.');
+	$messages[] = "Invalid email address.";
+}
+
+if(!empty($messages))
+{
+	util::location('index.php?message='.urlencode(implode("<br />", $messages)));
 }
 
 $icq = '';

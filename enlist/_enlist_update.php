@@ -31,7 +31,7 @@ if(empty($_POST['action']) || !in_array($_POST['action'], array('update','add'))
 {
 	$message[] = "Invalid action.";
 }
-if(empty($_POST['email']) || !util::check_email_address($_POST['email']))
+if(empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 {
 	$message[] = "Invalid email.";
 }
