@@ -29,7 +29,7 @@ include(BASE_PATH.'doc_mid.php');
 <br />
 	<div class="copy">			
 						
-							<?php if(util::check_email_address($_POST['email'])): ?>
+							<?php if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)): ?>
 															
 									<?php if ($check_login != 0): ?>
 										That login already exists in the <b>FS2NetD</b> database.
@@ -124,7 +124,7 @@ If you have any questions or problems, please email help@parallaxonline.com
 									<?php
 									}
 									?>
-	
+							<?php endif; ?>
 	</div>			
 
 				<?php // END MAIN PAGE INFO ?>
