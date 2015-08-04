@@ -8,4 +8,3 @@ if(function_exists("__autoload")) spl_autoload_register("__autoload");
 
 // do ini override here to set include path
 ini_set('include_path',BASE_PATH."inc/:".ini_get('include_path'));
-?>

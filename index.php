@@ -20,7 +20,7 @@ include(BASE_PATH.'doc_mid.php');
 ?>
 
 					<div class="newstitle">Recent SquadWar Headlines</div>
-					
+
 					<div class="copy">
 						<?php if(!empty($main_news)): ?>
 						<ul>
@@ -37,11 +37,11 @@ include(BASE_PATH.'doc_mid.php');
 						<br />
 						<?php endif; ?>
 					</div>
-					
+
 					<div class="copy">
 						<a href="oldnews.php">SquadWar News Archive</a>
 					</div>
 					<br />
-				
+
 				<?php // END MAIN PAGE INFO ?>
 <?php include(BASE_PATH.'doc_bot.php'); ?>
