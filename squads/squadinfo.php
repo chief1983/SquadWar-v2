@@ -1,8 +1,8 @@
 <?php /*
    Copyright (C) Volition, Inc. 2005.  All rights reserved.
 
-   All source code herein is the property of Volition, Inc. You may not sell 
-   or otherwise commercially exploit the source or things you created based on the 
+   All source code herein is the property of Volition, Inc. You may not sell
+   or otherwise commercially exploit the source or things you created based on the
    source.
 */
 define('SECURE',1);
@@ -78,7 +78,7 @@ include(BASE_PATH.'menu/main.php');
 include(BASE_PATH.'doc_mid.php');
 				// MAIN PAGE INFO
 ?>
-					
+
 					<div class="title">Squad Information</div>
 
 					 	<table>
@@ -136,9 +136,9 @@ include(BASE_PATH.'doc_mid.php');
 					 			</td>
 					 			<td align="left">
 					 				<?php if(!empty($get_pilots)): ?>
-					 					<div class="copy"><?php 
-					 						foreach($get_pilots as $pilot): 
-					 							?><a href="mailto:<?php echo $pilot->get_email(); ?>"><?php echo $pilot->get_user_name(); ?></a><br /><?php 
+					 					<div class="copy"><?php
+					 						foreach($get_pilots as $pilot):
+					 							?><a href="mailto:<?php echo $pilot->get_email(); ?>"><?php echo $pilot->get_user_name(); ?></a><br /><?php
 					 						endforeach; ?></div>
 					 				<?php else: ?>
 					 					<div class="copy">*yet to be determined</div>
@@ -173,7 +173,7 @@ include(BASE_PATH.'doc_mid.php');
 					 										href="squadinfo.php?id=<?php echo $match->get_SWSquad1(); ?>&amp;leagueid=<?php
 					 										echo $leagueid; ?>"><?php
 					 										echo $match->get_Challenger()->get_SquadName(); ?></a><?php else:
-					 										echo $match->get_Challenger()->get_SquadName(); endif; ?> has challenged 
+					 										echo $match->get_Challenger()->get_SquadName(); endif; ?> has challenged
 					 										<?php if($match->get_SWSquad2() != $id): ?><a
 					 										href="squadinfo.php?id=<?php echo $match->get_SWSquad2(); ?>&amp;leagueid=<?php
 															echo $leagueid; ?>"><?php
@@ -188,14 +188,14 @@ include(BASE_PATH.'doc_mid.php');
 
 					 				<?php // GET SECTORS ?>
 
-					 						<div class="title">This Squad Holds the Following Systems in This League:</div>	
+					 						<div class="title">This Squad Holds the Following Systems in This League:</div>
 					 						<br />
 					 							<?php if(count($get_sectors)): ?>
 						 							<table border="1" style="border:1px solid #5A63F7;" cellspacing="0">
 						 							<tr>
 						 									<td align="left"><div class="copy"><b>Sector ID</b></div></td>
 						 									<td align="left"><div class="copy"><b>System Name</b></div></td>
-						 									<td><div class="copy"><b>Held Since</b></div></td>								
+						 									<td><div class="copy"><b>Held Since</b></div></td>
 						 							</tr>
 						 							<?php foreach($get_sectors as $sector): ?>
 						 								<tr>
@@ -204,7 +204,7 @@ include(BASE_PATH.'doc_mid.php');
 						 									<td><div class="copy">&nbsp;<?php if($sector->get_SectorTime() == '0'): ?>Creation<?php else: echo date('h:i A m.d.Y T', $sector->get_SectorTime()); endif; ?></div></td>
 						 								</tr>
 						 							<?php endforeach; ?>
-						 							</table>		
+						 							</table>
 												<?php else: ?>
 													<div class="copy">This team holds no sectors in this league.</div>
 												<?php endif; ?>
@@ -212,7 +212,7 @@ include(BASE_PATH.'doc_mid.php');
 					 				<?php // END GET MATCHES ?>
 
 					 						<br />
-					 						<div class="title">Match History in This League</div>	
+					 						<div class="title">Match History in This League</div>
 					 						<br />
 
 											<?php if(!count($match_history)): ?>
@@ -225,7 +225,7 @@ include(BASE_PATH.'doc_mid.php');
 				 									<td align="left"><div class="copy"><b>System Name</b></div></td>
 				 									<td><div class="copy"><b>Victor</b></div></td>
 				 									<td><div class="copy"><b>Loser</b></div></td>
-				 									<td><div class="copy"><b>Match Time</b></div></td>								
+				 									<td><div class="copy"><b>Match Time</b></div></td>
 				 							</tr>
 				 							<?php foreach($match_history as $match): ?>
 				 								<tr>
@@ -235,13 +235,13 @@ include(BASE_PATH.'doc_mid.php');
 				 									<td><div class="copy">&nbsp;<?php if($match->get_match_time() == '0'): ?>Creation<?php else: echo date('h:i A m.d.Y T', $match->get_match_time()); endif; ?></div></td>
 				 								</tr>
 				 							<?php endforeach; ?>
-				 							</table>	
+				 							</table>
 					 						<?php endif; ?>
 
 
 					 				<?php // END NEW STUFF ?>
 
-					 				<?php // End page info ?>	
+					 				<?php // End page info ?>
 					<?php endif; ?>
 
 				<?php // END MAIN PAGE INFO ?>

@@ -1,8 +1,8 @@
 <?php /*
    Copyright (C) Volition, Inc. 2005.  All rights reserved.
 
-   All source code herein is the property of Volition, Inc. You may not sell 
-   or otherwise commercially exploit the source or things you created based on the 
+   All source code herein is the property of Volition, Inc. You may not sell
+   or otherwise commercially exploit the source or things you created based on the
    source.
 */
 include('../bootstrap.php');
@@ -74,10 +74,9 @@ There has been an update regarding match {$_POST['SWCode']}.
 
 This phase was completed on {$date}.  You have 48 hours to complete this phase.
 
-You may now pick the final match time.		
+You may now pick the final match time.
 
 EOT;
 
 mail($to, $subject, $message, $headers);
 util::location(RELATIVEPATH.'squads/squad_pending_matches.php');
-?>
