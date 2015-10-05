@@ -1,8 +1,8 @@
 <?php /*
    Copyright (C) Volition, Inc. 2005.  All rights reserved.
 
-   All source code herein is the property of Volition, Inc. You may not sell 
-   or otherwise commercially exploit the source or things you created based on the 
+   All source code herein is the property of Volition, Inc. You may not sell
+   or otherwise commercially exploit the source or things you created based on the
    source.
 */
 include('../bootstrap.php');
@@ -39,4 +39,3 @@ if($match->get_SWSquad2() == $_SESSION['squadid'])
 $status = $info->save();
 
 util::location(RELATIVEPATH.'squads/squad_pending_matches.php');
-?>
