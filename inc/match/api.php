@@ -96,7 +96,7 @@ class match_api
 		shortcut method.
 		@return match_record_search
 	**/
-	public static function award_match($code, $sectorid, $first, $second, $winner, $loser, $league, $special = 0)
+	public static function award_match($code, $winner, $special = 0)
 	{
 		$match = match_api::get_by_SWCode($code);
 
@@ -106,9 +106,10 @@ class match_api
 		}
 
 		$time = time();
+		$loser = ($winner == $match->get_SWSquad1()) ? $match->get_SWSquad2() : $match->get_SWSquad1();
 
 		$rec = squad_api::new_sector_search_record();
-		$rec->set_SWSectors_ID($sectorid);
+		$rec->set_SWSectors_ID($match->get_SWSector_ID());
 		$ret = squad_api::search($rec);
 		$sector = reset($ret->get_results());
 		$sector->set_SectorSquad($winner);
@@ -118,13 +119,13 @@ class match_api
 		$rec = squad_api::new_matchhistory_detail_record();
 		$rec->set_MatchID($match->get_MatchID());
 		$rec->set_SWCode($code);
-		$rec->set_SWSquad1($first);
-		$rec->set_SWSquad2($second);
-		$rec->set_SWSector_ID($sectorid);
+		$rec->set_SWSquad1($match->get_SWSquad1());
+		$rec->set_SWSquad2($match->get_SWSquad2());
+		$rec->set_SWSector_ID($match->get_SWSector_ID());
 		$rec->set_match_victor($winner);
 		$rec->set_match_loser($loser);
 		$rec->set_match_time($time);
-		$rec->set_League_ID($league);
+		$rec->set_League_ID($match->get_League_ID());
 		$rec->set_special($special);
 		$rec->save();
 

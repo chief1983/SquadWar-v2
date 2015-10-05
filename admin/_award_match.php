@@ -9,12 +9,7 @@ require('../bootstrap.php');
 
 $result = match_api::award_match(
 	$_GET['code'],
-	$_GET['sector'],
-	$_GET['first'],
-	$_GET['second'],
 	$_GET['winner'],
-	$_GET['loser'],
-	$_GET['league'],
 	1
 );
 

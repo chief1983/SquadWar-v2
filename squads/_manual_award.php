@@ -3,12 +3,9 @@
 require('../bootstrap.php');
 require_once(BASE_PATH.'inc/tga_v2/tga.php');
 
-$squadid = $_SESSION['squadid'];
-$squadpassword = $_SESSION['squadpassword'];
+$squad = squad_api::get($_SESSION['squadid']);
 
-$squad = squad_api::get($squadid);
-
-if($squad->get_SquadPassword() != $squadpassword)
+if($squad->get_SquadPassword() != $_SESSION['squadpassword'])
 {
 	// Not authenticate to perform this action.
 	$message = urlencode("You are not authenticated properly to claim a match for this squad.");
@@ -48,22 +45,7 @@ if($current_phase != 4)
 	util::location(RELATIVEPATH.'error/error.php?message='.$message.'&refer='.$_SERVER['HTTP_REFERER']);
 }
 
-$sector = $match->get_SWSector_ID();
-$league = $match->get_League_ID();
-$first = $match->get_SWSquad1();
-$second = $match->get_SWSquad2();
-
-if($first == $squadid)
-{
-	$winner = $first;
-	$loser = $second;
-}
-elseif($second == $squadid)
-{
-	$winner = $second;
-	$loser = $first;
-}
-else
+if(!in_array($_SESSION['squadid'], array($match->get_SWSquad1(), $match->get_SWSquad2())))
 {
 	$message = urlencode("The squad you are authenticated as was not a belligerent in this match.");
 	util::location(RELATIVEPATH.'error/error.php?message='.$message.'&refer='.$_SERVER['HTTP_REFERER']);
@@ -97,12 +79,7 @@ imagedestroy($src_img);
 
 $result = match_api::award_match(
 	$code,
-	$sector,
-	$first,
-	$second,
-	$winner,
-	$loser,
-	$league
+	$_SESSION['squadid']
 );
 
 if(!$result)
@@ -111,4 +88,4 @@ if(!$result)
 	util::location(RELATIVEPATH.'error/error.php?message='.$message.'&refer='.$_SERVER['HTTP_REFERER']);
 }
 
-util::location(RELATIVEPATH.'squads/squadlogin_validate.php?id='.$squadid.'&leagueid='.$league);
+util::location(RELATIVEPATH.'squads/squadlogin_validate.php?id='.$_SESSION['squadid'].'&leagueid='.$match->get_League_ID());
