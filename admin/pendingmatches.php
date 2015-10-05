@@ -1,8 +1,8 @@
 <?php /*
    Copyright (C) Volition, Inc. 2005.  All rights reserved.
 
-   All source code herein is the property of Volition, Inc. You may not sell 
-   or otherwise commercially exploit the source or things you created based on the 
+   All source code herein is the property of Volition, Inc. You may not sell
+   or otherwise commercially exploit the source or things you created based on the
    source.
 */
 include('../bootstrap.php');
@@ -63,13 +63,13 @@ Current game time is: <?php echo time(); ?>
 										</td>
 										<td>
 											<div class="copy">&nbsp;<?php echo $match->get_SWSquad2(); ?>&nbsp;</div>
-										</td>												
+										</td>
 										<td>
 											<div class="copy">
 												<a href="mailto:<?php echo $match->get_Challenged()->get_info()->get_Squad_Email(); ?>"><?php echo $match->get_Challenged()->get_info()->get_Squad_Email(); ?></a>
 											</div>
-										</td>		
-										<td><div class="copy"><a href="delete_match.php?id=<?php echo $match->get_SWCode(); ?>">delete</a></div></td>										
+										</td>
+										<td><div class="copy"><a href="delete_match.php?id=<?php echo $match->get_SWCode(); ?>">delete</a></div></td>
 									</tr>
 								<?php endforeach; ?>
 								<tr<?php if(++$coloredrow % 2): ?> bgcolor="#0B160D"<?php endif; ?>>
@@ -79,6 +79,6 @@ Current game time is: <?php echo time(); ?>
 								</tr>
 						<?php endif; ?>
 						</table>
-					
+
 				<?php // END MAIN PAGE INFO ?>
 <?php include(BASE_PATH.'doc_bot.php'); ?>
