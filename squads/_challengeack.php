@@ -1,8 +1,8 @@
 <?php /*
    Copyright (C) Volition, Inc. 2005.  All rights reserved.
 
-   All source code herein is the property of Volition, Inc. You may not sell 
-   or otherwise commercially exploit the source or things you created based on the 
+   All source code herein is the property of Volition, Inc. You may not sell
+   or otherwise commercially exploit the source or things you created based on the
    source.
 */
 include('../bootstrap.php');
@@ -107,7 +107,7 @@ if(($canchallengeowned || $canchallengeunclaimed) && $_SESSION['challenging'] ==
 	$message = <<<EOT
 Your Squad has issued a challenge for sector {$sector_id}.
 
-Please visit the scheduling page available on your Squad Management page to propose times for the match.  
+Please visit the scheduling page available on your Squad Management page to propose times for the match.
 
 You have 24 hours to complete the first phase of this match.
 
@@ -137,13 +137,13 @@ EOT;
 	$message = <<<EOT
 Your Squad has been challenged for sector {$sector_id}.
 
-You will be contacted when your opponent has proposed times on the scheduling page. 
+You will be contacted when your opponent has proposed times on the scheduling page.
 
 Your opponent has 24 hours to complete Phase 1.
 
 After this has been completed you may set the battle conditions and offer an alternative match time.  Please visit the scheduling page available on your Squad Management page.  You can reach your Squad Management page by clicking on the link in the menu on the left side of the page called "Admin Squad".  You can reach the scheduling page by clicking on the link titled "View pending matches for this squad and schedule matches" available on the Squad Management page.
 
-Your opponent's squad will pick the final match time. 
+Your opponent's squad will pick the final match time.
 
 Your match code is: {$code}
 Your opponent is: {$get_challenger->get_SquadName()}
@@ -163,7 +163,7 @@ EOT;
 	$to = SUPPORT_EMAIL;
 	$subject = "SquadWar:Challenge - Match {$code} created";
 	$message = <<<EOT
-Match code is: {$code} 
+Match code is: {$code}
 Challenger: {$get_challenger->get_SquadName()}
 Challenger's Email: {$get_challenger->get_info()->get_Squad_Email()}
 Defender: {$get_challenged->get_SquadName()}
