@@ -30,7 +30,7 @@ include(BASE_PATH.'doc_mid.php');
 								if(++$count > 5):
 									break;
 								endif; ?>
-								<li><a href="index.php#news<?php echo $news_item->get_id(); ?>"><?php echo $news_item->get_title(); ?></a></li>
+								<li><a href="#news<?php echo $news_item->get_id(); ?>"><?php echo $news_item->get_title(); ?></a></li>
 							<?php endforeach; ?>
 						</ul>
 						<?php else: ?>
