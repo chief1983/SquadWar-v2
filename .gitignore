@@ -2,3 +2,4 @@
 conf/config.php
 conf/mysql.conf
 upload/*.png
+.git
