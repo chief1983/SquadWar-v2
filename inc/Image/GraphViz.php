@@ -7,7 +7,7 @@
  *
  * PHP version 4 and 5
  *
- * Copyright (c) 2001-2007, Dr. Volker Göbbels <vmg@arachnion.de> and
+ * Copyright (c) 2001-2007, Dr. Volker GÃ¶bbels <vmg@arachnion.de> and
  * Sebastian Bergmann <sb@sebastian-bergmann.de>. All rights reserved.
  *
  * LICENSE: This source file is subject to version 3.0 of the PHP license
@@ -18,14 +18,14 @@
  *
  * @category  Image
  * @package   Image_GraphViz
- * @author    Dr. Volker Göbbels <vmg@arachnion.de>
+ * @author    Dr. Volker GÃ¶bbels <vmg@arachnion.de>
  * @author    Sebastian Bergmann <sb@sebastian-bergmann.de>
  * @author    Karsten Dambekalns <k.dambekalns@fishfarm.de>
  * @author    Michael Lively Jr. <mlively@ft11.net>
  * @author    Philippe Jausions <Philippe.Jausions@11abacus.com>
- * @copyright 2001-2007 Dr. Volker Göbbels <vmg@arachnion.de> and Sebastian Bergmann <sb@sebastian-bergmann.de>
+ * @copyright 2001-2007 Dr. Volker GÃ¶bbels <vmg@arachnion.de> and Sebastian Bergmann <sb@sebastian-bergmann.de>
  * @license   http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version   CVS: $Id: GraphViz.php 304688 2010-10-24 05:21:17Z clockwerx $
+ * @version   CVS: $Id$
  * @link      http://pear.php.net/package/Image_GraphViz
  * @link      http://www.graphviz.org/
  * @since     File available since Release 0.1.0
@@ -47,6 +47,12 @@ require_once 'System.php';
  * require_once 'Image/GraphViz.php';
  *
  * $graph = new Image_GraphViz();
+ *
+ * // Default graph, node, edge attributes
+ * $graph->addAttributes(array(
+ *    'graph' => array('fontname' => 'Helvetica-Oblique', 'fontsize' => 24, 'label' => 'GraphViz')
+ *  , 'node' => array('color' => 'white', 'fontname' => 'Helvetica')
+ *  , 'edge' => array('color' => 'red')));
  *
  * $graph->addNode(
  *   'Node1',
@@ -98,11 +104,11 @@ require_once 'System.php';
  * @category  Image
  * @package   Image_GraphViz
  * @author    Sebastian Bergmann <sb@sebastian-bergmann.de>
- * @author    Dr. Volker Göbbels <vmg@arachnion.de>
+ * @author    Dr. Volker GÃ¶bbels <vmg@arachnion.de>
  * @author    Karsten Dambekalns <k.dambekalns@fishfarm.de>
  * @author    Michael Lively Jr. <mlively@ft11.net>
  * @author    Philippe Jausions <Philippe.Jausions@11abacus.com>
- * @copyright 2001-2007 Dr. Volker Göbbels <vmg@arachnion.de> and Sebastian Bergmann <sb@sebastian-bergmann.de>
+ * @copyright 2001-2007 Dr. Volker GÃ¶bbels <vmg@arachnion.de> and Sebastian Bergmann <sb@sebastian-bergmann.de>
  * @license   http://www.php.net/license/3_0.txt The PHP License, Version 3.0
  * @version   Release: @package_version@
  * @link      http://pear.php.net/package/Image_GraphViz
@@ -387,7 +393,7 @@ class Image_GraphViz
      * A cluster is a subgraph with a rectangle around it.
      *
      * @param string $id         ID.
-     * @param array  $title      Title.
+     * @param string $title      Title.
      * @param array  $attributes Attributes of the cluster.
      * @param string $group      ID of group to nest cluster into
      *
@@ -400,13 +406,16 @@ class Image_GraphViz
         $this->graph['clusters'][$id]['title']      = $title;
         $this->graph['clusters'][$id]['attributes'] = $attributes;
         $this->graph['clusters'][$id]['embedIn']    = $group;
+        if (!isset($this->graph['nodes'][$id])) {
+          $this->graph['nodes'][$id] = array();
+        }
     }
 
     /**
      * Adds a subgraph to the graph.
      *
      * @param string $id         ID.
-     * @param array  $title      Title.
+     * @param string $title      Title.
      * @param array  $attributes Attributes of the cluster.
      * @param string $group      ID of group to nest subgraph into
      *
@@ -418,6 +427,9 @@ class Image_GraphViz
         $this->graph['subgraphs'][$id]['title']      = $title;
         $this->graph['subgraphs'][$id]['attributes'] = $attributes;
         $this->graph['subgraphs'][$id]['embedIn']    = $group;
+        if (!isset($this->graph['nodes'][$id])) {
+            $this->graph['nodes'][$id] = array();
+        }
     }
 
     /**
@@ -598,8 +610,17 @@ class Image_GraphViz
             case 'taillabel':
                 $v = $this->_escape($v, true);
                 break;
+            case 'graph':
+            case 'node':
+            case 'edge':
+                if (!is_array($v)) {
+                    $v = $this->_escape($v);
+                }
+                break;
             default:
-                $v = $this->_escape($v);
+                if (!is_array($v)) {
+                    $v = $this->_escape($v);
+                }
                 $k = $this->_escape($k);
             }
 
@@ -828,7 +849,16 @@ class Image_GraphViz
         $attr = $this->_escapeArray($this->graph['attributes']);
 
         foreach ($attr as $key => $value) {
-            $parsedGraph .= $indent.$key.'='.$value.";\n";
+            if (is_array($value)) {
+                $subattr = $this->_escapeArray($value);
+                $parsedGraph .= $indent.$key." [\n";
+                foreach ($subattr as $subkey => $subvalue) {
+                    $parsedGraph .= $indent.$indent.$subkey.'='.$subvalue.";\n";
+                }
+                $parsedGraph .= $indent."];\n";
+            } else {
+                $parsedGraph .= $indent.$key.'='.$value.";\n";
+            }
         }
 
         $groups = $this->_getGroups();
@@ -905,6 +935,10 @@ class Image_GraphViz
      */
     function _nodes($nodes, $indent)
     {
+        if (!is_array($nodes)) {
+            return '';
+        }
+        
         $parsedGraph = '';
         foreach ($nodes as $node => $attributes) {
             $parsedGraph .= $indent.$this->_escape($node);
@@ -933,7 +967,10 @@ class Image_GraphViz
     function _subgraph($group, &$indent)
     {
         $parsedGraph = '';
-        $nodes = $this->graph['nodes'][$group];
+        $nodes = null;
+        if (isset($this->graph['nodes'][$group])) {
+            $nodes = $this->graph['nodes'][$group];
+        }
 
         if ($group !== 'default') {
             $type = null;
@@ -972,7 +1009,9 @@ class Image_GraphViz
             }
         }
 
-        $parsedGraph .= $this->_nodes($nodes, $indent);
+        if ($nodes) {
+            $parsedGraph .= $this->_nodes($nodes, $indent);
+        }
 
         foreach ($this->_getSubgraphs($group) as $_group) {
             $parsedGraph .= $this->_subgraph($_group, $indent);
@@ -1028,4 +1067,3 @@ class Image_GraphViz
  * c-hanging-comment-ender-p: nil
  * End:
  */
-?>
