@@ -19,15 +19,16 @@ class api
 
 class mission
 {
-	protected static $status = 'VALID';
+	protected static $is_valid = true;
 	protected static $errors = array();
+	const MAX_ERROR_LENGTH = 255;
 
 	/**
 	 * Takes input from GET and returns whether the parameters represent a valid SquadWar match setup
 	 * for the given match code.  Input includes the mission and two arrays of player IDs, one for each team.
 	 * These are in squad_plr1 and squad_plr2.
 	 * @param  int $code The match code to be validated against
-	 * @return array     The match code, status, and error info (if any) to be encoded to JSON and returned by the API.
+	 * @return array     The match code, is_valid, and error info (if any) to be encoded to JSON and returned by the API.
 	 */
 	public static function validate($code)
 	{
@@ -40,15 +41,15 @@ class mission
 
 		if(! $match instanceof match_record_detail)
 		{
-			self::$status = 'INVALID';
+			self::$is_valid = false;
 			self::$errors[] = "Could not find match code {$code}";
 		}
 
 		if($_GET['mission'] != $match->get_info()->get_Mission())
 		{
-			self::$status = 'INVALID';
-			self::$errors[] = "Match requires " . $match->get_info()->get_Mission() .
-				", but mission is set to {$_GET['mission']}";
+			self::$is_valid = false;
+			self::add_error("Match requires " . $match->get_info()->get_Mission() .
+				", but mission is set to {$_GET['mission']}");
 		}
 
 		$squad_ids = array('squad_plr1'=>null, 'squad_plr2'=>null);
@@ -65,13 +66,22 @@ class mission
 					$func = 'get_'.ucfirst($team);
 					if(!in_array($playerid, $match->$func()->get_SquadMembers()))
 					{
-						self::$status = 'INVALID';
-						self::$errors[] = "Player {$name} ({$playerid}) is not in '{$team}' squad ".$match->$func()->get_SquadName();
+						self::$is_valid = false;
+						self::add_error("Player {$name} ({$playerid}) is not in {$team} squad " .
+							$match->$func()->get_SquadName());
 					}
 				}
 			}
 		}
-		return array('code'=>$code, 'status'=>self::$status, 'squad1'=>$squads['squad_plr1'], 'squad2'=>$squads['squad_plr2'], 'errors'=>self::$errors, 'error_count'=>count(self::$errors));
+
+		return array(
+			'code'=>$code,
+			'is_valid'=>self::$is_valid,
+			'squad1'=>$squads['squad_plr1'],
+			'squad2'=>$squads['squad_plr2'],
+			'errors'=>self::$errors,
+			'error_count'=>count(self::$errors)
+		);
 	}
 
 	/**
@@ -104,12 +114,18 @@ class mission
 
 			if(!$result)
 			{
-				self::$status = 'INVALID';
-				self::$errors[] = "Could not find the match to award";
+				self::$is_valid = false;
+				self::add_error("Could not find the match to award");
 			}
 		}
 
-		return array('code'=>$code, 'status'=>self::$status, 'errors'=>self::$errors, 'winner'=>$squads['squad_winners'], 'error_count'=>count(self::$errors));
+		return array(
+			'code'=>$code,
+			'is_valid'=>self::$is_valid,
+			'winner'=>$squads['squad_winners'],
+			'errors'=>self::$errors,
+			'error_count'=>count(self::$errors)
+		);
 	}
 
 	protected static function identify_squads($plists, $match)
@@ -143,8 +159,8 @@ class mission
 				}
 				else
 				{
-					self::$status = 'INVALID';
-					self::$errors[] = "Could not find player {$name} ({$player}) in any squad";
+					self::$is_valid = false;
+					self::add_error("Could not find player {$name} ({$player}) in any squad");
 				}
 			}
 
@@ -156,11 +172,16 @@ class mission
 
 		if(is_null(reset($squads)))
 		{
-			self::$status = 'INVALID';
-			self::$errors[] = "All players are in both squads or neither squad, cannot tell one squad from another";
+			self::$is_valid = false;
+			self::add_error("All players are in both squads or neither squad, cannot tell one squad from another");
 		}
 
 		return $squads;
+	}
+
+	protected static function add_error($error)
+	{
+		self::$errors[] = substr($error, 0, self::MAX_ERROR_LENGTH);
 	}
 }
 
