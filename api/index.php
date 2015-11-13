@@ -11,8 +11,8 @@ class api
 	public static function index()
 	{
 		return array(
-			'mission/validate' => 'mission/validate/',
-			'mission/report' => 'mission/report/',
+			'match/validate' => 'match/validate/',
+			'match/report' => 'match/report/',
 		);
 	}
 
@@ -25,7 +25,7 @@ class api
 	}
 }
 
-class mission
+class match
 {
 	protected static $is_valid = true;
 	protected static $errors = array();
@@ -80,8 +80,8 @@ class mission
 	}
 
 	/**
-	 * Used to report the outcome of a completed SquadWar mission to FS2NetD/SquadWar.  This can only be done once
-	 * for a mission, after which it cannot be played again without hackery.  Takes input from GET parameters
+	 * Used to report the outcome of a completed SquadWar match to FS2NetD/SquadWar.  This can only be done once
+	 * for a match, after which it cannot be played again without hackery.  Takes input from GET parameters
 	 * including a list of players on the winning and losing teams.
 	 * @param  int $code The match code that was played and is being reported
 	 * @return array     The match code,
@@ -220,7 +220,7 @@ Epi::setSetting('exceptions', true);
 Epi::init('api');
 
 getApi()->get('/', array('api', 'index'), EpiApi::external);
-getApi()->get('/mission/validate/(\d+)', array('mission', 'validate'), EpiApi::external);
-getApi()->get('/mission/report/(\d+)', array('mission', 'report'), EpiApi::external);
+getApi()->get('/match/validate/(\d+)', array('match', 'validate'), EpiApi::external);
+getApi()->get('/match/report/(\d+)', array('match', 'report'), EpiApi::external);
 getApi()->get('.*', array('api', 'badrequest'), EpiApi::external);
 getRoute()->run();
