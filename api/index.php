@@ -166,7 +166,7 @@ class match
 			return false;
 		}
 
-		if($match->get_final_match_time() == '0000-00-00 00:00:00')
+		if($match->get_info()->get_final_match_time() == '0000-00-00 00:00:00')
 		{
 			self::$is_valid = false;
 			self::$errors[] = "Match settings have not been finalized";
