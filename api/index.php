@@ -15,6 +15,14 @@ class api
 			'mission/report' => 'mission/report/',
 		);
 	}
+
+	public static function badrequest()
+	{
+		return array(
+			'is_valid' => false,
+			'errors' => array('Unrecognized request'),
+		);
+	}
 }
 
 class mission
@@ -32,43 +40,30 @@ class mission
 	 */
 	public static function validate($code)
 	{
-		$rec = match_api::new_search_record();
-		$rec->set_SWCode($code);
-		$ret = match_api::search($rec);
-		$ret = match_api::populate_info($ret);
-		$ret = match_api::populate_squads($ret, true);
-		$match = reset($ret->get_results());
+		$squads = array('squad_plr1'=>null,'squad_plr2'=>null);
 
-		if(! $match instanceof match_record_detail)
+		if($match = self::validate_match_code($code))
 		{
-			self::$is_valid = false;
-			self::$errors[] = "Could not find match code {$code}";
-		}
+			// Need to validate the mission, as well as the list of participants
+			self::validate_mission($match);
 
-		if($_GET['mission'] != $match->get_info()->get_Mission())
-		{
-			self::$is_valid = false;
-			self::add_error("Match requires " . $match->get_info()->get_Mission() .
-				", but mission is set to {$_GET['mission']}");
-		}
+			$squads = self::validate_squads($squads, $match);
 
-		$squad_ids = array('squad_plr1'=>null, 'squad_plr2'=>null);
-		$squads = self::identify_squads(array_intersect_key($_GET, $squad_ids), $match);
-
-		if(!is_null(reset($squads)))
-		{
-			// Loop above was to find what squad was which, this loop specifically ensure proper team
-			// membership for all players involved.
-			foreach($squads as $squadid => $team)
+			if(!is_null(reset($squads)))
 			{
-				foreach($_GET[$squadid] as $playerid => $name)
+				// Loop above was to find what squad was which, this loop specifically ensure proper team
+				// membership for all players involved.
+				foreach($squads as $squadid => $team)
 				{
-					$func = 'get_'.ucfirst($team);
-					if(!in_array($playerid, $match->$func()->get_SquadMembers()))
+					foreach($_GET[$squadid] as $playerid => $name)
 					{
-						self::$is_valid = false;
-						self::add_error("Player {$name} ({$playerid}) is not in {$team} squad " .
-							$match->$func()->get_SquadName());
+						$func = 'get_'.ucfirst($team);
+						if(!in_array($playerid, $match->$func()->get_SquadMembers()))
+						{
+							self::$is_valid = false;
+							self::add_error("Player {$name} ({$playerid}) is not in {$team} squad " .
+								$match->$func()->get_SquadName());
+						}
 					}
 				}
 			}
@@ -93,29 +88,24 @@ class mission
 	 */
 	public static function report($code)
 	{
-		$rec = match_api::new_search_record();
-		$rec->set_SWCode($code);
-		$ret = match_api::search($rec);
-		$ret = match_api::populate_info($ret);
-		$ret = match_api::populate_squads($ret, true);
-		$match = reset($ret->get_results());
+		$squads = array('squad_winners'=>null,'squad_losers'=>null);
 
-		$squad_ids = array('squad_winners'=>null,'squad_losers'=>null);
-		$squads = self::identify_squads(array_intersect_key($_GET, $squad_ids), $match);
-
-		if(!is_null(reset($squads)))
+		if($match = self::validate_match_code($code))
 		{
-			$func = 'get_'.ucfirst($squads['squad_winners']);
-			$result = true;
-/*			$result = match_api::award_match(
-				$code,
-				$match->$func()->get_SquadID()
-			);*/
+			// Just need to validate the list of winners and losers now.
+			$squads = self::validate_squads($squads, $match);
 
-			if(!$result)
+			if(!is_null(reset($squads)))
 			{
-				self::$is_valid = false;
-				self::add_error("Could not find the match to award");
+				$func = 'get_'.ucfirst($squads['squad_winners']);
+				$result = true;
+//				$result = match_api::award_match($code, $match->$func()->get_SquadID());
+
+				if(!$result)
+				{
+					self::$is_valid = false;
+					self::add_error("Could not find the match to award");
+				}
 			}
 		}
 
@@ -128,14 +118,55 @@ class mission
 		);
 	}
 
-	protected static function identify_squads($plists, $match)
+	protected static function validate_mission($match)
 	{
+		if(!array_key_exists('mission', $_GET))
+		{
+			self::$is_valid = false;
+			self::add_error("No mission defined.");
+		}
+		elseif($_GET['mission'] != $match->get_info()->get_Mission())
+		{
+			self::$is_valid = false;
+			self::add_error("Match requires " . $match->get_info()->get_Mission() .
+				", but mission is set to {$_GET['mission']}");
+		}
+	}
+
+	protected static function validate_match_code($code)
+	{
+		$rec = match_api::new_search_record();
+		$rec->set_SWCode($code);
+		$ret = match_api::search($rec);
+		$ret = match_api::populate_info($ret);
+		$ret = match_api::populate_squads($ret, true);
+		$match = reset($ret->get_results());
+
+		if(! $match instanceof match_record_detail)
+		{
+			self::$is_valid = false;
+			self::$errors[] = "Could not find match code {$code}";
+			return false;
+		}
+
+		return $match;
+	}
+
+	protected static function validate_squads($squads, $match)
+	{
+		// First make sure we have all the data in the $_GET field
+		$plists = array_intersect_key($_GET, $squads);
+		if(count($plists) != count($squads))
+		{
+			self::$is_valid = false;
+			self::add_error("Not enough squads submitted in request.");
+			return $squads;
+		}
 		// We don't know if the hosting team is the challenger or challenged.  We can proceed through
 		// the two lists of players and use the first player not in both squads to determine which team
 		// is which.  If all players are in both squads, we simply don't have enough data to identify
 		// one squad from the other.
 		$squad_ids = array_keys($plists);
-		$squads = array_fill_keys($squad_ids, null); // default value for later if no matches found
 		$functions = array('challenger','challenged');
 		$functions = array_combine($squad_ids, array($functions, array_reverse($functions)));
 		foreach($plists as $squad_id => $plist)
@@ -191,4 +222,5 @@ Epi::init('api');
 getApi()->get('/', array('api', 'index'), EpiApi::external);
 getApi()->get('/mission/validate/(\d+)', array('mission', 'validate'), EpiApi::external);
 getApi()->get('/mission/report/(\d+)', array('mission', 'report'), EpiApi::external);
+getApi()->get('.*', array('api', 'badrequest'), EpiApi::external);
 getRoute()->run();
