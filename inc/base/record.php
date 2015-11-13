@@ -107,11 +107,40 @@ class base_record
 	{
 		return get_object_vars($this);
 	}
-	
+
+	public function to_array_deep()
+	{
+		switch(func_num_args())
+		{
+			case 0:
+				$obj = $this;
+				break;
+			case 1:
+				$obj = func_get_arg(0);
+				break;
+			default:
+				trigger_error("Unrecognized argument number passed");
+				return false;
+		}
+		if(is_object($obj))
+		{
+			$obj = get_object_vars($obj);
+		}
+		if(is_array($obj)) {
+			$new = array();
+			foreach($obj as $key => $val) {
+				$new[$key] = call_user_func(array($this, __FUNCTION__), $val);
+			}
+		}
+		else
+		{
+			$new = $obj;
+		}
+		return $new;
+	}
+
 	protected function throw_notice($msg)
 	{
 		trigger_error($msg, E_USER_NOTICE);
 	}
 }
-
-?>

@@ -1,6 +1,6 @@
 <?php
 // We'll use output buffering because the frontend code of this site is ported
-// from an ancient system that doesn't separate logic from markup. 
+// from an ancient system that doesn't separate logic from markup.
 ob_start();
 session_start();
 define('BASE_PATH',dirname(__FILE__).'/');

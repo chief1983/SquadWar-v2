@@ -31,6 +31,23 @@ class match
 	protected static $errors = array();
 	const MAX_ERROR_LENGTH = 255;
 
+	public static function pending()
+	{
+		$rec = match_api::new_search_record();
+		$ret = match_api::search($rec);
+		$ret = match_api::populate_info($ret);
+		$ret = match_api::populate_sectors($ret);
+		$ret = match_api::populate_squads($ret, true);
+		$matches = $ret->get_results();
+
+		foreach($matches as $index => $match)
+		{
+			$matches[$index] = $match->to_array_deep();
+		}
+
+		return array('matches'=>$matches);
+	}
+
 	/**
 	 * Takes input from GET and returns whether the parameters represent a valid SquadWar match setup
 	 * for the given match code.  Input includes the mission and two arrays of player IDs, one for each team.
@@ -220,7 +237,8 @@ Epi::setSetting('exceptions', true);
 Epi::init('api');
 
 getApi()->get('/', array('api', 'index'), EpiApi::external);
-getApi()->get('/match/validate/(\d+)', array('match', 'validate'), EpiApi::external);
-getApi()->get('/match/report/(\d+)', array('match', 'report'), EpiApi::external);
+getApi()->get('/match/pending/?', array('match', 'pending'), EpiApi::external);
+getApi()->get('/match/validate/(\d+)/?', array('match', 'validate'), EpiApi::external);
+getApi()->get('/match/report/(\d+)/?', array('match', 'report'), EpiApi::external);
 getApi()->get('.*', array('api', 'badrequest'), EpiApi::external);
 getRoute()->run();
