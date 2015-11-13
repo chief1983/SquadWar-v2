@@ -31,6 +31,10 @@ class match
 	protected static $errors = array();
 	const MAX_ERROR_LENGTH = 255;
 
+	/**
+	 * Lists all pending matches.
+	 * @return array 	The list of pending matches
+	 */
 	public static function pending()
 	{
 		$rec = match_api::new_search_record();
@@ -135,6 +139,11 @@ class match
 		);
 	}
 
+	/**
+	 * Validates that a mission is submitted and is the correct mission for the passed match.
+	 * @param  match_record_detail $match The match detail object that contains a mission
+	 * @return null
+	 */
 	protected static function validate_mission($match)
 	{
 		if(!array_key_exists('mission', $_GET))
@@ -150,6 +159,11 @@ class match
 		}
 	}
 
+	/**
+	 * Validates that the submitted match code exists and is in a state to be played.
+	 * @param  string                    $code The match code to look up
+	 * @return false|match_record_detail       The match object, or false if not found.
+	 */
 	protected static function validate_match_code($code)
 	{
 		$rec = match_api::new_search_record();
@@ -176,6 +190,13 @@ class match
 		return $match;
 	}
 
+	/**
+	 * Validates that the submitted players in $_GET are part of the squads playing in this match,
+	 * and separates the players into the appropriate arrays after validating them.
+	 * @param  array               $squads Placeholder array containing the keys to separate players by.
+	 * @param  match_record_detail $match  The match object to validate against
+	 * @return array                       The squads array, either empty or populated properly.
+	 */
 	protected static function validate_squads($squads, $match)
 	{
 		// First make sure we have all the data in the $_GET field
@@ -234,6 +255,11 @@ class match
 		return $squads;
 	}
 
+	/**
+	 * Appends errors to the error array, and makes any necessary tweaks to them.
+	 * Eliminates needing to substr every single error message line and provides easier future filtering.
+	 * @param string $error The error string to be added.
+	 */
 	protected static function add_error($error)
 	{
 		self::$errors[] = substr($error, 0, self::MAX_ERROR_LENGTH);
