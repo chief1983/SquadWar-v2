@@ -20,7 +20,7 @@ class api
 	{
 		return array(
 			'is_valid' => false,
-			'errors' => array('Unrecognized request'),
+			'errors' => array('Unrecognized request.'),
 		);
 	}
 }
@@ -79,7 +79,7 @@ class match
 						{
 							self::$is_valid = false;
 							self::add_error("Player {$name} ({$playerid}) is not in {$team} squad " .
-								$match->$func()->get_SquadName());
+								$match->$func()->get_SquadName() . ".");
 						}
 					}
 				}
@@ -121,7 +121,7 @@ class match
 				if(!$result)
 				{
 					self::$is_valid = false;
-					self::add_error("Could not find the match to award");
+					self::add_error("Could not find the match to award.");
 				}
 			}
 		}
@@ -146,7 +146,7 @@ class match
 		{
 			self::$is_valid = false;
 			self::add_error("Match requires " . $match->get_info()->get_Mission() .
-				", but mission is set to {$_GET['mission']}");
+				", but mission is set to {$_GET['mission']}.");
 		}
 	}
 
@@ -162,14 +162,14 @@ class match
 		if(! $match instanceof match_record_detail)
 		{
 			self::$is_valid = false;
-			self::$errors[] = "Could not find match code {$code}";
+			self::$errors[] = "Could not find match code {$code}.";
 			return false;
 		}
 
 		if($match->get_info()->get_final_match_time() == '0000-00-00 00:00:00')
 		{
 			self::$is_valid = false;
-			self::$errors[] = "Match settings have not been finalized";
+			self::$errors[] = "Match settings have not been finalized.";
 			return $match;
 		}
 
@@ -215,7 +215,7 @@ class match
 				else
 				{
 					self::$is_valid = false;
-					self::add_error("Could not find player {$name} ({$player}) in any squad");
+					self::add_error("Could not find player {$name} ({$player}) in any squad.");
 				}
 			}
 
@@ -228,7 +228,7 @@ class match
 		if(is_null(reset($squads)))
 		{
 			self::$is_valid = false;
-			self::add_error("All players are in both squads or neither squad, cannot tell one squad from another");
+			self::add_error("All players are in both squads or neither squad, cannot tell one squad from another.");
 		}
 
 		return $squads;
