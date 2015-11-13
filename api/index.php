@@ -170,7 +170,7 @@ class match
 		{
 			self::$is_valid = false;
 			self::$errors[] = "Match settings have not been finalized";
-			return false;
+			return $match;
 		}
 
 		return $match;
